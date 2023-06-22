@@ -6,16 +6,20 @@
 - **Habibullah Dzaky Musthafa**
 - **Yoga Sadewa**
 
-## **`Ketentuan Repository`**
+## **`Draft Design & Documentation`**
 
-- ❌ Dilarang mengakses atau menyalahgunakan repositori kelompok lain.
-- 💻 Fokus pada pengerjaan kelompok masing-masing.
-- 🤓 Untuk kelompok lain bisa sharing, melihat proses, serta memicu semangat untuk memberikan hasil yang terbaik pada projectnya masing-masing. 💪💪💪
+- BPMN : https://drive.google.com/file/d/1III3DRs1p3KFGepB57uMqlHu3G2NbAhp/view?usp=sharing
+- Use Case Diagram : https://drive.google.com/file/d/1VZzzGrXGnN-46qeSowSSC17Iqas0vwHT/view?usp=sharing
+- Entity Relational Diagram : -
+
+
 
 ## **`Ketentuan Implementasi Repository`**
 
 - Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
 - Setalah clone, silahkan masukkan folder project `backend` & `frontend` yang nanti teman-teman buat.
+
+
 
 **`NOTE:` di bawah ini merupakan contoh struktur dari folder project.**
 
