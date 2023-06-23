@@ -8,18 +8,15 @@
 
 ## **`Draft Design & Documentation`**
 
-- BPMN : https://drive.google.com/file/d/1III3DRs1p3KFGepB57uMqlHu3G2NbAhp/view?usp=sharing
-- Use Case Diagram : https://drive.google.com/file/d/1VZzzGrXGnN-46qeSowSSC17Iqas0vwHT/view?usp=sharing
-- Entity Relational Diagram : -
-
-
+- BPMN : [Link](https://drive.google.com/file/d/1FOQ5H6A1Q47xzhpKvuQHsagoDPihBm-8/view?usp=sharing)
+- Use Case Diagram : [Link](https://drive.google.com/file/d/10AuxibxFDquCuNYFV5Ty2f1Mw1vJyIjr/view?usp=sharing)
+- Entity Relational Diagram : [Link](https://drive.google.com/file/d/1X94O6mTQVWFhbWXJA1D2281dAGN6U6ht/view?usp=sharing)
+- Data Dummy : [Link](https://docs.google.com/spreadsheets/d/10gDpG6SatiQW8xmxUQlRNW3e7XbkgA5qFfhq4r42nl4/edit?usp=sharing)
 
 ## **`Ketentuan Implementasi Repository`**
 
 - Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
 - Setalah clone, silahkan masukkan folder project `backend` & `frontend` yang nanti teman-teman buat.
-
-
 
 **`NOTE:` di bawah ini merupakan contoh struktur dari folder project.**
 
