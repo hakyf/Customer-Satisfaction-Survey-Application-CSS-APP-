@@ -25,9 +25,13 @@
 
 ## **`Project Task`**
 
-28/06/2023
-
-- Habib "add all models"
+Hari/Tanggal : Rabu, 28 Juni 2023
+Riki :
+- Konfigurasi JPA
+Habib :
+- Add all models
+Yoga :
+- Add data dummy from database
 
 ## **`Ketentuan Implementasi Repository`**
 
