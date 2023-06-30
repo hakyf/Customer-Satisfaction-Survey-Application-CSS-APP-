@@ -40,7 +40,7 @@ public class Employee {
     private String phone;
 
     @Column(length = 50, nullable = false)
-    private String jobposition;
+    private String jobPosition;
 
     @PrimaryKeyJoinColumn
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
