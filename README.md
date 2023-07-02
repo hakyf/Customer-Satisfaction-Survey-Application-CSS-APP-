@@ -28,7 +28,9 @@
 
 - **Riki Setiyawan**
 
-1. 28/06 Konfigurasi JPA
+1. 28/06 Konfigurasi JPA pada serverapp
+2. 02/07 Add controller, service & repository pada clientapp
+3. 02/07 Update clientapp
 
 - **Habibullah Dzaky Musthafa**
 
