@@ -28,47 +28,49 @@ public class UserService {
     private ModelMapper modelMapper;
     private RoleService roleService;
 
-    public List<User> getAll(){
+    public List<User> getAll() {
         return userRepository.findAll();
-        
+
     }
 
-    public User getById(Long id){
+    public User getById(Long id) {
         return userRepository
-        .findById(id)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found !"));
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found !"));
     }
 
     // public User create(UserRequest userRequest) {
-    //     Employee employee = modelMapper.map(userRequest, Employee.class);
-    //     User user = modelMapper.map(userRequest, User.class);
+    // Employee employee = modelMapper.map(userRequest, Employee.class);
+    // User user = modelMapper.map(userRequest, User.class);
 
-       
-        // List<Role> roles = new ArrayList<>();
-       
-        // roles.add(roleService.getById(null));
-        // user.setRoles(roles);
+    // List<Role> roles = new ArrayList<>();
 
-        // user.setEmployee(employee);
-        // employee.setUser(user);
+    // roles.add(roleService.getById(null));
+    // user.setRoles(roles);
 
-    //     return userRepository.save(user);
+    // user.setEmployee(employee);
+    // employee.setUser(user);
+
+    // return userRepository.save(user);
     // }
 
-    public User update(Long id, User user){
+    public User update(Long id, User user) {
         getById(id);
         user.setId(id);
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username already exist!");
+        }
         return userRepository.save(user);
     }
 
-    public User delete(Long id){
+    public User delete(Long id) {
         User user = getById(id);
         userRepository.delete(user);
         return user;
     }
 
-    //add role
-    public User addRole(Long id, Role role){
+    // add role
+    public User addRole(Long id, Role role) {
         // user ada atau tidak
         User user = getById(id);
 

@@ -1,4 +1,5 @@
 package id.co.mii.serverapp.services;
+
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -16,30 +17,36 @@ import lombok.AllArgsConstructor;
 public class RoleService {
     private RoleRepository roleRepository;
 
-    public List<Role> getAll (){
+    public List<Role> getAll() {
         return roleRepository.findAll();
     }
 
-    public Role getById(Long id){
+    public Role getById(Long i) {
         return roleRepository
-                .findById(id)
+                .findById(i)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Role not exists!!!"));
     }
 
-    public Role create(Role role){
+    public Role create(Role role) {
+        if (roleRepository.findByName(role.getName()).isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Role already exists!!!");
+        }
         return roleRepository.save(role);
     }
 
-    public Role update(Long id, Role role){
+    public Role update(Long id, Role role) {
         getById(id);
         role.setId(id);
         return roleRepository.save(role);
     }
 
-    public Role delete(Long id){
+    public Role delete(Long id) {
         Role role = getById(id);
         roleRepository.delete(role);
         return role;
 
-    }    }
+    }
+}

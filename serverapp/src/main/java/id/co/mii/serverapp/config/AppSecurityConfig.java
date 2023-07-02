@@ -1,4 +1,5 @@
 package id.co.mii.serverapp.config;
+
 import id.co.mii.serverapp.services.AppUserDetailService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -38,10 +39,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/register")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/verify")
-                .permitAll()
                 .antMatchers(HttpMethod.POST, "/login")
                 .permitAll()
+                // .antMatchers(HttpMethod.GET, "/verify")
+                // .permitAll()
                 .anyRequest()
                 .permitAll()
                 .and()

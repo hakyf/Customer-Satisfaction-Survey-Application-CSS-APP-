@@ -13,31 +13,39 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class EmployeeService {
-    
+
     private EmployeeRepository employeeRepository;
+
     public List<Employee> getAll() {
         return employeeRepository.findAll();
     }
 
-    public Employee getById(Long id){
+    public Employee getById(Long id) {
         return employeeRepository
-        .findById(id)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found !")
-        );
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found !"));
     }
 
-    public Employee create(Employee employee){
+    public Employee create(Employee employee) {
+        if (employeeRepository.findByName(employee.getName()).isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Employee already exists!!!");
+        }
         return employeeRepository.save(employee);
     }
 
-    public Employee update(Long id, Employee employee){
+    public Employee update(Long id, Employee employee) {
         getById(id);
         employee.setId(id);
-        return employeeRepository.save(employee); 
+        if (employeeRepository.findByNameAndId(employee.getName(), id).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Employee already exists!!!");
+        }
+        return employeeRepository.save(employee);
     }
 
-    public Employee delete(Long id){
-        Employee employee= getById(id);
+    public Employee delete(Long id) {
+        Employee employee = getById(id);
         employeeRepository.delete(employee);
         return employee;
     }
