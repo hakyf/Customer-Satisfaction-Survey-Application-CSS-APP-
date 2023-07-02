@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    $("#table-question").DataTable({
+    $("#table-employee").DataTable({
       ajax: {
-        url: "/api/question",
+        url: "/api/employee",
         dataSrc: "",
       },
       columns: [
@@ -9,22 +9,31 @@ $(document).ready(function () {
           data: "id",
         },
         {
-          data: "body",
+          data: "name",
+        },
+        {
+          data: "email",
+        },
+        {
+          data: "phone",
+        },
+        {
+          data: "jobPosition",
         },
         {
           data: null,
           render: function (data, type, row, meta) {
             return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#detailQuestion" onclick = findById(${row.id})>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#detailEmployee" onclick = findById(${row.id})>
                   <i class="fa-solid fa-circle-info"></i> Detail
                 </button>
   
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateQuestion" onclick = beforeUpdate(${row.id})>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployee" onclick = beforeUpdate(${row.id})>
                   <i class="fa-sharp fa-solid fa-pen"></i> Update
                 </button>
                 
-                <button class="btn btn-danger" onclick="deleteQuestion(${row.id})"><i class="fa-sharp fa-solid fa-trash"></i> Delete
+                <button class="btn btn-danger" onclick="deleteEmployee(${row.id})"><i class="fa-sharp fa-solid fa-trash"></i> Delete
                 </button>
               </div>`;
           },
@@ -34,17 +43,26 @@ $(document).ready(function () {
   });
   
   function defaults() {
-    $("#crt-question-name").removeClass("is-invalid");
-    
-    $("#crt-question-name").val("");
+    $("#crt-employee-name").removeClass("is-invalid");
+    $("#crt-employee-email").removeClass("is-invalid");
+    $("#crt-employee-phone").removeClass("is-invalid");
+    $("#crt-employee-jobPosition").removeClass("is-invalid");
+  
+    $("#crt-employee-name").val("");
+    $("#crt-employee-email").val("");
+    $("#crt-employee-phone").val("");
+    $("#crt-employee-jobPosition").val("");
   }
   
   function create() {
-    let name = $("#crt-question-name").val().trim();
+    let name = $("#crt-employee-name").val().trim();
+    let email = $("#crt-employee-email").val().trim();
+    let phone = $("#crt-employee-phone").val().trim();
+    let jobPosition = $("#crt-employee-jobPosition").val().trim();
   
     var errors = 0;
     if (name === "") {
-      $("#crt-question-name").addClass("is-invalid");
+      $("#crt-employee-name").addClass("is-invalid");
   
       errors += 1;
     }
@@ -54,22 +72,25 @@ $(document).ready(function () {
     }
   
     $.ajax({
-      url: "/api/question",
+      url: "/api/employee",
       method: "POST",
       dataType: "JSON",
       contentType: "application/json",
       beforSend: addCsrfToken(),
       data: JSON.stringify({
         name: name,
+        email: email,
+        phone: phone,
+        jobPosition: jobPosition,
       }),
       success: (result) => {
-        $("#createQuestion").modal("hide");
-        $("#table-question").DataTable().ajax.reload();
+        $("#createEmployee").modal("hide");
+        $("#table-employee").DataTable().ajax.reload();
         defaults();
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Question has been created",
+          title: "Employee has been created",
           showConfirmButton: false,
           timer: 1500,
           width: 600,
@@ -80,35 +101,44 @@ $(document).ready(function () {
   
   function findById(id) {
     $.ajax({
-      url: "/api/question/" + id,
+      url: "/api/employee/" + id,
       method: "GET",
       dataType: "JSON",
       success: (result) => {
-        $("#question-id").text(`${result.id}`);
-        $("#question-name").text(`${result.name}`);
+        $("#employee-id").text(`${result.id}`);
+        $("#employee-name").text(`${result.name}`);
+        $("#employee-email").text(`${result.email}`);
+        $("#employee-phone").text(`${result.phone}`);
+        $("#employee-jobPosition").text(`${result.jobPosition}`);
       },
     });
   }
   
   function beforeUpdate(id) {
     $.ajax({
-      url: "/api/question/" + id,
+      url: "/api/employee/" + id,
       method: "GET",
       dataType: "JSON",
       success: (result) => {
-        $("#upd-question-id").val(`${result.id}`);
-        $("#upd-question-name").val(`${result.name}`);
+        $("#upd-employee-id").val(`${result.id}`);
+        $("#upd-employee-name").val(`${result.name}`);
+        $("#upd-employee-email").val(`${result.email}`);
+        $("#upd-employee-phone").val(`${result.phone}`);
+        $("#upd-employee-jobPosition").val(`${result.jobPosition}`);
       },
     });
   }
   
   function update() {
-    let id = $("#upd-question-id").val();
-    let name = $("#upd-question-name").val().trim();
+    let id = $("#upd-employee-id").val();
+    let name = $("#upd-employee-name").val().trim();
+    let email = $("#upd-employee-email").val().trim();
+    let phone = $("#upd-employee-phone").val().trim();
+    let jobPosition = $("#upd-employee-jobPosition").val().trim();
   
     var errors = 0;
     if (name === "") {
-      $("#upd-question-name").addClass("is-invalid");
+      $("#upd-employee-name").addClass("is-invalid");
   
       errors += 1;
     }
@@ -119,7 +149,7 @@ $(document).ready(function () {
   
     Swal.fire({
       title: "Are you sure?",
-      text: "Do you want to be update this Question!",
+      text: "Do you want to be update this Employee!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -128,7 +158,7 @@ $(document).ready(function () {
     }).then((result) => {
       if (result.isConfirmed) {
         $.ajax({
-          url: "/api/question/" + id,
+          url: "/api/employee/" + id,
           method: "PUT",
           dataType: "JSON",
           contentType: "application/json",
@@ -137,12 +167,12 @@ $(document).ready(function () {
             name: name,
           }),
           success: (result) => {
-            $("#updatequestion").modal("hide");
-            $("#table-question").DataTable().ajax.reload();
+            $("#updateemployee").modal("hide");
+            $("#table-employee").DataTable().ajax.reload();
             Swal.fire({
               position: "center",
               icon: "success",
-              title: "Question has been updated",
+              title: "Employee has been updated",
               showConfirmButton: false,
               timer: 1500,
               width: 600,
@@ -153,10 +183,10 @@ $(document).ready(function () {
     });
   }
   
-  function deletequestion(id) {
+  function deleteemployee(id) {
     Swal.fire({
       title: "Are you sure?",
-      text: "Do you want to be delete this Question!",
+      text: "Do you want to be delete this Employee!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -165,16 +195,16 @@ $(document).ready(function () {
     }).then((result) => {
       if (result.isConfirmed) {
         $.ajax({
-          url: "/api/question/" + id,
+          url: "/api/employee/" + id,
           method: "DELETE",
           dataType: "JSON",
           beforSend: addCsrfToken(),
           success: (result) => {
-            $("#table-question").DataTable().ajax.reload();
+            $("#table-employee").DataTable().ajax.reload();
             Swal.fire({
               position: "center",
               icon: "success",
-              title: "Question has been deleted",
+              title: "Employee has been deleted",
               showConfirmButton: false,
               timer: 1500,
               width: 600,
