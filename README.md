@@ -32,10 +32,13 @@
 - **Habibullah Dzaky Musthafa**
 
 1. 28/06 Add all models
+2. 02/07 Fix controller, service, & repository serverapp
+3. 02/07 Fix database
 
 - **Yoga Sadewa**
 
-1. 28/06 Add data dummy from database
+1. 28/06 Add data dummy to database
+2. 02/07 Add controller, service & repository serverapp
 
 ## **`Ketentuan Implementasi Repository`**
 
