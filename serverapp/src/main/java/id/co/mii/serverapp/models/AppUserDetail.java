@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class AppUserDetail implements UserDetails{
-    
+public class AppUserDetail implements UserDetails {
+
     private User user;
 
     @Override
@@ -20,17 +20,17 @@ public class AppUserDetail implements UserDetails{
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         user
-        .getRoles()
-        .forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName().toUpperCase()) //ROLE USER
-            );
-            role
-            .getPrivileges()
-            .forEach(privilege -> {
-                authorities.add(new SimpleGrantedAuthority(privilege.getName().toUpperCase()) //CREATE_USER
-                );
-            });
-        });
+                .getRoles()
+                .forEach(role -> {
+                    authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName().toUpperCase()) // ROLE USER
+                    );
+                    role
+                            .getPrivileges()
+                            .forEach(privilege -> {
+                                authorities.add(new SimpleGrantedAuthority(privilege.getName().toUpperCase()) // CREATE_USER
+                                );
+                            });
+                });
         return authorities;
     }
 
@@ -46,7 +46,7 @@ public class AppUserDetail implements UserDetails{
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return user.getIsAccountNonExpired();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class AppUserDetail implements UserDetails{
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return user.getIsCredentialNonExpired();
     }
 
     @Override
@@ -64,5 +64,4 @@ public class AppUserDetail implements UserDetails{
         return user.getIsEnabled();
     }
 
-    
 }

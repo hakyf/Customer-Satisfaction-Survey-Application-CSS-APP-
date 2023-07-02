@@ -21,11 +21,11 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class EmailService {
-    
+
     private JavaMailSender mailSender;
     private SpringTemplateEngine templateEngine;
 
-    public EmailRequest sendSimpleMessage(EmailRequest emailRequest){
+    public EmailRequest sendSimpleMessage(EmailRequest emailRequest) {
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setTo(emailRequest.getTo());
@@ -35,9 +35,8 @@ public class EmailService {
         return emailRequest;
     }
 
-
-    public EmailRequest sendMessageWithAttachment(EmailRequest emailRequest){
-        try{
+    public EmailRequest sendMessageWithAttachment(EmailRequest emailRequest) {
+        try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
@@ -46,27 +45,26 @@ public class EmailService {
             helper.setText(emailRequest.getText());
 
             FileSystemResource file = new FileSystemResource(
-                new File(emailRequest.getAttach())
-            );
+                    new File(emailRequest.getAttach()));
 
-            helper.addAttachment(file.getFilename(),file);
+            helper.addAttachment(file.getFilename(), file);
             mailSender.send(message);
 
             System.out.println();
             System.out.println("Email success to send..");
             System.out.println();
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new IllegalStateException("email failed to send...");
         }
         return emailRequest;
     }
 
-    public EmailRequest sendMessageWithTemplate(EmailRequest emailRequest){
+    public EmailRequest sendMessageWithTemplate(EmailRequest emailRequest) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message,true);
-            
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
             helper.setTo(emailRequest.getTo());
             helper.setSubject(emailRequest.getSubject());
 
@@ -81,7 +79,7 @@ public class EmailService {
                 FileSystemResource file = new FileSystemResource(emailRequest.getAttach());
                 helper.addAttachment(file.getFilename(), file);
             }
-            
+
             mailSender.send(message);
 
             System.out.println();
@@ -95,29 +93,30 @@ public class EmailService {
         return emailRequest;
     }
 
-    public void sendMessageWithVerification(UserRequest userRequest, String siteUrl, String verificationToken) {
-        try {
-            String verifyUrl = siteUrl + "/verify?token=" + verificationToken;
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            
-            helper.setTo(userRequest.getEmail());
-            helper.setSubject("Verifikasi Email");
+    // public void sendMessageWithVerification(UserRequest userRequest, String
+    // siteUrl, String verificationToken) {
+    // try {
+    // String verifyUrl = siteUrl + "/verify?token=" + verificationToken;
+    // MimeMessage message = mailSender.createMimeMessage();
+    // MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            Context context = new Context();
-            context.setVariable("name", userRequest.getName());
-            context.setVariable("url", verifyUrl);
-            String htmlContent = templateEngine.process("TemplateVerifikasi", context);
-            
-            helper.setText(htmlContent, true);
+    // helper.setTo(userRequest.getEmail());
+    // helper.setSubject("Verifikasi Email");
 
-            mailSender.send(message);
-            System.out.println();
-            System.out.println("Email success to send.. ");
-            System.out.println();
-        
-        } catch (Exception e){
-            throw new  IllegalStateException("Email failed to send!!!");
-        }
-    }
+    // Context context = new Context();
+    // context.setVariable("name", userRequest.getName());
+    // context.setVariable("url", verifyUrl);
+    // String htmlContent = templateEngine.process("TemplateVerifikasi", context);
+
+    // helper.setText(htmlContent, true);
+
+    // mailSender.send(message);
+    // System.out.println();
+    // System.out.println("Email success to send.. ");
+    // System.out.println();
+
+    // } catch (Exception e){
+    // throw new IllegalStateException("Email failed to send!!!");
+    // }
+    // }
 }

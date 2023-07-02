@@ -29,91 +29,92 @@ import net.bytebuddy.utility.RandomString;
 @AllArgsConstructor
 public class AuthService {
 
-  private UserRepository userRepository;
-  private ModelMapper modelMapper;
-  private RoleService roleService;
-  private EmailService emailService;
-  private PasswordEncoder passwordEncoder;
-  private AuthenticationManager authenticationManager;
-  private AppUserDetailService appUserDetailService;
+    private UserRepository userRepository;
+    private ModelMapper modelMapper;
+    private RoleService roleService;
+    // private EmailService emailService;
+    private PasswordEncoder passwordEncoder;
+    private AuthenticationManager authenticationManager;
+    private AppUserDetailService appUserDetailService;
 
-  public User register(UserRequest userRequest, String siteUrl) {
+    public User register(UserRequest userRequest, String siteUrl) {
 
-    Employee employee = modelMapper.map(userRequest, Employee.class);
-    User user = modelMapper.map(userRequest, User.class);
+        Employee employee = modelMapper.map(userRequest, Employee.class);
+        User user = modelMapper.map(userRequest, User.class);
 
-    // set password bcrypt
-    user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        // set password bcrypt
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
 
-    // set default role
-    List<Role> roles = new ArrayList<>();
-    roles.add(roleService.getById((long) 2));
-    user.setRoles(roles);
+        // set default role
+        List<Role> roles = new ArrayList<>();
+        roles.add(roleService.getById((long) 3));
+        user.setRoles(roles);
 
-    user.setEmployee(employee);
-    employee.setUser(user);
+        user.setEmployee(employee);
+        employee.setUser(user);
 
-    String randomCode = RandomString.make(64);
-    user.setVerificationToken(randomCode);
-    user.setExpirationTokenStart(LocalDateTime.now());
-    emailService.sendMessageWithVerification(userRequest, siteUrl, user.getVerificationToken());
+        // String randomCode = RandomString.make(64);
+        // user.setVerificationToken(randomCode);
+        // user.setExpirationTokenStart(LocalDateTime.now());
+        // emailService.sendMessageWithVerification(userRequest, siteUrl,
+        // user.getVerificationToken());
 
-    return userRepository.save(user);
-  }
-
-  public LoginResponse login(LoginRequest loginRequest) {
-    // login request
-    UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(
-        loginRequest.getUsername(),
-        loginRequest.getPassword());
-
-    // set principle
-    Authentication auth = authenticationManager.authenticate(authReq);
-    SecurityContextHolder.getContext().setAuthentication(auth);
-
-    User user = userRepository
-        .findByUsernameOrEmployeeEmail(
-            loginRequest.getUsername(),
-            loginRequest.getUsername())
-        .get();
-
-    UserDetails userDetails = appUserDetailService.loadUserByUsername(
-        loginRequest.getUsername());
-
-    List<String> authorities = userDetails
-        .getAuthorities()
-        .stream()
-        .map(authority -> authority.getAuthority())
-        .collect(Collectors.toList());
-
-    // login response = username, email, List<String> authorities
-    return new LoginResponse(
-        user.getUsername(),
-        user.getEmployee().getEmail(),
-        authorities);
-  }
-
-  public boolean verify(String verificationToken) {
-    User user = userRepository.findByVerificationToken(verificationToken);
-
-    if (user == null || user.getIsEnabled()) {
-      return false;
-    } else {
-      LocalDateTime codeTimestamp = user.getExpirationTokenStart();
-      LocalDateTime currentTimestamp = LocalDateTime.now();
-      Duration duration = Duration.between(codeTimestamp, currentTimestamp);
-      long secondsPassed = duration.getSeconds();
-
-      // mengatur durasi expired 5 menit
-      if (secondsPassed > 300) {
-        return false;
-      }
-
-      user.setVerificationToken(null);
-      user.setIsEnabled(true);
-      userRepository.save(user);
-
-      return true;
+        return userRepository.save(user);
     }
-  }
+
+    public LoginResponse login(LoginRequest loginRequest) {
+        // login request
+        UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken(
+                loginRequest.getUsername(),
+                loginRequest.getPassword());
+
+        // set principle
+        Authentication auth = authenticationManager.authenticate(authReq);
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        User user = userRepository
+                .findByUsernameOrEmployeeEmail(
+                        loginRequest.getUsername(),
+                        loginRequest.getUsername())
+                .get();
+
+        UserDetails userDetails = appUserDetailService.loadUserByUsername(
+                loginRequest.getUsername());
+
+        List<String> authorities = userDetails
+                .getAuthorities()
+                .stream()
+                .map(authority -> authority.getAuthority())
+                .collect(Collectors.toList());
+
+        // login response = username, email, List<String> authorities
+        return new LoginResponse(
+                user.getUsername(),
+                user.getEmployee().getEmail(),
+                authorities);
+    }
+
+    // public boolean verify(String verificationToken) {
+    // User user = userRepository.findByVerificationToken(verificationToken);
+
+    // if (user == null || user.getIsEnabled()) {
+    // return false;
+    // } else {
+    // LocalDateTime codeTimestamp = user.getExpirationTokenStart();
+    // LocalDateTime currentTimestamp = LocalDateTime.now();
+    // Duration duration = Duration.between(codeTimestamp, currentTimestamp);
+    // long secondsPassed = duration.getSeconds();
+
+    // // mengatur durasi expired 5 menit
+    // if (secondsPassed > 300) {
+    // return false;
+    // }
+
+    // user.setVerificationToken(null);
+    // user.setIsEnabled(true);
+    // userRepository.save(user);
+
+    // return true;
+    // }
+    // }
 }
