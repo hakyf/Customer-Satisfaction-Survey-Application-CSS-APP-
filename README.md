@@ -27,7 +27,9 @@
 
 - **Riki Setiyawan**
 
-1. 28/06 Konfigurasi JPA
+1. 28/06 Konfigurasi JPA pada serverapp
+2. 02/07 Add controller, service & repository pada clientapp
+2. 02/07 Update clientapp
 
 - **Habibullah Dzaky Musthafa**
 
@@ -36,9 +38,20 @@
 3. 02/07 Fix database
 
 - **Yoga Sadewa**
-
-1. 28/06 Add data dummy to database
-2. 02/07 Add controller, service & repository serverapp
+  
+1. 21/06 - 28/06
+   - Initiate ideas for team projects
+   - Create and improve ERD, BPMN, Usecase Diagram, and Data Dummy, with discussion with the team together.
+2. 28/06
+   - Add data dummy to database
+3. 30/06
+   - Add controller, service & repository for Survey needs (Section,Question,Answer,Result,Client) in serverapp
+4. 01/07
+   - Add controller, service & repository for Security needs (User,Role,Privilege,etc) in serverapp
+   - Create a postman workspace and collection, and perform json testing to test HTTP request Method in Section,Question,Answer
+5. 02/07
+   - Configure Postman by creating a workspace for the team, which will allow the team to work together as editor in a single workspace.
+   - Create HTTP Method request and perfom json testing for Survey, create new Fork for Testing and pull request in original collection.
 
 ## **`Ketentuan Implementasi Repository`**
 
