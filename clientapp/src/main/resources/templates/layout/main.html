@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <link rel="icon" th:href="@{img/logo-tab.ico}" type="image/x-icon" />
+    <!-- CSS -->
+    <div th:replace="components/plugin :: css"></div>
+
+    <title>Main</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- Navbar -->
+      <div th:replace="components/navbar"></div>
+
+      <!-- Content -->
+      <section layout:fragment="content"></section>
+
+      <!-- Footer -->
+      <div th:replace="components/footer"></div>
+    </div>
+
+    <!-- JS -->
+    <div th:replace="components/plugin :: js"></div>
+
+    <!-- Local Js -->
+    <div layout:fragment="script"></div>
+  </body>
+</html>
