@@ -22,8 +22,9 @@ public class RoleService {
 
     public Role getById(Long id){
         return roleRepository
-        .findById(id)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Role not found !"));
+                .findById(id)
+                .orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Role not exists!!!"));
     }
 
     public Role create(Role role){
@@ -41,4 +42,4 @@ public class RoleService {
         roleRepository.delete(role);
         return role;
 
-    }}
+    }    }

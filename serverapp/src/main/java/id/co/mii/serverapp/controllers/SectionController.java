@@ -18,31 +18,31 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/section")
-@PreAuthorize("hasAnyRole('ADMIN')")
+// @PreAuthorize("hasAnyRole('ADMIN')")
 public class SectionController {
 private SectionService sectionService;
- @PreAuthorize("hasAnyAuthority('READ_USER', 'READ_ADMIN')")
+//  @PreAuthorize("hasAnyAuthority('READ_USER', 'READ_ADMIN')")
     @GetMapping
     public List<Section> getAll(){
         return sectionService.getAll();
     }
-@PreAuthorize("hasAuthority('READ_USER')")
+// @PreAuthorize("hasAuthority('READ_USER')")
     @GetMapping("/{id}")
     public Section getById(@PathVariable Long id){
         return sectionService.getById(id);
     }
-@PreAuthorize("hasAuthority('CREATE_ADMIN','CREATE_USER')")
+// @PreAuthorize("hasAuthority('CREATE_ADMIN','CREATE_USER')")
     @PostMapping
     public Section create(@RequestBody Section section){
         return sectionService.create(section);
     }
     
-  @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+//   @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
     @PutMapping("/{id}")
     public Section update(@PathVariable Integer id,@RequestBody Section section){
         return sectionService.update(id, section);
     }
- @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+//  @PreAuthorize("hasAuthority('DELETE_ADMIN')")
     @DeleteMapping("/{id}")
     public Section delete(@PathVariable Integer id){
         return sectionService.delete(id);
