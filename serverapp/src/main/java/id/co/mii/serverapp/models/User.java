@@ -1,5 +1,6 @@
 package id.co.mii.serverapp.models;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -39,7 +40,13 @@ public class User {
     private Boolean isAccountNonLocked = true;
     private Boolean isCredentialNonExpired = true;
     private Boolean isEnabled = true;
+    
+    @Column(name = "verification_token", length = 64)
+    private String verificationToken;
 
+    @Column
+    private LocalDateTime expirationTokenStart;
+    
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
