@@ -11,5 +11,6 @@ public class Question {
 
     private Long id;
     private String body;
+    private Section section;
 
 }

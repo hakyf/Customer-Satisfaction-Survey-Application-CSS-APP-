@@ -25,15 +25,8 @@ $(document).ready(function () {
           render: function (data, type, row, meta) {
             return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#detailEmployee" onclick = findById(${row.id})>
-                  <i class="fa-solid fa-circle-info"></i> Detail
-                </button>
-  
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployee" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i> Update
-                </button>
-                
-                <button class="btn btn-danger" onclick="deleteEmployee(${row.id})"><i class="fa-sharp fa-solid fa-trash"></i> Delete
+                  <i class="fa-sharp fa-solid fa-pen"></i>
                 </button>
               </div>`;
           },
@@ -99,21 +92,6 @@ $(document).ready(function () {
     });
   }
   
-  function findById(id) {
-    $.ajax({
-      url: "/api/employee/" + id,
-      method: "GET",
-      dataType: "JSON",
-      success: (result) => {
-        $("#employee-id").text(`${result.id}`);
-        $("#employee-name").text(`${result.name}`);
-        $("#employee-email").text(`${result.email}`);
-        $("#employee-phone").text(`${result.phone}`);
-        $("#employee-jobPosition").text(`${result.jobPosition}`);
-      },
-    });
-  }
-  
   function beforeUpdate(id) {
     $.ajax({
       url: "/api/employee/" + id,
@@ -143,6 +121,24 @@ $(document).ready(function () {
       errors += 1;
     }
   
+    if (email === "") {
+      $("#upd-employee-email").addClass("is-invalid");
+  
+      errors += 1;
+    }
+
+    if (phone === "") {
+      $("#upd-employee-phone").addClass("is-invalid");
+  
+      errors += 1;
+    }
+
+    if (jobPosition === "") {
+      $("#upd-employee-jobPosition").addClass("is-invalid");
+  
+      errors += 1;
+    }
+
     if (errors > 0) {
       return;
     }
@@ -165,46 +161,17 @@ $(document).ready(function () {
           beforSend: addCsrfToken(),
           data: JSON.stringify({
             name: name,
+            email: email,
+            phone: phone,
+            jobPosition: jobPosition,
           }),
           success: (result) => {
-            $("#updateemployee").modal("hide");
+            $("#updateEmployee").modal("hide");
             $("#table-employee").DataTable().ajax.reload();
             Swal.fire({
               position: "center",
               icon: "success",
               title: "Employee has been updated",
-              showConfirmButton: false,
-              timer: 1500,
-              width: 600,
-            });
-          },
-        });
-      }
-    });
-  }
-  
-  function deleteemployee(id) {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "Do you want to be delete this Employee!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $.ajax({
-          url: "/api/employee/" + id,
-          method: "DELETE",
-          dataType: "JSON",
-          beforSend: addCsrfToken(),
-          success: (result) => {
-            $("#table-employee").DataTable().ajax.reload();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Employee has been deleted",
               showConfirmButton: false,
               timer: 1500,
               width: 600,

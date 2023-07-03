@@ -25,8 +25,9 @@
         <thead class="table-bg">
           <tr>
             <th class="col-1">Id</th>
-            <th class="col-7">Body</th>
-            <th class="col-4">Action</th>
+            <th class="col-8">Body</th>
+            <th class="col-2">Section</th>
+            <th class="col-1">Action</th>
           </tr>
         </thead>
       </table>
@@ -57,7 +58,7 @@
             <div class="modal-body">
               <div class="mb-3">
                 <label for="crt-question-body" class="form-label"
-                  >Question Name</label
+                  >Question</label
                 >
                 <input
                   type="text"
@@ -65,7 +66,20 @@
                   id="crt-question-body"
                   required
                 />
-                <span class="invalid-feedback">Question name is required.</span>
+                <span class="invalid-feedback">Question is required.</span>
+              </div>
+              <div class="mb-3">
+                <label for="crt-question-section" class="form-label"
+                  >Select Section:</label
+                >
+                <select
+                  class="form-select dropdown-section"
+                  id="crt-question-section"
+                  required
+                >
+                  <option value="" selected disabled>Select Section</option>
+                </select>
+                <span class="invalid-feedback">Section is required.</span>
               </div>
             </div>
             <div class="modal-footer">
@@ -78,46 +92,6 @@
               </button>
               <button type="button" class="btn btn-primary" onclick="create()">
                 <i class="fa-solid fa-plus"></i> Submit
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Detail Question -->
-      <div
-        class="modal fade"
-        id="detailQuestion"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title fw-bold" id="exampleModalLabel">
-                Detail Question Id: <span id="question-id"></span>
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <p>
-                <span class="fw-bold">Question Name:</span>
-                <span id="question-body"></span>
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                <i class="fa-solid fa-xmark"></i> Close
               </button>
             </div>
           </div>
@@ -150,7 +124,7 @@
             <div class="modal-body">
               <div class="mb-3">
                 <label for="upd-question-body" class="form-label"
-                  >Question Name</label
+                  >Question</label
                 >
                 <input
                   type="text"
@@ -158,8 +132,21 @@
                   id="upd-question-body"
                   required
                 />
-                <span class="invalid-feedback">Question name is required.</span>
+                <span class="invalid-feedback">Question is required.</span>
                 <input type="hidden" id="upd-question-id" />
+              </div>
+              <div class="mb-3">
+                <label for="upd-question-section" class="form-label"
+                  >Select Section:</label
+                >
+                <select
+                  class="form-select dropdown-section"
+                  id="upd-question-section"
+                  required
+                >
+                  <option value="" selected disabled>Select Section</option>
+                </select>
+                <span class="invalid-feedback">Section is required.</span>
               </div>
             </div>
             <div class="modal-footer">
