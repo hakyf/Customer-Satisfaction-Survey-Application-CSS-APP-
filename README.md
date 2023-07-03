@@ -22,9 +22,15 @@
 - Use Case Diagram : [Link](https://drive.google.com/file/d/10AuxibxFDquCuNYFV5Ty2f1Mw1vJyIjr/view?usp=sharing)
 - Entity Relational Diagram : [Link](https://drive.google.com/file/d/1X94O6mTQVWFhbWXJA1D2281dAGN6U6ht/view?usp=sharing)
 - Data Dummy : [Link](https://docs.google.com/spreadsheets/d/10gDpG6SatiQW8xmxUQlRNW3e7XbkgA5qFfhq4r42nl4/edit?usp=sharing)
-- Postman : [Link](https://solar-moon-504959.postman.co/workspace/Team-02-MCC-Workspace~a9fa8a19-527a-4df9-8ffb-08024e46756f/collection/27540842-69e54241-ea97-4ba5-bc54-1476af5292a5?action=share&creator=27540842)
+- Postman : [Link](https://documenter.getpostman.com/view/27540842/2s93zCZLfV)
 
 ## **`Project Task`**
+
+
+- **02 Team Start**
+1. 21/06 - 28/06
+   - Initiate ideas for team projects
+   - Create and improve ERD, BPMN, Usecase Diagram, and Data Dummy, with discussion with the team together.
 
 - **Riki Setiyawan**
 
@@ -40,17 +46,14 @@
 
 - **Yoga Sadewa**
   
-1. 21/06 - 28/06
-   - Initiate ideas for team projects
-   - Create and improve ERD, BPMN, Usecase Diagram, and Data Dummy, with discussion with the team together.
-2. 28/06
+1. 28/06
    - Add data dummy to database
-3. 30/06
+2. 30/06
    - Add controller, service & repository for Survey needs (Section,Question,Answer,Result,Client) in serverapp
-4. 01/07
+3. 01/07
    - Add controller, service & repository for Security needs (User,Role,Privilege,etc) in serverapp
    - Create a postman workspace and collection, and perform json testing to test HTTP request Method in Section,Question,Answer
-5. 02/07
+4. 02/07
    - Configure Postman by creating a workspace for the team, which will allow the team to work together as editor in a single workspace.
    - Create HTTP Method request and perfom json testing for Survey, create new Fork for Testing and pull request in original collection.
 
