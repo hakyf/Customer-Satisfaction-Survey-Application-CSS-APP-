@@ -53,7 +53,7 @@
 5. 02/07
    - Configure Postman by creating a workspace for the team, which will allow the team to work together as editor in a single workspace.
    - Create HTTP Method request and perfom json testing for Survey, create new Fork for Testing and pull request in original collection.
- 
+
 ## **`Ketentuan Implementasi Repository`**
 
 - Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
