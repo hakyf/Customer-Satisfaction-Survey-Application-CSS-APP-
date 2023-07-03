@@ -26,8 +26,8 @@
 
 ## **`Project Task`**
 
-
 - **02 Team Start**
+
 1. 21/06 - 28/06
    - Initiate ideas for team projects
    - Create and improve ERD, BPMN, Usecase Diagram, and Data Dummy, with discussion with the team together.
@@ -41,11 +41,19 @@
 - **Habibullah Dzaky Musthafa**
 
 1. 28/06 Add all models
-2. 02/07 Fix controller, service, & repository serverapp
-3. 02/07 Fix database
+2. 02/07
+   - Fix controller, service, & repository serverapp
+   - Add model, service, controller, restcontroller clientapp
+   - Add security, rest template interceptor, layout dialect
+   - Add controller & service login
+   - Add html, js question & login
+3. 03/07
+   - Fix bug service serverapp
+   - Fix controller & model question
+   - Fix html, js & cs
 
 - **Yoga Sadewa**
-  
+
 1. 28/06
    - Add data dummy to database
 2. 30/06
