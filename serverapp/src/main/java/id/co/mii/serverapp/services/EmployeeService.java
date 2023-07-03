@@ -38,9 +38,6 @@ public class EmployeeService {
     public Employee update(Long id, Employee employee) {
         getById(id);
         employee.setId(id);
-        if (employeeRepository.findByNameAndId(employee.getName(), id).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Employee already exists!!!");
-        }
         return employeeRepository.save(employee);
     }
 

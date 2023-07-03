@@ -57,9 +57,6 @@ public class UserService {
     public User update(Long id, User user) {
         getById(id);
         user.setId(id);
-        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username already exist!");
-        }
         return userRepository.save(user);
     }
 
