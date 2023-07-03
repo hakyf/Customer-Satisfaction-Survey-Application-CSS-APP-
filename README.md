@@ -22,6 +22,7 @@
 - Use Case Diagram : [Link](https://drive.google.com/file/d/10AuxibxFDquCuNYFV5Ty2f1Mw1vJyIjr/view?usp=sharing)
 - Entity Relational Diagram : [Link](https://drive.google.com/file/d/1X94O6mTQVWFhbWXJA1D2281dAGN6U6ht/view?usp=sharing)
 - Data Dummy : [Link](https://docs.google.com/spreadsheets/d/10gDpG6SatiQW8xmxUQlRNW3e7XbkgA5qFfhq4r42nl4/edit?usp=sharing)
+- Postman : [Link](https://solar-moon-504959.postman.co/workspace/Team-02-MCC-Workspace~a9fa8a19-527a-4df9-8ffb-08024e46756f/collection/27540842-69e54241-ea97-4ba5-bc54-1476af5292a5?action=share&creator=27540842)
 
 ## **`Project Task`**
 
@@ -29,7 +30,7 @@
 
 1. 28/06 Konfigurasi JPA pada serverapp
 2. 02/07 Add controller, service & repository pada clientapp
-2. 02/07 Update clientapp
+3. 02/07 Update clientapp
 
 - **Habibullah Dzaky Musthafa**
 
