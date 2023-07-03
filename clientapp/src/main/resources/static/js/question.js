@@ -23,9 +23,6 @@ $(document).ready(function () {
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateQuestion" onclick = beforeUpdate(${row.id})>
                   <i class="fa-sharp fa-solid fa-pen"></i> Update
                 </button>
-                
-                <button class="btn btn-danger" onclick="deleteQuestion(${row.id})"><i class="fa-sharp fa-solid fa-trash"></i> Delete
-                </button>
               </div>`;
           },
         },
@@ -34,17 +31,17 @@ $(document).ready(function () {
   });
   
   function defaults() {
-    $("#crt-question-name").removeClass("is-invalid");
-    
-    $("#crt-question-name").val("");
+    $("#crt-question-body").removeClass("is-invalid");
+
+    $("#crt-question-body").val("");
   }
   
   function create() {
-    let name = $("#crt-question-name").val().trim();
+    let body = $("#crt-question-body").val().trim();
   
     var errors = 0;
-    if (name === "") {
-      $("#crt-question-name").addClass("is-invalid");
+    if (body === "") {
+      $("#crt-question-body").addClass("is-invalid");
   
       errors += 1;
     }
@@ -60,7 +57,7 @@ $(document).ready(function () {
       contentType: "application/json",
       beforSend: addCsrfToken(),
       data: JSON.stringify({
-        name: name,
+        body: body,
       }),
       success: (result) => {
         $("#createQuestion").modal("hide");
@@ -85,7 +82,7 @@ $(document).ready(function () {
       dataType: "JSON",
       success: (result) => {
         $("#question-id").text(`${result.id}`);
-        $("#question-name").text(`${result.name}`);
+        $("#question-body").text(`${result.body}`);
       },
     });
   }
@@ -97,18 +94,18 @@ $(document).ready(function () {
       dataType: "JSON",
       success: (result) => {
         $("#upd-question-id").val(`${result.id}`);
-        $("#upd-question-name").val(`${result.name}`);
+        $("#upd-question-body").val(`${result.body}`);
       },
     });
   }
   
   function update() {
     let id = $("#upd-question-id").val();
-    let name = $("#upd-question-name").val().trim();
+    let body = $("#upd-question-body").val().trim();
   
     var errors = 0;
-    if (name === "") {
-      $("#upd-question-name").addClass("is-invalid");
+    if (body === "") {
+      $("#upd-question-body").addClass("is-invalid");
   
       errors += 1;
     }
@@ -134,7 +131,7 @@ $(document).ready(function () {
           contentType: "application/json",
           beforSend: addCsrfToken(),
           data: JSON.stringify({
-            name: name,
+            body: body,
           }),
           success: (result) => {
             $("#updatequestion").modal("hide");
@@ -152,36 +149,3 @@ $(document).ready(function () {
       }
     });
   }
-  
-  function deletequestion(id) {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "Do you want to be delete this Question!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $.ajax({
-          url: "/api/question/" + id,
-          method: "DELETE",
-          dataType: "JSON",
-          beforSend: addCsrfToken(),
-          success: (result) => {
-            $("#table-question").DataTable().ajax.reload();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Question has been deleted",
-              showConfirmButton: false,
-              timer: 1500,
-              width: 600,
-            });
-          },
-        });
-      }
-    });
-  }
-  
