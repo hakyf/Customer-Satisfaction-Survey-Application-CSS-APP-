@@ -16,12 +16,8 @@ $(document).ready(function () {
                 render: function (data, type, row, meta) {
                     return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#detailSection" onclick = findById(${row.id})>
-                  <i class="fa-solid fa-circle-info"></i> Detail
-                </button>
-  
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateSection" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i> Update
+                  <i class="fa-sharp fa-solid fa-pen"></i>
                 </button>
               </div>`;
                 },
@@ -71,18 +67,6 @@ function create() {
                 timer: 1500,
                 width: 600,
             });
-        },
-    });
-}
-
-function findById(id) {
-    $.ajax({
-        url: "/api/section/" + id,
-        method: "GET",
-        dataType: "JSON",
-        success: (result) => {
-            $("#section-id").text(`${result.id}`);
-            $("#section-name").text(`${result.name}`);
         },
     });
 }

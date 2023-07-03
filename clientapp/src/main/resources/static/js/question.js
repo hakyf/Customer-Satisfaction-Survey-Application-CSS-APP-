@@ -12,36 +12,59 @@ $(document).ready(function () {
           data: "body",
         },
         {
+          data: "section.name",
+        },
+        {
           data: null,
           render: function (data, type, row, meta) {
             return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#detailQuestion" onclick = findById(${row.id})>
-                  <i class="fa-solid fa-circle-info"></i> Detail
-                </button>
-  
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateQuestion" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i> Update
+                  <i class="fa-sharp fa-solid fa-pen"></i>
                 </button>
               </div>`;
           },
         },
       ],
     });
+    $.ajax({
+      url: "/api/section/",
+      method: "GET",
+      dataType: "JSON",
+      success: (result) => {
+        $.each(result, (key, value) => {
+          $(".dropdown-section").append(
+            $("<option>", {
+              value: value.id,
+              text: value.name,
+            })
+          );
+        });
+      },
+    });
   });
   
   function defaults() {
     $("#crt-question-body").removeClass("is-invalid");
+    $("#crt-question-section").removeClass("is-invalid");
 
     $("#crt-question-body").val("");
+    $("#crt-question-section").val("");
   }
   
   function create() {
     let body = $("#crt-question-body").val().trim();
+    let section = $("#crt-question-section").val();
   
     var errors = 0;
     if (body === "") {
       $("#crt-question-body").addClass("is-invalid");
+  
+      errors += 1;
+    }
+    
+    if (section === "") {
+      $("#crt-question-section").addClass("is-invalid");
   
       errors += 1;
     }
@@ -58,6 +81,9 @@ $(document).ready(function () {
       beforSend: addCsrfToken(),
       data: JSON.stringify({
         body: body,
+        section: {
+          id: section,
+        },
       }),
       success: (result) => {
         $("#createQuestion").modal("hide");
@@ -75,18 +101,6 @@ $(document).ready(function () {
     });
   }
   
-  function findById(id) {
-    $.ajax({
-      url: "/api/question/" + id,
-      method: "GET",
-      dataType: "JSON",
-      success: (result) => {
-        $("#question-id").text(`${result.id}`);
-        $("#question-body").text(`${result.body}`);
-      },
-    });
-  }
-  
   function beforeUpdate(id) {
     $.ajax({
       url: "/api/question/" + id,
@@ -95,6 +109,7 @@ $(document).ready(function () {
       success: (result) => {
         $("#upd-question-id").val(`${result.id}`);
         $("#upd-question-body").val(`${result.body}`);
+        $("#upd-question-section").val(`${result.section.id}`);
       },
     });
   }
@@ -102,10 +117,17 @@ $(document).ready(function () {
   function update() {
     let id = $("#upd-question-id").val();
     let body = $("#upd-question-body").val().trim();
+    let section = $("#upd-question-section").val();
   
     var errors = 0;
     if (body === "") {
       $("#upd-question-body").addClass("is-invalid");
+  
+      errors += 1;
+    }
+
+    if (section === "") {
+      $("#upd-question-section").addClass("is-invalid");
   
       errors += 1;
     }
@@ -132,9 +154,12 @@ $(document).ready(function () {
           beforSend: addCsrfToken(),
           data: JSON.stringify({
             body: body,
+            section: {
+              id: section,
+            },
           }),
           success: (result) => {
-            $("#updatequestion").modal("hide");
+            $("#updateQuestion").modal("hide");
             $("#table-question").DataTable().ajax.reload();
             Swal.fire({
               position: "center",
