@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import id.co.mii.clientapp.model.Question;
 import id.co.mii.clientapp.service.QuestionService;
+import id.co.mii.clientapp.service.SectionService;
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -19,6 +20,7 @@ import lombok.AllArgsConstructor;
 public class QuestionController {
 
     private QuestionService questionService;
+    private SectionService sectionService;
 
     @GetMapping
     public String index(Model model) {
@@ -29,6 +31,7 @@ public class QuestionController {
 
     @GetMapping("/create")
     public String createForm(Question question, Model model) {
+        model.addAttribute("section", sectionService.getAll());
         return "question/create";
     }
 
@@ -40,6 +43,7 @@ public class QuestionController {
 
     @GetMapping("/update/{id}")
     public String updateForm(@PathVariable Long id, Model model) {
+        model.addAttribute("section", sectionService.getAll());
         model.addAttribute("question", questionService.getById(id));
         return "question/update";
     }
