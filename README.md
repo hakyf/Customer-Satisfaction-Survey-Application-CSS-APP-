@@ -35,8 +35,15 @@
 - **Riki Setiyawan**
 
 1. 28/06 Konfigurasi JPA pada serverapp
-2. 02/07 Add controller, service & repository pada clientapp
-3. 02/07 Update clientapp
+2. 02/07
+   - Initial clientapp
+   - Add service, controller, restcontroller, js, html employee
+   - Fix js, html question
+4. 03/07
+   - Add service, controller, restcontroller, js, html section
+5. 04/07
+   - Add service, controller, restcontroller, js, html User
+   - Add service, controller, restcontroller, js, html Role
 
 - **Habibullah Dzaky Musthafa**
 
