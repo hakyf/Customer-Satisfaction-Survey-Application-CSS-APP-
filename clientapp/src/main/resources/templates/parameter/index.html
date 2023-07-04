@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+
+<head>
+    <title>Parameter</title>
+</head>
+
+<body>
+    <!-- Content -->
+    <section class="container py-5" layout:fragment="content">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <h1 class="fw-bold mb-3">Parameter Page</h1>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createParameter">
+                <i class="fa-solid fa-plus"></i> Add Parameter
+            </button>
+        </div>
+
+        <table id="table-parameter" class="table table-striped table-bordered">
+            <thead class="table-bg">
+                <tr>
+                        <th class="col-1">Id</th>
+                        <th class="col-2">Notes</th>
+                        <th class="col-3">Value</th>
+                        
+                        <th class="col-1">Action</th>
+                </tr>
+            </thead>
+
+        </table>
+
+        <!-- Modal Create Parameter -->
+        <div class="modal fade" id="createParameter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Create Parameter
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="crt-parameter-notes" class="form-label">Notes</label>
+                            <input type="text" class="form-control" id="crt-parameter-notes" required />
+                            <span class="invalid-feedback">Parameter notes is required.</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crt-parameter-value" class="form-label">Value</label>
+                            <input type="text" class="form-control" id="crt-parameter-value" required />
+                            <span class="invalid-feedback">Parameter value is required.</span>
+                        </div>
+                     
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="create()">
+                            <i class="fa-solid fa-plus"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Update Parameter -->
+        <div class="modal fade" id="updateParameter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Update Parameter
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="upd-parameter-notes" class="form-label">Notes</label>
+                            <input type="text" class="form-control" id="upd-parameter-notes" required />
+                            <span class="invalid-feedback">Parameter notes is required.</span>
+                            <input type="hidden" id="upd-parameter-id" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="upd-parameter-value" class="form-label">Value</label>
+                            <input type="text" class="form-control" id="upd-parameter-value" required />
+                            <span class="invalid-feedback">Parameter value is required.</span>
+                        </div>
+                        
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="update()">
+                            <i class="fa-solid fa-plus"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parameter JS -->
+    <div layout:fragment="script">
+        <script th:src="@{/js/parameter.js}"></script>
+    </div>
+</body>
+
+</html>

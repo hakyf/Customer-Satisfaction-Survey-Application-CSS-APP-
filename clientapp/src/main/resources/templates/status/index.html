@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+
+<head>
+    <title>Status</title>
+</head>
+
+<body>
+    <!-- Content -->
+    <status class="container py-5" layout:fragment="content">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <h1 class="fw-bold mb-3">Status Page</h1>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createStatus">
+                <i class="fa-solid fa-plus"></i> Add Status
+            </button>
+        </div>
+
+        <table id="table-status" class="table table-striped table-bordered">
+            <thead class="table-bg">
+                <tr>
+                    <th class="col-1">Id</th>
+                    <th class="col-10">Name</th>
+                    <th class="col-1">Action</th>
+                </tr>
+            </thead>
+        </table>
+
+        <!-- Modal Create Status -->
+        <div class="modal fade" id="createStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Create Status
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="crt-status-name" class="form-label">Status Name</label>
+                            <input type="text" class="form-control" id="crt-status-name" required />
+                            <span class="invalid-feedback">Status name is required.</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="create()">
+                            <i class="fa-solid fa-plus"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Update Status -->
+        <div class="modal fade" id="updateStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Update Status
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="upd-status-name" class="form-label">Status Name</label>
+                            <input type="text" class="form-control" id="upd-status-name" required />
+                            <span class="invalid-feedback">Status name is required.</span>
+                            <input type="hidden" id="upd-status-id" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="update()">
+                            <i class="fa-solid fa-plus"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </status>
+
+    <!-- Status JS -->
+    <div layout:fragment="script">
+        <script th:src="@{/js/status.js}"></script>
+    </div>
+</body>
+
+</html>
