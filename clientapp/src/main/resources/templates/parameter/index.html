@@ -7,7 +7,7 @@
 
 <body>
     <!-- Content -->
-    <parameter class="container py-5" layout:fragment="content">
+    <section class="container py-5" layout:fragment="content">
         <div class="d-flex flex-row justify-content-between align-items-center">
             <h1 class="fw-bold mb-3">Parameter Page</h1>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createParameter">
@@ -18,11 +18,14 @@
         <table id="table-parameter" class="table table-striped table-bordered">
             <thead class="table-bg">
                 <tr>
-                    <th class="col-1">Id</th>
-                    <th class="col-10">Name</th>
-                    <th class="col-1">Action</th>
+                        <th class="col-1">Id</th>
+                        <th class="col-2">Notes</th>
+                        <th class="col-3">Value</th>
+                        
+                        <th class="col-1">Action</th>
                 </tr>
             </thead>
+
         </table>
 
         <!-- Modal Create Parameter -->
@@ -38,10 +41,17 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="crt-parameter-name" class="form-label">Parameter Name</label>
-                            <input type="text" class="form-control" id="crt-parameter-name" required />
-                            <span class="invalid-feedback">Parameter name is required.</span>
+                            <label for="crt-parameter-notes" class="form-label">Notes</label>
+                            <input type="text" class="form-control" id="crt-parameter-notes" required />
+                            <span class="invalid-feedback">Parameter notes is required.</span>
                         </div>
+                        <div class="mb-3">
+                            <label for="crt-parameter-value" class="form-label">Value</label>
+                            <input type="text" class="form-control" id="crt-parameter-value" required />
+                            <span class="invalid-feedback">Parameter value is required.</span>
+                        </div>
+                     
+                       
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -68,11 +78,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="upd-parameter-name" class="form-label">Parameter Name</label>
-                            <input type="text" class="form-control" id="upd-parameter-name" required />
-                            <span class="invalid-feedback">Parameter name is required.</span>
+                            <label for="upd-parameter-notes" class="form-label">Notes</label>
+                            <input type="text" class="form-control" id="upd-parameter-notes" required />
+                            <span class="invalid-feedback">Parameter notes is required.</span>
                             <input type="hidden" id="upd-parameter-id" />
                         </div>
+                        <div class="mb-3">
+                            <label for="upd-parameter-value" class="form-label">Value</label>
+                            <input type="text" class="form-control" id="upd-parameter-value" required />
+                            <span class="invalid-feedback">Parameter value is required.</span>
+                        </div>
+                        
+                       
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -85,7 +102,7 @@
                 </div>
             </div>
         </div>
-    </parameter>
+    </section>
 
     <!-- Parameter JS -->
     <div layout:fragment="script">
