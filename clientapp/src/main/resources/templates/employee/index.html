@@ -19,11 +19,11 @@
             <thead class="table-bg">
                 <tr>
                         <th class="col-1">Id</th>
-                        <th class="col-1">Name</th>
-                        <th class="col-2">Email</th>
+                        <th class="col-2">Name</th>
+                        <th class="col-3">Email</th>
                         <th class="col-2">Phone</th>
-                        <th class="col-2">Job Position</th>
-                        <th class="col-4">Action</th>
+                        <th class="col-3">Job Position</th>
+                        <th class="col-1">Action</th>
                 </tr>
             </thead>
 
@@ -74,44 +74,6 @@
             </div>
         </div>
 
-        <!-- Modal Detail Employee -->
-        <div class="modal fade" id="detailEmployee" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title fw-bold" id="exampleModalLabel">
-                            Detail Employee Id: <span id="employee-id"></span>
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            <span class="fw-bold">Name :</span>
-                            <span id="employee-name"></span>
-                        </p>
-                        <p>
-                            <span class="fw-bold">Email :</span>
-                            <span id="employee-email"></span>
-                        </p>
-                        <p>
-                            <span class="fw-bold">Phone :</span>
-                            <span id="employee-phone"></span>
-                        </p>
-                        <p>
-                            <span class="fw-bold">Job Position :</span>
-                            <span id="employee-jobPosition"></span>
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="fa-solid fa-xmark"></i> Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Modal Update Employee -->
         <div class="modal fade" id="updateEmployee" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -134,19 +96,16 @@
                             <label for="upd-employee-email" class="form-label">Email</label>
                             <input type="text" class="form-control" id="upd-employee-email" required />
                             <span class="invalid-feedback">Employee email is required.</span>
-                            <input type="hidden" id="upd-employee-id" />
                         </div>
                         <div class="mb-3">
                             <label for="upd-employee-phone" class="form-label">Phone</label>
                             <input type="text" class="form-control" id="upd-employee-phone" required />
                             <span class="invalid-feedback">Employee phone is required.</span>
-                            <input type="hidden" id="upd-employee-id" />
                         </div>
                         <div class="mb-3">
                             <label for="upd-employee-jobPosition" class="form-label">Job Position</label>
                             <input type="text" class="form-control" id="upd-employee-jobPosition" required />
                             <span class="invalid-feedback">Employee job position is required.</span>
-                            <input type="hidden" id="upd-employee-id" />
                         </div>
                     </div>
                     <div class="modal-footer">
