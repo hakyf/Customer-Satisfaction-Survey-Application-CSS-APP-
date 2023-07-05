@@ -72,8 +72,8 @@
           </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-body py-2 px-5">
+      <div class="card mb-0">
+        <div class="card-body py-3 px-5">
           <div class="d-flex align-items-center">
             <div class="avatar avatar-xl">
               <img src="assets/images/faces/2.jpg" alt="Face 1" />
@@ -90,7 +90,14 @@
         </div>
       </div>
       <div class="sidebar-menu">
-        <ul class="menu">
+        <ul class="menu mt-0">
+          <li class="sidebar-item" method="post">
+            <a th:href="@{/logout}" class="sidebar-link">
+              <i class="bi bi-x-circle-fill"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+
           <li class="sidebar-title">Menu</li>
 
           <li
@@ -102,15 +109,27 @@
               <span>Dashboard</span>
             </a>
           </li>
+
           <li
             class="sidebar-item"
-            th:classappend="${isActive} == section ? 'active': ''"
+            th:classappend="${isActive} == survey ? 'active': ''"
           >
-            <a th:href="@{/section}" class="sidebar-link">
+            <a th:href="@{/survey}" class="sidebar-link">
               <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-              <span>Section</span>
+              <span>Survey</span>
             </a>
           </li>
+
+          <li
+            class="sidebar-item"
+            th:classappend="${isActive} == result ? 'active': ''"
+          >
+            <a th:href="@{/result}" class="sidebar-link">
+              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <span>Result</span>
+            </a>
+          </li>
+
           <li
             class="sidebar-item"
             th:classappend="${isActive} == question ? 'active': ''"
@@ -120,10 +139,58 @@
               <span>Question</span>
             </a>
           </li>
-          <li class="sidebar-item btn-danger" method="post">
-            <a th:href="@{/logout}" class="sidebar-link">
-              <i class="bi bi-x-circle-fill"></i>
-              <span>Logout</span>
+
+          <li
+            class="sidebar-item"
+            th:classappend="${isActive} == section ? 'active': ''"
+          >
+            <a th:href="@{/section}" class="sidebar-link">
+              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <span>Section</span>
+            </a>
+          </li>
+
+          <li class="sidebar-title">People</li>
+
+          <li
+            class="sidebar-item"
+            th:classappend="${isActive} == client ? 'active': ''"
+          >
+            <a th:href="@{/client}" class="sidebar-link">
+              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <span>Client</span>
+            </a>
+          </li>
+
+          <li
+            class="sidebar-item"
+            th:classappend="${isActive} == employee ? 'active': ''"
+          >
+            <a th:href="@{/employee}" class="sidebar-link">
+              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <span>Employee</span>
+            </a>
+          </li>
+
+          <li class="sidebar-title">Support</li>
+
+          <li
+            class="sidebar-item"
+            th:classappend="${isActive} == history ? 'active': ''"
+          >
+            <a th:href="@{/history}" class="sidebar-link">
+              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <span>History</span>
+            </a>
+          </li>
+
+          <li
+            class="sidebar-item"
+            th:classappend="${isActive} == status ? 'active': ''"
+          >
+            <a th:href="@{/status}" class="sidebar-link">
+              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <span>Status</span>
             </a>
           </li>
         </ul>

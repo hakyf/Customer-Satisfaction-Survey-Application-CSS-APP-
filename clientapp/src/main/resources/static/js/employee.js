@@ -26,7 +26,7 @@ $(document).ready(function () {
             return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployee" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i>
+                  <i class="fa-sharp fa-solid fa-edit"></i>
                 </button>
               </div>`;
           },
@@ -69,7 +69,7 @@ $(document).ready(function () {
       method: "POST",
       dataType: "JSON",
       contentType: "application/json",
-      beforSend: addCsrfToken(),
+      beforeSend: addCsrfToken(),
       data: JSON.stringify({
         name: name,
         email: email,
@@ -78,6 +78,7 @@ $(document).ready(function () {
       }),
       success: (result) => {
         $("#createEmployee").modal("hide");
+        $(".modal-backdrop").remove();
         $("#table-employee").DataTable().ajax.reload();
         defaults();
         Swal.fire({
@@ -158,7 +159,7 @@ $(document).ready(function () {
           method: "PUT",
           dataType: "JSON",
           contentType: "application/json",
-          beforSend: addCsrfToken(),
+          beforeSend: addCsrfToken(),
           data: JSON.stringify({
             name: name,
             email: email,
@@ -167,6 +168,7 @@ $(document).ready(function () {
           }),
           success: (result) => {
             $("#updateEmployee").modal("hide");
+            $(".modal-backdrop").remove();
             $("#table-employee").DataTable().ajax.reload();
             Swal.fire({
               position: "center",

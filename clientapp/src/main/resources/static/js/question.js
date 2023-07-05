@@ -20,7 +20,7 @@ $(document).ready(function () {
             return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateQuestion" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i>
+                  <i class="fa-sharp fa-solid fa-edit"></i>
                 </button>
               </div>`;
           },
@@ -87,6 +87,7 @@ $(document).ready(function () {
       }),
       success: (result) => {
         $("#createQuestion").modal("hide");
+        $(".modal-backdrop").remove();
         $("#table-question").DataTable().ajax.reload();
         defaults();
         Swal.fire({
@@ -160,6 +161,7 @@ $(document).ready(function () {
           }),
           success: (result) => {
             $("#updateQuestion").modal("hide");
+            $(".modal-backdrop").remove();
             $("#table-question").DataTable().ajax.reload();
             Swal.fire({
               position: "center",

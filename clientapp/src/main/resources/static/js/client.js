@@ -23,7 +23,7 @@ $(document).ready(function () {
                     return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateClient" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i>
+                  <i class="fa-sharp fa-solid fa-edit"></i>
                 </button>
               </div>`;
                 },
@@ -71,6 +71,7 @@ function create() {
         }),
         success: (result) => {
             $("#createClient").modal("hide");
+            $(".modal-backdrop").remove();
             $("#table-client").DataTable().ajax.reload();
             defaults();
             Swal.fire({
@@ -151,6 +152,7 @@ function update() {
                 }),
                 success: (result) => {
                     $("#updateClient").modal("hide");
+                    $(".modal-backdrop").remove();
                     $("#table-client").DataTable().ajax.reload();
                     Swal.fire({
                         position: "center",
