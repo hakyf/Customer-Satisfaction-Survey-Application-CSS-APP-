@@ -42,8 +42,13 @@
 4. 03/07
    - Add service, controller, restcontroller, js, html section
 5. 04/07
-   - Add service, controller, restcontroller, js, html User
-   - Add service, controller, restcontroller, js, html Role
+   - Add service, controller, restcontroller, js, html user
+   - Add service, controller, restcontroller, js, html role
+6. 05/07
+   - Fix UserController
+   - Add service, controller, restcontroller, js, html survey
+   - Add service, controller, restcontroller, js, html answer
+   - Add service, controller, restcontroller, js, html client
 
 - **Habibullah Dzaky Musthafa**
 
