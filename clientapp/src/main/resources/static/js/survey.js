@@ -23,7 +23,7 @@ $(document).ready(function () {
                     return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateSurvey" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i>
+                  <i class="fa-sharp fa-solid fa-edit"></i>
                 </button>
               </div>`;
                 },
@@ -71,6 +71,7 @@ function create() {
         }),
         success: (result) => {
             $("#createSurvey").modal("hide");
+            $(".modal-backdrop").remove();
             $("#table-survey").DataTable().ajax.reload();
             defaults();
             Swal.fire({
@@ -151,6 +152,7 @@ function update() {
                 }),
                 success: (result) => {
                     $("#updateSurvey").modal("hide");
+                    $(".modal-backdrop").remove();
                     $("#table-survey").DataTable().ajax.reload();
                     Swal.fire({
                         position: "center",
