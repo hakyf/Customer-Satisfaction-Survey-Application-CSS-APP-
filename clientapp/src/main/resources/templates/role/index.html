@@ -2,20 +2,20 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
 
 <head>
-    <title>Status</title>
+    <title>Role</title>
 </head>
 
 <body>
     <!-- Content -->
     <section class="container py-5" layout:fragment="content">
         <div class="d-flex flex-row justify-content-between align-items-center">
-            <h1 class="fw-bold mb-3">Status Page</h1>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createStatus">
-                <i class="fa-solid fa-plus"></i> Add Status
+            <h1 class="fw-bold mb-3">Role Page</h1>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createRole">
+                <i class="fa-solid fa-plus"></i> Add Role
             </button>
         </div>
 
-        <table id="table-status" class="table table-striped table-bordered">
+        <table id="table-role" class="table table-striped table-bordered">
             <thead class="table-bg">
                 <tr>
                     <th class="col-1">Id</th>
@@ -25,22 +25,22 @@
             </thead>
         </table>
 
-        <!-- Modal Create Status -->
-        <div class="modal fade" id="createStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <!-- Modal Create Role -->
+        <div class="modal fade" id="createRole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                            Create Status
+                            Create Role
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="crt-status-name" class="form-label">Status Name</label>
-                            <input type="text" class="form-control" id="crt-status-name" required />
-                            <span class="invalid-feedback">Status name is required.</span>
+                            <label for="crt-role-name" class="form-label">Role Name</label>
+                            <input type="text" class="form-control" id="crt-role-name" required />
+                            <span class="invalid-feedback">Role name is required.</span>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -55,23 +55,23 @@
             </div>
         </div>
 
-        <!-- Modal Update Status -->
-        <div class="modal fade" id="updateStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <!-- Modal Update Role -->
+        <div class="modal fade" id="updateRole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                            Update Status
+                            Update Role
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="upd-status-name" class="form-label">Status Name</label>
-                            <input type="text" class="form-control" id="upd-status-name" required />
-                            <span class="invalid-feedback">Status name is required.</span>
-                            <input type="hidden" id="upd-status-id" />
+                            <label for="upd-role-name" class="form-label">Role Name</label>
+                            <input type="text" class="form-control" id="upd-role-name" required />
+                            <span class="invalid-feedback">Role name is required.</span>
+                            <input type="hidden" id="upd-role-id" />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -87,9 +87,9 @@
         </div>
     </section>
 
-    <!-- Status JS -->
+    <!-- Role JS -->
     <div layout:fragment="script">
-        <script th:src="@{/js/status.js}"></script>
+        <script th:src="@{/js/role.js}"></script>
     </div>
 </body>
 
