@@ -51,12 +51,13 @@ function create() {
         method: "POST",
         dataType: "JSON",
         contentType: "application/json",
-        beforSend: addCsrfToken(),
+        beforeSend: addCsrfToken(),
         data: JSON.stringify({
             name: name,
         }),
         success: (result) => {
             $("#createSection").modal("hide");
+            $(".modal-backdrop").remove();
             $("#table-section").DataTable().ajax.reload();
             defaults();
             Swal.fire({
@@ -118,7 +119,8 @@ function update() {
                     name: name,
                 }),
                 success: (result) => {
-                    $("#updatesection").modal("hide");
+                    $("#updateSection").modal("hide");
+                    $(".modal-backdrop").remove();
                     $("#table-section").DataTable().ajax.reload();
                     Swal.fire({
                         position: "center",
