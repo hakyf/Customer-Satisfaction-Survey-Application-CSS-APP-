@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+
+<head>
+    <title>Answer</title>
+</head>
+
+<body>
+    <!-- Content -->
+    <status class="container py-5" layout:fragment="content">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <h1 class="fw-bold mb-3">Answer Page</h1>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAnswer">
+                <i class="fa-solid fa-plus"></i> Add Answer
+            </button>
+        </div>
+
+        <table id="table-answer" class="table table-striped table-bordered">
+            <thead class="table-bg">
+                <tr>
+                    <th class="col-1">Id</th>
+                    <th class="col-10">Rating</th>
+                    <th class="col-1">Action</th>
+                </tr>
+            </thead>
+        </table>
+
+        <!-- Modal Create Answer -->
+        <div class="modal fade" id="createAnswer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Create Answer
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="crt-answer-rating" class="form-label">Rating</label>
+                            <input type="text" class="form-control" id="crt-answer-rating" required />
+                            <span class="invalid-feedback">Rating is required.</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="create()">
+                            <i class="fa-solid fa-plus"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Update Answer -->
+        <div class="modal fade" id="updateAnswer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Update Answer
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="upd-answer-rating" class="form-label">Rating</label>
+                            <input type="text" class="form-control" id="upd-answer-rating" required />
+                            <span class="invalid-feedback">Rating is required.</span>
+                            <input type="hidden" id="upd-answer-id" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="update()">
+                            <i class="fa-solid fa-plus"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </status>
+
+    <!-- Answer JS -->
+    <div layout:fragment="script">
+        <script th:src="@{/js/answer.js}"></script>
+    </div>
+</body>
+
+</html>
