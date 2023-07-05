@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+
+<head>
+    <title>Client</title>
+</head>
+
+<body>
+    <!-- Content -->
+    <section class="container py-5" layout:fragment="content">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <h1 class="fw-bold mb-3">Client Page</h1>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createClient">
+                <i class="fa-solid fa-plus"></i> Add Client
+            </button>
+        </div>
+
+        <table id="table-client" class="table table-striped table-bordered">
+            <thead class="table-bg">
+                <tr>
+                    <th class="col-1">Id</th>
+                    <th class="col-4">Name</th>
+                    <th class="col-4">Email</th>
+                    <th class="col-2">Location</th>
+                    <th class="col-1">Action</th>
+                </tr>
+            </thead>
+        </table>
+
+        <!-- Modal Create Client -->
+        <div class="modal fade" id="createClient" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Create Client
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="crt-client-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="crt-client-name" required />
+                            <span class="invalid-feedback">Name is required.</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crt-employee-email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="crt-employee-email" required />
+                            <span class="invalid-feedback">Email is required.</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crt-employee-location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="crt-employee-location" required />
+                            <span class="invalid-feedback">Location is required.</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="create()">
+                            <i class="fa-solid fa-plus"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Update Client -->
+        <div class="modal fade" id="updateClient" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Update Client
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="upd-client-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="upd-client-name" required />
+                            <span class="invalid-feedback">Name is required.</span>
+                            <input type="hidden" id="upd-client-id" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="upd-client-email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="upd-client-email" required />
+                            <span class="invalid-feedback">Email is required.</span>
+                            <input type="hidden" id="upd-client-id" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="upd-client-location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="upd-client-location" required />
+                            <span class="invalid-feedback">Location is required.</span>
+                            <input type="hidden" id="upd-client-id" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="update()">
+                            <i class="fa-solid fa-plus"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client JS -->
+    <div layout:fragment="script">
+        <script th:src="@{/js/client.js}"></script>
+    </div>
+</body>
+
+</html>
