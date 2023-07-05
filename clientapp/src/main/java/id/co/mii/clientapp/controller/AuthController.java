@@ -25,7 +25,7 @@ public class AuthController {
         if (!loginService.login(loginRequest)) {
             return "redirect:/login?error=true";
         }
-        return "redirect:/question";
+        return "redirect:/";
     }
 
 }
