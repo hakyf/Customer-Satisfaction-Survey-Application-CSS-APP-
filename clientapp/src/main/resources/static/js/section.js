@@ -17,7 +17,7 @@ $(document).ready(function () {
                     return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateSection" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i>
+                  <i class="fa-sharp fa-solid fa-edit"></i>
                 </button>
               </div>`;
                 },

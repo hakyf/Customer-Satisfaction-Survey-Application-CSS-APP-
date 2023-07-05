@@ -9,7 +9,7 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model) {
-        model.addAttribute("name", "Kelompok 2");
+        model.addAttribute("isActive", "dashboard");
         return "index";
     }
 

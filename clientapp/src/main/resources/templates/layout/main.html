@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="_csrf" th:content="${_csrf.token}" />
     <meta name="_csrf_header" th:content="${_csrf.headerName}" />
-    <link rel="icon" th:href="@{img/logo-tab.ico}" type="image/x-icon" />
+    <link rel="icon" th:href="@{img/favicon.ico}" type="image/x-icon" />
     <!-- CSS -->
     <div th:replace="components/plugin :: css"></div>
 
     <title>Main</title>
   </head>
   <body>
-    <div id="wrapper">
-      <!-- Navbar -->
-      <div th:replace="components/navbar"></div>
+    <div id="api">
+      <!-- Sidebar -->
+      <div th:replace="components/sidebar"></div>
 
       <!-- Content -->
       <section layout:fragment="content"></section>
