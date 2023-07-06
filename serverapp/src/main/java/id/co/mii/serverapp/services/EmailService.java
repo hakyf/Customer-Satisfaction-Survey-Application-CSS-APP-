@@ -73,8 +73,10 @@ public class EmailService {
         
             Context context = new Context();
     
-
             context.setVariable("name", emailRequest.getSurvey().getName());
+            // Generate random code
+            UUID randomCode = generateRandomCode(emailRequest.getSurvey().getCode());
+            context.setVariable("code", randomCode);
             context.setVariable("code", emailRequest.getSurvey().getCode());
             context.setVariable("text", emailRequest.getText());
 
@@ -96,4 +98,10 @@ public class EmailService {
 
         return emailRequest;
     }   
+   private UUID generateRandomCode(UUID code) {
+    // Generate a random code using UUID 
+    code = UUID.randomUUID();
+    
+    return code;
+}
     }
