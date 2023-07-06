@@ -12,4 +12,3 @@ import org.springframework.stereotype.Repository;
 public interface SurveyRepository extends JpaRepository<Survey, Long> {
    public Survey getByCode(UUID code);
 }
-
