@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import id.co.mii.clientapp.model.Survey;
 import id.co.mii.clientapp.service.SurveyService;
-import id.co.mii.clientapp.service.SectionService;
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -28,10 +27,10 @@ public class SurveyController {
         return "survey/index";
     }
 
-    @GetMapping("/send")
+    @GetMapping("/create")
     public String createForm(Survey survey, Model model) {
         model.addAttribute("isActive", "send");
-        return "survey/send";
+        return "survey/create";
     }
 
     @PostMapping
