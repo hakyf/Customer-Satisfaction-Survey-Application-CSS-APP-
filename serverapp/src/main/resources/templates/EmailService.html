@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Survey</title>
+</head>
+<body>
+    <p>Dear <span th:text="${name}"></span>,</p>
+    <p><span th:text="${text}"></span></p>
+    <a th:href="@{https://example.com/survey/{code}(code=${code})}">Survey Link</a>
+    <p>Batas Waktu Pengisian Anda <span th:text="${expirationTime}"> </span>
+</body>
+</html>

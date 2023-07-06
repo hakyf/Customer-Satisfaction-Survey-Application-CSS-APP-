@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+</head>
+<body>
+    <h1>Survey Form</h1>
+    <form action="/surveys" method="POST">
+        <input type="hidden" name="id" th:value="${survey.id}" />
+        
+        <label for="name">Name:</label>
+        <input type="text" name="name" th:value="${survey.name}" required />
+        
+        <label for="code">Code:</label>
+        <input type="text" name="code" th:value="${survey.code}" required />
+        
+        <label for="expired">Expired Date:</label>
+        <input type="date" name="expired" th:value="${survey.expired}" required />
+        
+        <label for="statusId">Status:</label>
+        <select name="statusId" required>
+            <option value="">Select Status</option>
+            <!-- Render status options from backend -->
+            <option th:each="status : ${statuses}" 
+                    th:value="${status.id}" 
+                    th:text="${status.name}"></option>
+        </select>
+        
+        <label for="clientId">Client:</label>
+        <select name="clientId" required>
+            <option value="">Select Client</option>
+            <!-- Render client options from backend -->
+            <option th:each="client : ${clients}" 
+                    th:value="${client.id}" 
+                    th:text="${client.name}"></option>
+        </select>
+        
+        <label for="employeeId">Employee:</label>
+        <select name="employeeId" required>
+            <option value="">Select Employee</option>
+            <!-- Render employee options from backend -->
+            <option th:each="employee : ${employees}" 
+                    th:value="${employee.id}" 
+                    th:text="${employee.name}"></option>
+        </select>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

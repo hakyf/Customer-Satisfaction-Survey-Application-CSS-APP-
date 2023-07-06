@@ -1,10 +1,12 @@
 package id.co.mii.serverapp.services;
-import java.util.List;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 import org.springframework.http.HttpStatus;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import id.co.mii.serverapp.models.Survey;
 
 import id.co.mii.serverapp.repository.SurveyRepository;
@@ -26,6 +28,8 @@ public class SurveyService {
     }
     
     public Survey create(Survey survey){
+    UUID code = UUID.randomUUID();
+    survey.setCode(code);
         return surveyRepository.save(survey);
     }
 
@@ -41,4 +45,8 @@ public class SurveyService {
         return survey;
     }
     
+   
+public Survey getByCode(UUID code) {
+    return surveyRepository.getByCode(code);
+}
 }
