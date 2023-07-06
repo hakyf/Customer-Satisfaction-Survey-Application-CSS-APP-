@@ -58,16 +58,16 @@
 /* Login */
 .login-cover {
   height: 100vh;
-  background: rgb(2, 108, 124);
+  background: #201F2E;
   background: linear-gradient(
     0deg,
-    rgba(2, 108, 124, 1) 0%,
-    rgba(5, 88, 100, 1) 50%
+    #201F2E 0%,
+    #201F2E 50%
   );
 }
 
 .login-cover > div {
-  width: 38%;
+  width: 30%;
 }
 
 /* Button and Form */
