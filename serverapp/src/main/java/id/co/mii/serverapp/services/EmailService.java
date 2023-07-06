@@ -65,7 +65,8 @@ public class EmailService {
         System.out.println(emailRequest);
         try {
             MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message,true);
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            
             
             helper.setTo(emailRequest.getTo());
             helper.setSubject(emailRequest.getSubject());
@@ -84,8 +85,8 @@ public class EmailService {
             String htmlContent = templateEngine.process("EmailService", context);
 
             helper.setText(htmlContent, true);
+            message.getAllHeaders();
 
-           
             mailSender.send(message);
 
             System.out.println();
