@@ -79,7 +79,11 @@
 
     <!-- Survey JS -->
     <div layout:fragment="script">
-      <script th:src="@{/js/survey.js}"></script>
+      <script>
+        $(document).ready(function () {
+          $("#table-survey").DataTable({});
+        });
+      </script>
     </div>
   </body>
 </html>
