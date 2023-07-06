@@ -112,6 +112,18 @@
 
           <li
             class="sidebar-item"
+            sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
+            th:classappend="${isActive} == send ? 'active': ''"
+          >
+            <a th:href="@{/survey/send}" class="sidebar-link">
+              <i class="bi bi-send-fill"></i>
+              <span>Send Survey</span>
+            </a>
+          </li>
+
+          <li
+            class="sidebar-item"
+            sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
             th:classappend="${isActive} == survey ? 'active': ''"
           >
             <a th:href="@{/survey}" class="sidebar-link">
@@ -122,6 +134,7 @@
 
           <li
             class="sidebar-item"
+            sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE', 'ADD2')"
             th:classappend="${isActive} == result ? 'active': ''"
           >
             <a th:href="@{/result}" class="sidebar-link">
@@ -132,6 +145,7 @@
 
           <li
             class="sidebar-item"
+            sec:authorize="hasRole('ADMIN')"
             th:classappend="${isActive} == question ? 'active': ''"
           >
             <a th:href="@{/question}" class="sidebar-link">
@@ -142,6 +156,7 @@
 
           <li
             class="sidebar-item"
+            sec:authorize="hasRole('ADMIN')"
             th:classappend="${isActive} == section ? 'active': ''"
           >
             <a th:href="@{/section}" class="sidebar-link">
@@ -150,10 +165,13 @@
             </a>
           </li>
 
-          <li class="sidebar-title">People</li>
+          <li sec:authorize="hasAnyRole('ADMIN', 'ADD2')" class="sidebar-title">
+            People
+          </li>
 
           <li
             class="sidebar-item"
+            sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
             th:classappend="${isActive} == client ? 'active': ''"
           >
             <a th:href="@{/client}" class="sidebar-link">
@@ -164,6 +182,7 @@
 
           <li
             class="sidebar-item"
+            sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
             th:classappend="${isActive} == employee ? 'active': ''"
           >
             <a th:href="@{/employee}" class="sidebar-link">
@@ -172,10 +191,13 @@
             </a>
           </li>
 
-          <li class="sidebar-title">Support</li>
+          <li sec:authorize="hasRole('ADMIN')" class="sidebar-title">
+            Support
+          </li>
 
           <li
             class="sidebar-item"
+            sec:authorize="hasRole('ADMIN')"
             th:classappend="${isActive} == history ? 'active': ''"
           >
             <a th:href="@{/history}" class="sidebar-link">
@@ -186,6 +208,7 @@
 
           <li
             class="sidebar-item"
+            sec:authorize="hasRole('ADMIN')"
             th:classappend="${isActive} == status ? 'active': ''"
           >
             <a th:href="@{/status}" class="sidebar-link">

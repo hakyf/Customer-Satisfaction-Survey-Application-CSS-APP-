@@ -42,16 +42,6 @@
           <!-- Basic Tables start -->
           <section class="section">
             <div class="card">
-              <div class="card-header">
-                <button
-                  type="button"
-                  class="btn btn-primary float-end"
-                  data-bs-toggle="modal"
-                  data-bs-target="#createSurvey"
-                >
-                  <i class="fa-solid fa-plus"></i>
-                </button>
-              </div>
               <div class="card-body">
                 <table class="table" id="table-survey">
                   <thead>
@@ -63,164 +53,26 @@
                       <th class="col-1">Action</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <tr th:each="survey : ${survey}">
+                      <td th:text="${survey.id}"></td>
+                      <td th:text="${survey.name}"></td>
+                      <td th:text="${survey.code}"></td>
+                      <td th:text="${survey.expired}"></td>
+                      <td class="d-flex align-items-center gap-3">
+                        <a
+                          th:href="@{/survey/update/{id} (id = ${survey.id}) }"
+                          class="btn btn-success"
+                          ><i class="fa-sharp fa-solid fa-pen"></i
+                        ></a>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
           </section>
           <!-- Basic Tables end -->
-        </div>
-      </div>
-
-      <!-- Modal Create Survey -->
-      <div
-        class="modal fade"
-        id="createSurvey"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                Create Survey
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                <i data-feather="x"></i>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="crt-survey-name" class="form-label">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="crt-survey-name"
-                  required
-                />
-                <span class="invalid-feedback">Name is required.</span>
-              </div>
-              <div class="mb-3">
-                <label for="crt-employee-code" class="form-label">Code</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="crt-employee-code"
-                  required
-                />
-                <span class="invalid-feedback">Code is required.</span>
-              </div>
-              <div class="mb-3">
-                <label for="crt-employee-expired" class="form-label"
-                  >Expired</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="crt-employee-expired"
-                  required
-                />
-                <span class="invalid-feedback">Expired is required.</span>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                <i class="fa-solid fa-xmark"></i> Close
-              </button>
-              <button type="button" class="btn btn-primary" onclick="create()">
-                <i class="fa-solid fa-plus"></i> Submit
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Update Survey -->
-      <div
-        class="modal fade"
-        id="updateSurvey"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                Update Survey
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                <i data-feather="x"></i>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="upd-survey-name" class="form-label">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="upd-survey-name"
-                  required
-                />
-                <span class="invalid-feedback">Name is required.</span>
-                <input type="hidden" id="upd-survey-id" />
-              </div>
-              <div class="mb-3">
-                <label for="upd-survey-code" class="form-label">Code</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="upd-survey-code"
-                  required
-                />
-                <span class="invalid-feedback">Code is required.</span>
-                <input type="hidden" id="upd-survey-id" />
-              </div>
-              <div class="mb-3">
-                <label for="upd-survey-expired" class="form-label"
-                  >Expired</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="upd-survey-expired"
-                  required
-                />
-                <span class="invalid-feedback">Expired is required.</span>
-                <input type="hidden" id="upd-survey-id" />
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                <i class="fa-solid fa-xmark"></i> Close
-              </button>
-              <button type="button" class="btn btn-primary" onclick="update()">
-                <i class="fa-solid fa-plus"></i> Submit
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
