@@ -1,4 +1,4 @@
-$(document).ready(function () {
-    $("#table-survey").DataTable({});
-  });
+// $(document).ready(function () {
+//     $("#table-survey").DataTable({});
+//   });
   
