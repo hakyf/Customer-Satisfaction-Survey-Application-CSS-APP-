@@ -1,160 +1,230 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
-
-<head>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}"
+>
+  <head>
     <title>Result</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div layout:fragment="content">
-        <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
+      <div id="main">
+        <header class="mb-3">
+          <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+          </a>
+        </header>
 
-            <div class="page-heading">
-                <div class="page-title">
-                    <div class="row">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Result Page</h3>
-                        </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="/">Dashboard</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        Result
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Basic Tables start -->
-                <section class="section">
-                    <div class="card">
-                        <div class="card-header">
-                            <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
-                                data-bs-target="#createResult">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <table class="table" id="table-result">
-                                <thead>
-                                    <tr>
-                                        <th class="col-1">Id</th>
-                                        <th class="col-4">Score</th>
-                                        <th class="col-4">Date</th>
-                                        <th class="col-2">Mean</th>
-                                        <th class="col-1">Action</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-                <!-- Basic Tables end -->
+        <div class="page-heading">
+          <div class="page-title">
+            <div class="row">
+              <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Result Page</h3>
+              </div>
+              <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav
+                  aria-label="breadcrumb"
+                  class="breadcrumb-header float-start float-lg-end"
+                >
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="/">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Result
+                    </li>
+                  </ol>
+                </nav>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <!-- Modal Create Result -->
-        <div class="modal fade" id="createResult" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                            Create Result
-                        </h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="crt-result-score" class="form-label">Score</label>
-                            <input type="text" class="form-control" id="crt-result-score" required />
-                            <span class="invalid-feedback">Score is required.</span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="crt-employee-date" class="form-label">Date</label>
-                            <input type="text" class="form-control" id="crt-employee-date" required />
-                            <span class="invalid-feedback">Date is required.</span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="crt-employee-mean" class="form-label">Mean</label>
-                            <input type="text" class="form-control" id="crt-employee-mean" required />
-                            <span class="invalid-feedback">Mean is required.</span>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="fa-solid fa-xmark"></i> Close
-                        </button>
-                        <button type="button" class="btn btn-primary" onclick="create()">
-                            <i class="fa-solid fa-plus"></i> Submit
-                        </button>
-                    </div>
-                </div>
+          <!-- Basic Tables start -->
+          <section class="section">
+            <div class="card">
+              <div class="card-header">
+                <button
+                  type="button"
+                  class="btn btn-primary float-end"
+                  data-bs-toggle="modal"
+                  data-bs-target="#createResult"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+              <div class="card-body">
+                <table class="table" id="table-result">
+                  <thead>
+                    <tr>
+                      <th class="col-1">Id</th>
+                      <th class="col-4">Score</th>
+                      <th class="col-4">Date</th>
+                      <th class="col-2">Mean</th>
+                      <th class="col-1">Action</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
             </div>
+          </section>
+          <!-- Basic Tables end -->
         </div>
+      </div>
 
-        <!-- Modal Update Result -->
-        <div class="modal fade" id="updateResult" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                            Update Result
-                        </h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <i data-feather="x"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="upd-result-score" class="form-label">Score</label>
-                            <input type="text" class="form-control" id="upd-result-score" required />
-                            <span class="invalid-feedback">Score is required.</span>
-                            <input type="hidden" id="upd-result-id" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="upd-result-date" class="form-label">Date</label>
-                            <input type="text" class="form-control" id="upd-result-date" required />
-                            <span class="invalid-feedback">Date is required.</span>
-                            <input type="hidden" id="upd-result-id" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="upd-result-mean" class="form-label">Mean</label>
-                            <input type="text" class="form-control" id="upd-result-mean" required />
-                            <span class="invalid-feedback">Mean is required.</span>
-                            <input type="hidden" id="upd-result-id" />
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="fa-solid fa-xmark"></i> Close
-                        </button>
-                        <button type="button" class="btn btn-primary" onclick="update()">
-                            <i class="fa-solid fa-plus"></i> Submit
-                        </button>
-                    </div>
-                </div>
+      <!-- Modal Create Result -->
+      <div
+        class="modal fade"
+        id="createResult"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                Create Result
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <i data-feather="x"></i>
+              </button>
             </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="crt-result-score" class="form-label">Score</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="crt-result-score"
+                  required
+                />
+                <span class="invalid-feedback">Score is required.</span>
+              </div>
+              <div class="mb-3">
+                <label for="crt-employee-date" class="form-label">Date</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="crt-employee-date"
+                  required
+                />
+                <span class="invalid-feedback">Date is required.</span>
+              </div>
+              <div class="mb-3">
+                <label for="crt-employee-mean" class="form-label">Mean</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="crt-employee-mean"
+                  required
+                />
+                <span class="invalid-feedback">Mean is required.</span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                <i class="fa-solid fa-xmark"></i> Close
+              </button>
+              <button type="button" class="btn btn-primary" onclick="create()">
+                <i class="fa-solid fa-plus"></i> Submit
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Modal Update Result -->
+      <div
+        class="modal fade"
+        id="updateResult"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                Update Result
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <i data-feather="x"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="upd-result-score" class="form-label">Score</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="upd-result-score"
+                  required
+                />
+                <span class="invalid-feedback">Score is required.</span>
+                <input type="hidden" id="upd-result-id" />
+              </div>
+              <div class="mb-3">
+                <label for="upd-result-date" class="form-label">Date</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="upd-result-date"
+                  required
+                />
+                <span class="invalid-feedback">Date is required.</span>
+                <input type="hidden" id="upd-result-id" />
+              </div>
+              <div class="mb-3">
+                <label for="upd-result-mean" class="form-label">Mean</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="upd-result-mean"
+                  required
+                />
+                <span class="invalid-feedback">Mean is required.</span>
+                <input type="hidden" id="upd-result-id" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                <i class="fa-solid fa-xmark"></i> Close
+              </button>
+              <button type="button" class="btn btn-primary" onclick="update()">
+                <i class="fa-solid fa-plus"></i> Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Result JS -->
     <div layout:fragment="script">
-        <script th:src="@{/js/result.js}"></script>
+      <script th:src="@{/js/result.js}"></script>
     </div>
-</body>
-
+  </body>
 </html>
