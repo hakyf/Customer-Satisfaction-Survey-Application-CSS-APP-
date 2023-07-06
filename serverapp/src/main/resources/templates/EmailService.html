@@ -7,7 +7,7 @@
 <body>
     <p>Dear <span th:text="${name}"></span>,</p>
     <p><span th:text="${text}"></span></p>
-    <a th:href="@{https://example.com/survey/{code}(code=${code})}">Survey Link</a>
+    <a th:href="@{https://example.com/survey/{code}}">Survey Link</a>
     <p>Batas Waktu Pengisian Anda <span th:text="${expirationTime}"> </span>
 </body>
 </html>

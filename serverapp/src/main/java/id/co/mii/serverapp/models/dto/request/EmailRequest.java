@@ -14,9 +14,7 @@ public class EmailRequest {
     private String name;
     private String subject;
     private String text;
-    private String attach;
-    private String link;
     private UUID code;
-    private LocalDateTime expirationTime;
+    
 
 }

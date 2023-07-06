@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SurveyService {
     private SurveyRepository surveyRepository;
+    private EmailService emailservice;
     public List<Survey> getAll(){
         return surveyRepository.findAll();
     }
