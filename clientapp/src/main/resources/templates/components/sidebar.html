@@ -76,7 +76,7 @@
         <div class="card-body py-3 px-5">
           <div class="d-flex align-items-center">
             <div class="avatar avatar-xl">
-              <img src="assets/images/faces/2.jpg" alt="Face 1" />
+              <img th:src="@{/assets/images/faces/2.jpg}" alt="Face 1" />
             </div>
             <div class="ms-3 name">
               <h5 class="font-bold">
@@ -115,7 +115,7 @@
             sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
             th:classappend="${isActive} == send ? 'active': ''"
           >
-            <a th:href="@{/survey/send}" class="sidebar-link">
+            <a th:href="@{/survey/create}" class="sidebar-link">
               <i class="bi bi-send-fill"></i>
               <span>Send Survey</span>
             </a>

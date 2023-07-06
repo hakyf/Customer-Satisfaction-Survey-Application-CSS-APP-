@@ -2,17 +2,17 @@
   <!-- DataTables -->
   <link
     rel="stylesheet"
-    th:href="@{assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css}"
+    th:href="@{/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css}"
   />
-  <link rel="stylesheet" th:href="@{assets/css/pages/datatables.css}" />
+  <link rel="stylesheet" th:href="@{/assets/css/pages/datatables.css}" />
 
   <!-- Style CSS -->
   <link rel="stylesheet" th:href="@{/css/style.css}" />
-  <link rel="stylesheet" th:href="@{assets/css/main/app.css}" />
-  <link rel="stylesheet" th:href="@{assets/css/main/app-dark.css}" />
+  <link rel="stylesheet" th:href="@{/assets/css/main/app.css}" />
+  <link rel="stylesheet" th:href="@{/assets/css/main/app-dark.css}" />
 
-  <link rel="stylesheet" th:href="@{assets/css/pages/fontawesome.css}" />
-  <link rel="stylesheet" th:href="@{assets/css/shared/iconly.css}" />
+  <link rel="stylesheet" th:href="@{/assets/css/pages/fontawesome.css}" />
+  <link rel="stylesheet" th:href="@{/assets/css/shared/iconly.css}" />
 </div>
 
 <div th:fragment="js">
@@ -38,17 +38,17 @@
   <!-- CSRF Token -->
   <script th:src="@{/js/addCsrf.js}"></script>
 
-  <script th:src="@{assets/js/bootstrap.js}"></script>
-  <script th:src="@{assets/js/app.js}"></script>
+  <script th:src="@{/assets/js/bootstrap.js}"></script>
+  <script th:src="@{/assets/js/app.js}"></script>
 
   <!-- Need: Apexcharts -->
-  <script th:src="@{assets/extensions/apexcharts/apexcharts.min.js}"></script>
-  <script th:src="@{assets/js/pages/dashboard.js}"></script>
+  <script th:src="@{/assets/extensions/apexcharts/apexcharts.min.js}"></script>
+  <script th:src="@{/assets/js/pages/dashboard.js}"></script>
 
   <!-- JQuery -->
-  <script src="assets/extensions/jquery/jquery.min.js"></script>
+  <script th:src="@{/assets/extensions/jquery/jquery.min.js}"></script>
 
   <!-- DataTables -->
   <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
-  <script src="assets/js/pages/datatables.js"></script>
+  <script th:src="@{/assets/js/pages/datatables.js}"></script>
 </div>
