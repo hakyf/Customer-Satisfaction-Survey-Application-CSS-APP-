@@ -33,7 +33,7 @@ public class EmailController {
     }
 
     @PostMapping("/send")
-    public EmailRequest sendMessageWithTemplate(@RequestBody EmailRequest emailRequest){
-            return emailService.sendMessageWithTemplate(emailRequest);
+    public EmailRequest sendMessageWithTemplate(@RequestBody EmailRequest emailRequest){    
+        return emailService.sendMessageWithTemplate(emailRequest);
     }
 }

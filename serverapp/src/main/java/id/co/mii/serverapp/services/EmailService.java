@@ -23,9 +23,10 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class EmailService {
-    private Survey survey;
+   
     private JavaMailSender mailSender;
     private SpringTemplateEngine templateEngine;
+   
 
     public EmailRequest sendSimpleMessage(EmailRequest emailRequest){
         SimpleMailMessage message = new SimpleMailMessage();
@@ -47,11 +48,7 @@ public class EmailService {
             helper.setSubject(emailRequest.getSubject());
             helper.setText(emailRequest.getText());
 
-            FileSystemResource file = new FileSystemResource(
-                new File(emailRequest.getAttach())
-            );
-
-            helper.addAttachment(file.getFilename(),file);
+           
             mailSender.send(message);
 
             System.out.println();
@@ -65,28 +62,28 @@ public class EmailService {
     }
 
     public EmailRequest sendMessageWithTemplate(EmailRequest emailRequest){
+        System.out.println(emailRequest);
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message,true);
             
             helper.setTo(emailRequest.getTo());
             helper.setSubject(emailRequest.getSubject());
-
+            helper.setText(emailRequest.getText());
+        
             Context context = new Context();
+    
+
             context.setVariable("name", emailRequest.getSurvey().getName());
             context.setVariable("code", emailRequest.getSurvey().getCode());
-            context.setVariable("name", emailRequest.getName());
-            context.setVariable("code", emailRequest.getCode());
             context.setVariable("text", emailRequest.getText());
+
+            
             String htmlContent = templateEngine.process("EmailService", context);
 
             helper.setText(htmlContent, true);
 
-            if (emailRequest.getAttach() != null) {
-                FileSystemResource file = new FileSystemResource(emailRequest.getAttach());
-                helper.addAttachment(file.getFilename(), file);
-            }
-            
+           
             mailSender.send(message);
 
             System.out.println();
