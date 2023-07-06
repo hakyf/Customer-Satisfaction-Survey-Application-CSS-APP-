@@ -17,7 +17,7 @@ $(document).ready(function () {
                     return `  
               <div class="d-flex align-items-center justify-content-center gap-3">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateSection" onclick = beforeUpdate(${row.id})>
-                  <i class="fa-sharp fa-solid fa-pen"></i>
+                  <i class="fa-sharp fa-solid fa-edit"></i>
                 </button>
               </div>`;
                 },
@@ -51,12 +51,13 @@ function create() {
         method: "POST",
         dataType: "JSON",
         contentType: "application/json",
-        beforSend: addCsrfToken(),
+        beforeSend: addCsrfToken(),
         data: JSON.stringify({
             name: name,
         }),
         success: (result) => {
             $("#createSection").modal("hide");
+            $(".modal-backdrop").remove();
             $("#table-section").DataTable().ajax.reload();
             defaults();
             Swal.fire({
@@ -118,7 +119,8 @@ function update() {
                     name: name,
                 }),
                 success: (result) => {
-                    $("#updatesection").modal("hide");
+                    $("#updateSection").modal("hide");
+                    $(".modal-backdrop").remove();
                     $("#table-section").DataTable().ajax.reload();
                     Swal.fire({
                         position: "center",

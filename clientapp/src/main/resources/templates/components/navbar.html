@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark navbar-bg shadow-lg">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#"
-        ><img th:src="@{/img/logo-tab.ico}" alt="MCC78" height="40px"
+        ><img th:src="@{/img/favicon.ico}" alt="MCC78" height="40px"
       /></a>
       <button
         class="navbar-toggler"
@@ -35,7 +35,21 @@
               >Question</a
             >
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" 
+               aria-current="page" 
+               th:classappend="${isActive} == answer ? 'active fw-bold': ''"
+               th:href="@{/answer}"
+               >Answer</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" 
+               aria-current="page" 
+               th:classappend="${isActive} == survey ? 'active fw-bold': ''"
+               th:href="@{/survey}"
+               >Survey</a>
+          </li>
           <li class="nav-item">
             <a
               class="nav-link"
@@ -45,7 +59,15 @@
               >Employee</a
             >
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" 
+               aria-current="page" 
+               th:classappend="${isActive} == client ? 'active fw-bold': ''"
+               th:href="@{/client}"
+               >Client</a>
+          </li>
+
+          <li class="nav-item">
             <a
               class="nav-link"
               aria-current="page"
@@ -62,8 +84,8 @@
               th:href="@{/role}"
               >Role</a
             >
-          </li> -->
-         
+          </li>
+
           <li class="nav-item">
             <a
               class="nav-link"

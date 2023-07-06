@@ -1,23 +1,4 @@
-/* Main CSS */
-* {
-  font-family: "Poppins", sans-serif;
-}
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-#wrapper {
-  min-height: 100%;
-  position: relative;
-}
-
-.content {
-  padding-bottom: 100px; /* Sesuaikan tinggi footer */
-}
 
 /* Validation */
 .is-invalid {
@@ -59,31 +40,7 @@ body {
   color: #055864;
 }
 
-/* Table */
-.table-bg {
-  background-color: #055864;
-  color: white;
-}
 
-.dataTables_wrapper .dataTables_filter {
-  margin-bottom: 15px;
-}
-
-.dataTables_wrapper .dataTables_filter input {
-  border-radius: 9999px;
-}
-
-.dataTables_wrapper .dataTables_length select {
-  border-radius: 10px;
-}
-
-.dataTables_wrapper .dataTables_paginate {
-  margin-top: 10px;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-  border-radius: 10px;
-}
 
 /* Footer */
 .footer-bg {
@@ -101,16 +58,16 @@ body {
 /* Login */
 .login-cover {
   height: 100vh;
-  background: rgb(2, 108, 124);
+  background: #201F2E;
   background: linear-gradient(
     0deg,
-    rgba(2, 108, 124, 1) 0%,
-    rgba(5, 88, 100, 1) 50%
+    #201F2E 0%,
+    #201F2E 50%
   );
 }
 
 .login-cover > div {
-  width: 38%;
+  width: 30%;
 }
 
 /* Button and Form */

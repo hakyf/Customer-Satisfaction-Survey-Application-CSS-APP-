@@ -35,8 +35,20 @@
 - **Riki Setiyawan**
 
 1. 28/06 Konfigurasi JPA pada serverapp
-2. 02/07 Add controller, service & repository pada clientapp
-3. 02/07 Update clientapp
+2. 02/07
+   - Initial clientapp
+   - Add service, controller, restcontroller, js, html employee
+   - Fix js, html question
+4. 03/07
+   - Add service, controller, restcontroller, js, html section
+5. 04/07
+   - Add service, controller, restcontroller, js, html user
+   - Add service, controller, restcontroller, js, html role
+6. 05/07
+   - Fix UserController
+   - Add service, controller, restcontroller, js, html survey
+   - Add service, controller, restcontroller, js, html answer
+   - Add service, controller, restcontroller, js, html client
 
 - **Habibullah Dzaky Musthafa**
 
@@ -64,7 +76,11 @@
 4. 02/07
    - Configure Postman by creating a workspace for the team, which will allow the team to work together as editor in a single workspace.
    - Create HTTP Method request and perfom json testing for Survey, create new Fork for Testing and pull request in original collection.
-
+4. 03/07
+   - Create Status Controller in serverapp & Service,Controller,restController for parameter and status.
+5. 04/07
+   - Create Js & html for parameter & status
+ 
 ## **`Ketentuan Implementasi Repository`**
 
 - Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
