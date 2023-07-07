@@ -1,4 +1,5 @@
 package id.co.mii.serverapp.controllers;
+
 import java.util.List;
 
 // import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,39 +15,41 @@ import id.co.mii.serverapp.models.Question;
 import id.co.mii.serverapp.services.QuestionService;
 import lombok.AllArgsConstructor;
 
-
 @RestController
 @AllArgsConstructor
 @RequestMapping("/question")
 // @PreAuthorize("hasAnyRole('ADMIN')")
 public class QuestionController {
-private QuestionService questionService;
-//  @PreAuthorize("hasAnyAuthority('READ_USER', 'READ_ADMIN')")
+    private QuestionService questionService;
+
+    // @PreAuthorize("hasAnyAuthority('READ_USER', 'READ_ADMIN')")
     @GetMapping
-    public List<Question> getAll(){
+    public List<Question> getAll() {
         return questionService.getAll();
     }
-// @PreAuthorize("hasAuthority('READ_USER')")
+
+    // @PreAuthorize("hasAuthority('READ_USER')")
     @GetMapping("/{id}")
-    public Question getById(@PathVariable Long id){
+    public Question getById(@PathVariable Long id) {
         return questionService.getById(id);
     }
-// @PreAuthorize("hasAuthority('CREATE_ADMIN','CREATE_USER')")
+
+    // @PreAuthorize("hasAuthority('CREATE_ADMIN','CREATE_USER')")
     @PostMapping
-    public Question create(@RequestBody Question question){
+    public Question create(@RequestBody Question question) {
         return questionService.create(question);
     }
-    
-//   @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+
+    // @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
     @PutMapping("/{id}")
-    public Question update(@PathVariable Integer id,@RequestBody Question question){
+    public Question update(@PathVariable Long id, @RequestBody Question question) {
         return questionService.update(id, question);
     }
-//  @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+
+    // @PreAuthorize("hasAuthority('DELETE_ADMIN')")
     @DeleteMapping("/{id}")
-    public Question delete(@PathVariable Integer id){
+    public Question delete(@PathVariable Long id) {
         return questionService.delete(id);
     }
-    
-    
+
 }

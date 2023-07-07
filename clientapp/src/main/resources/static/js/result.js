@@ -9,10 +9,10 @@ $(document).ready(function () {
                 data: "id",
             },
             {
-                data: "score",
+                data: "date",
             },
             {
-                data: "date",
+                data: "score",
             },
             {
                 data: "mean",
