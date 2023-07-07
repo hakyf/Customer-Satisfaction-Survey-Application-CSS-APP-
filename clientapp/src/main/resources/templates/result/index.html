@@ -58,8 +58,8 @@
                   <thead>
                     <tr>
                       <th class="col-1">Id</th>
-                      <th class="col-4">Score</th>
                       <th class="col-4">Date</th>
+                      <th class="col-4">Score</th>
                       <th class="col-2">Mean</th>
                       <th class="col-1">Action</th>
                     </tr>
@@ -99,6 +99,16 @@
             </div>
             <div class="modal-body">
               <div class="mb-3">
+                <label for="crt-result-date" class="form-label">Date</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="crt-result-date"
+                  required
+                />
+                <span class="invalid-feedback">Date is required.</span>
+              </div>
+              <div class="mb-3">
                 <label for="crt-result-score" class="form-label">Score</label>
                 <input
                   type="text"
@@ -109,21 +119,11 @@
                 <span class="invalid-feedback">Score is required.</span>
               </div>
               <div class="mb-3">
-                <label for="crt-employee-date" class="form-label">Date</label>
+                <label for="crt-result-mean" class="form-label">Mean</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="crt-employee-date"
-                  required
-                />
-                <span class="invalid-feedback">Date is required.</span>
-              </div>
-              <div class="mb-3">
-                <label for="crt-employee-mean" class="form-label">Mean</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="crt-employee-mean"
+                  id="crt-result-mean"
                   required
                 />
                 <span class="invalid-feedback">Mean is required.</span>
@@ -172,17 +172,6 @@
             </div>
             <div class="modal-body">
               <div class="mb-3">
-                <label for="upd-result-score" class="form-label">Score</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="upd-result-score"
-                  required
-                />
-                <span class="invalid-feedback">Score is required.</span>
-                <input type="hidden" id="upd-result-id" />
-              </div>
-              <div class="mb-3">
                 <label for="upd-result-date" class="form-label">Date</label>
                 <input
                   type="text"
@@ -191,6 +180,17 @@
                   required
                 />
                 <span class="invalid-feedback">Date is required.</span>
+                <input type="hidden" id="upd-result-id" />
+              </div>
+              <div class="mb-3">
+                <label for="upd-result-score" class="form-label">Score</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="upd-result-score"
+                  required
+                />
+                <span class="invalid-feedback">Score is required.</span>
                 <input type="hidden" id="upd-result-id" />
               </div>
               <div class="mb-3">

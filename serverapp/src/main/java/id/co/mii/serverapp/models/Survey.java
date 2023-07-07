@@ -40,7 +40,6 @@ public class Survey {
     @Column(nullable = false)
     private String name;
 
-    
     @Column(nullable = false, unique = true)
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -64,6 +63,5 @@ public class Survey {
     @PrimaryKeyJoinColumn
     @OneToOne(mappedBy = "survey", cascade = CascadeType.ALL)
     private Result result;
-
 
 }
