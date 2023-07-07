@@ -1,19 +1,13 @@
 package id.co.mii.serverapp.services;
 
-import java.io.File;
-import java.util.UUID;
-
+import java.time.format.DateTimeFormatter;
 import javax.mail.internet.MimeMessage;
 
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.freemarker.SpringTemplateLoader;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
-import id.co.mii.serverapp.models.Survey;
 import id.co.mii.serverapp.models.dto.request.EmailRequest;
 
 import org.thymeleaf.context.Context;
@@ -28,40 +22,40 @@ public class EmailService {
     private SpringTemplateEngine templateEngine;
    
 
-    public EmailRequest sendSimpleMessage(EmailRequest emailRequest){
-        SimpleMailMessage message = new SimpleMailMessage();
+    // public EmailRequest sendSimpleMessage(EmailRequest emailRequest){
+    //     SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setTo(emailRequest.getTo());
-        message.setSubject(emailRequest.getSubject());
-        message.setText(emailRequest.getText());
-        mailSender.send(message);
-        return emailRequest;
-    }
+    //     message.setTo(emailRequest.getTo());
+    //     message.setSubject(emailRequest.getSubject());
+    //     message.setText(emailRequest.getText());
+    //     mailSender.send(message);
+    //     return emailRequest;
+    // }
 
 
-    public EmailRequest sendMessageWithAttachment(EmailRequest emailRequest){
-        try{
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+    // public EmailRequest sendMessageWithAttachment(EmailRequest emailRequest){
+    //     try{
+    //         MimeMessage message = mailSender.createMimeMessage();
+    //         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            helper.setTo(emailRequest.getTo());
-            helper.setSubject(emailRequest.getSubject());
-            helper.setText(emailRequest.getText());
+    //         helper.setTo(emailRequest.getTo());
+    //         helper.setSubject(emailRequest.getSubject());
+    //         helper.setText(emailRequest.getText());
 
            
-            mailSender.send(message);
+    //         mailSender.send(message);
 
-            System.out.println();
-            System.out.println("Email success to send..");
-            System.out.println();
+    //         System.out.println();
+    //         System.out.println("Email success to send..");
+    //         System.out.println();
 
-        } catch(Exception e) {
-            throw new IllegalStateException("email failed to send...");
-        }
-        return emailRequest;
-    }
-
-    public EmailRequest sendMessageWithTemplate(EmailRequest emailRequest){
+    //     } catch(Exception e) {
+    //         throw new IllegalStateException("email failed to send...");
+    //     }
+    //     return emailRequest;
+    // }
+    
+    public EmailRequest sendSurvey(EmailRequest emailRequest){
         System.out.println(emailRequest);
         try {
             MimeMessage message = mailSender.createMimeMessage();
@@ -76,11 +70,16 @@ public class EmailService {
     
             context.setVariable("name", emailRequest.getSurvey().getName());
             // Generate random code
-            UUID randomCode = generateRandomCode(emailRequest.getSurvey().getCode());
-            context.setVariable("code", randomCode);
+            // UUID randomCode = generateRandomCode(emailRequest.getSurvey().getCode());
+            // context.setVariable("code", randomCode);
             context.setVariable("code", emailRequest.getSurvey().getCode());
             context.setVariable("text", emailRequest.getText());
 
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Format waktu
+       
+
+            context.setVariable("expired", emailRequest.getSurvey().getExpired().format(formatter));
             
             String htmlContent = templateEngine.process("EmailService", context);
 
@@ -99,10 +98,11 @@ public class EmailService {
 
         return emailRequest;
     }   
-   private UUID generateRandomCode(UUID code) {
-    // Generate a random code using UUID 
-    code = UUID.randomUUID();
     
-    return code;
-}
+//    private UUID generateRandomCode(UUID code) {
+//     // Generate a random code using UUID 
+//     code = UUID.randomUUID();
+    
+//     return code;
+// }
     }
