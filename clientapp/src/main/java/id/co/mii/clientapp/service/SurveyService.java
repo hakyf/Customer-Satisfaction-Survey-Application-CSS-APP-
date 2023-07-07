@@ -48,6 +48,15 @@ public class SurveyService {
                 }).getBody();
     }
 
+    public Survey send(Survey survey) {
+        return restTemplate.exchange(
+                url,
+                HttpMethod.POST,
+                new HttpEntity(survey),
+                new ParameterizedTypeReference<Survey>() {
+                }).getBody();
+    }
+
     public Survey update(Long id, Survey survey) {
         return restTemplate.exchange(
                 url.concat("/" + id),
