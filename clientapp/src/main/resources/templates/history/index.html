@@ -4,8 +4,9 @@
   layout:decorate="~{layout/main}"
 >
   <head>
-    <title>Client</title>
+    <title>History</title>
   </head>
+
   <body>
     <div layout:fragment="content">
       <div id="main">
@@ -19,7 +20,7 @@
           <div class="page-title">
             <div class="row">
               <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Client Page</h3>
+                <h3>History Page</h3>
               </div>
               <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav
@@ -31,7 +32,7 @@
                       <a href="/">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Client
+                      History
                     </li>
                   </ol>
                 </nav>
@@ -47,19 +48,21 @@
                   type="button"
                   class="btn btn-primary float-end"
                   data-bs-toggle="modal"
-                  data-bs-target="#createClient"
+                  data-bs-target="#createHistory"
                 >
                   <i class="fa-solid fa-plus"></i>
                 </button>
               </div>
               <div class="card-body">
-                <table class="table" id="table-client">
+                <table class="table" id="table-history">
                   <thead>
                     <tr>
                       <th class="col-1">Id</th>
-                      <th class="col-4">Name</th>
-                      <th class="col-4">Email</th>
-                      <th class="col-2">Location</th>
+                      <th class="col-2">Notes</th>
+                      <th class="col-2">Date</th>
+                      <th class="col-2">Employee</th>
+                      <th class="col-2">Status</th>
+                      <th class="col-2">Survey</th>
                       <th class="col-1">Action</th>
                     </tr>
                   </thead>
@@ -71,10 +74,10 @@
         </div>
       </div>
 
-      <!-- Modal Create Client -->
+      <!-- Modal Create History -->
       <div
         class="modal fade"
-        id="createClient"
+        id="createHistory"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
@@ -85,7 +88,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                Create Client
+                Create History
               </h5>
               <button
                 type="button"
@@ -98,36 +101,50 @@
             </div>
             <div class="modal-body">
               <div class="mb-3">
-                <label for="crt-client-name" class="form-label">Name</label>
+                <label for="upd-history-notes" class="form-label">Notes</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="crt-client-name"
+                  id="upd-history-notes"
                   required
                 />
-                <span class="invalid-feedback">Name is required.</span>
+                <span class="invalid-feedback">History notes is required.</span>
               </div>
               <div class="mb-3">
-                <label for="crt-client-email" class="form-label">Email</label>
+                <label for="upd-history-date" class="form-label">Date</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="crt-client-email"
+                  id="upd-history-date"
                   required
                 />
-                <span class="invalid-feedback">Email is required.</span>
+                <span class="invalid-feedback">History date is required.</span>
               </div>
               <div class="mb-3">
-                <label for="crt-client-location" class="form-label"
-                  >Location</label
+                <label for="upd-history-employee" class="form-label"
+                  >Employee</label
                 >
                 <input
                   type="text"
                   class="form-control"
-                  id="crt-client-location"
+                  id="upd-history-employee"
                   required
                 />
-                <span class="invalid-feedback">Location is required.</span>
+                <span class="invalid-feedback"
+                  >History employee is required.</span
+                >
+              </div>
+              <div class="mb-3">
+                <label for="upd-history-survey" class="form-label"
+                  >Survey Code</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="upd-history-survey"
+                  required
+                />
+                <span class="invalid-feedback">Survey code is required.</span>
               </div>
             </div>
             <div class="modal-footer">
@@ -146,10 +163,10 @@
         </div>
       </div>
 
-      <!-- Modal Update Client -->
+      <!-- Modal Update History -->
       <div
         class="modal fade"
-        id="updateClient"
+        id="updateHistory"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
@@ -160,7 +177,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                Update Client
+                Update History
               </h5>
               <button
                 type="button"
@@ -173,37 +190,50 @@
             </div>
             <div class="modal-body">
               <div class="mb-3">
-                <label for="upd-client-name" class="form-label">Name</label>
+                <label for="upd-history-notes" class="form-label">Notes</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="upd-client-name"
+                  id="upd-history-notes"
                   required
                 />
-                <span class="invalid-feedback">Name is required.</span>
-                <input type="hidden" id="upd-client-id" />
+                <span class="invalid-feedback">History notes is required.</span>
               </div>
               <div class="mb-3">
-                <label for="upd-client-email" class="form-label">Email</label>
+                <label for="upd-history-date" class="form-label">Date</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="upd-client-email"
+                  id="upd-history-date"
                   required
                 />
-                <span class="invalid-feedback">Email is required.</span>
+                <span class="invalid-feedback">History date is required.</span>
               </div>
               <div class="mb-3">
-                <label for="upd-client-location" class="form-label"
-                  >Location</label
+                <label for="upd-history-employee" class="form-label"
+                  >Employee</label
                 >
                 <input
                   type="text"
                   class="form-control"
-                  id="upd-client-location"
+                  id="upd-history-employee"
                   required
                 />
-                <span class="invalid-feedback">Location is required.</span>
+                <span class="invalid-feedback"
+                  >History employee is required.</span
+                >
+              </div>
+              <div class="mb-3">
+                <label for="upd-history-survey" class="form-label"
+                  >Survey Code</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="upd-history-survey"
+                  required
+                />
+                <span class="invalid-feedback">Survey code is required.</span>
               </div>
             </div>
             <div class="modal-footer">
@@ -214,7 +244,7 @@
               >
                 <i class="fa-solid fa-xmark"></i> Close
               </button>
-              <button type="button" class="btn btn-primary" onclick="update()">
+              <button type="button" class="btn btn-primary" onclick="create()">
                 <i class="fa-solid fa-plus"></i> Submit
               </button>
             </div>
@@ -223,9 +253,9 @@
       </div>
     </div>
 
-    <!-- Client JS -->
+    <!-- history JS -->
     <div layout:fragment="script">
-      <script th:src="@{/js/client.js}"></script>
+      <script th:src="@{/js/history.js}"></script>
     </div>
   </body>
 </html>

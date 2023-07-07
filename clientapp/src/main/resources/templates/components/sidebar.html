@@ -80,10 +80,13 @@
             </div>
             <div class="ms-3 name">
               <h5 class="font-bold">
-                <span sec:authentication="name"></span>
+                <span sec:authentication="name" class="text-capitalize"></span>
               </h5>
               <h6 class="text-muted mb-0">
-                @<span sec:authentication="name"></span>
+                <span
+                  th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}"
+                  class="text-lowercase"
+                ></span>
               </h6>
             </div>
           </div>
@@ -115,7 +118,7 @@
             sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
             th:classappend="${isActive} == send ? 'active': ''"
           >
-            <a th:href="@{/survey/create}" class="sidebar-link">
+            <a th:href="@{/survey/send}" class="sidebar-link">
               <i class="bi bi-send-fill"></i>
               <span>Send Survey</span>
             </a>
@@ -127,7 +130,7 @@
             th:classappend="${isActive} == survey ? 'active': ''"
           >
             <a th:href="@{/survey}" class="sidebar-link">
-              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <i class="bi bi-clipboard-fill"></i>
               <span>Survey</span>
             </a>
           </li>
@@ -138,7 +141,7 @@
             th:classappend="${isActive} == result ? 'active': ''"
           >
             <a th:href="@{/result}" class="sidebar-link">
-              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <i class="bi bi-clipboard-data-fill"></i>
               <span>Result</span>
             </a>
           </li>
@@ -149,7 +152,7 @@
             th:classappend="${isActive} == question ? 'active': ''"
           >
             <a th:href="@{/question}" class="sidebar-link">
-              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <i class="bi bi-question-circle-fill"></i>
               <span>Question</span>
             </a>
           </li>
@@ -160,7 +163,7 @@
             th:classappend="${isActive} == section ? 'active': ''"
           >
             <a th:href="@{/section}" class="sidebar-link">
-              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <i class="bi bi-stack"></i>
               <span>Section</span>
             </a>
           </li>
@@ -175,7 +178,7 @@
             th:classappend="${isActive} == client ? 'active': ''"
           >
             <a th:href="@{/client}" class="sidebar-link">
-              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <i class="bi bi-person-fill"></i>
               <span>Client</span>
             </a>
           </li>
@@ -186,7 +189,7 @@
             th:classappend="${isActive} == employee ? 'active': ''"
           >
             <a th:href="@{/employee}" class="sidebar-link">
-              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <i class="bi bi-people-fill"></i>
               <span>Employee</span>
             </a>
           </li>
@@ -201,7 +204,7 @@
             th:classappend="${isActive} == history ? 'active': ''"
           >
             <a th:href="@{/history}" class="sidebar-link">
-              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <i class="bi bi-clock-fill"></i>
               <span>History</span>
             </a>
           </li>
@@ -212,7 +215,7 @@
             th:classappend="${isActive} == status ? 'active': ''"
           >
             <a th:href="@{/status}" class="sidebar-link">
-              <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+              <i class="bi bi-stickies-fill"></i>
               <span>Status</span>
             </a>
           </li>

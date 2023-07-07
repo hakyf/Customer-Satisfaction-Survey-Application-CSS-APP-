@@ -10,68 +10,59 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import id.co.mii.clientapp.model.Survey;
+import id.co.mii.clientapp.model.History;
 
 @Service
-public class SurveyService {
+public class HistoryService {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${server.baseUrl}/survey")
+    @Value("${server.baseUrl}/history")
     private String url;
 
-    public List<Survey> getAll() {
+    public List<History> getAll() {
         return restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Survey>>() {
+                new ParameterizedTypeReference<List<History>>() {
                 }).getBody();
     }
 
-    public Survey getById(Long id) {
+    public History getById(Long id) {
         return restTemplate.exchange(
                 url + "/" + id,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Survey>() {
+                new ParameterizedTypeReference<History>() {
                 }).getBody();
     }
 
-    public Survey create(Survey survey) {
+    public History create(History history) {
         return restTemplate.exchange(
                 url,
                 HttpMethod.POST,
-                new HttpEntity(survey),
-                new ParameterizedTypeReference<Survey>() {
+                new HttpEntity(history),
+                new ParameterizedTypeReference<History>() {
                 }).getBody();
     }
 
-    public Survey send(Survey survey) {
-        return restTemplate.exchange(
-                url,
-                HttpMethod.POST,
-                new HttpEntity(survey),
-                new ParameterizedTypeReference<Survey>() {
-                }).getBody();
-    }
-
-    public Survey update(Long id, Survey survey) {
+    public History update(Long id, History history) {
         return restTemplate.exchange(
                 url.concat("/" + id),
                 HttpMethod.PUT,
-                new HttpEntity(survey),
-                new ParameterizedTypeReference<Survey>() {
+                new HttpEntity(history),
+                new ParameterizedTypeReference<History>() {
                 }).getBody();
     }
 
-    public Survey delete(Long id) {
+    public History delete(Long id) {
         return restTemplate.exchange(
                 url + "/" + id,
                 HttpMethod.DELETE,
                 null,
-                new ParameterizedTypeReference<Survey>() {
+                new ParameterizedTypeReference<History>() {
                 }).getBody();
     }
 }

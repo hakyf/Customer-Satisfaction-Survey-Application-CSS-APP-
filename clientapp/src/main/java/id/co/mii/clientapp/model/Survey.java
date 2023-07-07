@@ -17,5 +17,6 @@ public class Survey {
     private String name;
     private UUID code;
     private LocalDate expired;
+    private Status status;
 
 }
