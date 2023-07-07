@@ -22,7 +22,7 @@ public class ResultService {
     public Result getById(Long id) {
         return resultRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Status not found !"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Result not found !"));
     }
 
     public Result create(Result result) {
