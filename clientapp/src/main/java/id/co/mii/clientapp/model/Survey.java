@@ -1,6 +1,8 @@
 package id.co.mii.clientapp.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +15,7 @@ public class Survey {
 
     private Long id;
     private String name;
-    private String code;
+    private UUID code;
     private LocalDate expired;
 
 }
