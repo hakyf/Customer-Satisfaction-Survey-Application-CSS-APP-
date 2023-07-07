@@ -54,6 +54,18 @@ function create() {
         errors += 1;
     }
 
+    if (email === "") {
+        $("#crt-client-email").addClass("is-invalid");
+
+        errors += 1;
+    }
+
+    if (location === "") {
+        $("#crt-client-location").addClass("is-invalid");
+
+        errors += 1;
+    }
+
     if (errors > 0) {
         return;
     }
@@ -113,13 +125,13 @@ function update() {
         errors += 1;
     }
 
-    if (code === "") {
+    if (email === "") {
         $("#upd-client-email").addClass("is-invalid");
 
         errors += 1;
     }
 
-    if (expired === "") {
+    if (location === "") {
         $("#upd-client-location").addClass("is-invalid");
 
         errors += 1;
@@ -144,7 +156,7 @@ function update() {
                 method: "PUT",
                 dataType: "JSON",
                 contentType: "application/json",
-                beforSend: addCsrfToken(),
+                beforeSend: addCsrfToken(),
                 data: JSON.stringify({
                     name: name,
                     email: email,
