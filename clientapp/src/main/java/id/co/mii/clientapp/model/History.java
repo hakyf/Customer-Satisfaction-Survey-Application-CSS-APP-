@@ -14,5 +14,8 @@ public class History {
     private Long id;
     private String notes;
     private LocalDate date;
+    private Employee employee;
+    private Status status;
+    private Survey survey;
 
 }
