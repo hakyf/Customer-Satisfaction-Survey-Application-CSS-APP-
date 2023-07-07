@@ -80,10 +80,13 @@
             </div>
             <div class="ms-3 name">
               <h5 class="font-bold">
-                <span sec:authentication="name"></span>
+                <span sec:authentication="name" class="text-capitalize"></span>
               </h5>
               <h6 class="text-muted mb-0">
-                @<span sec:authentication="name"></span>
+                <span
+                  th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}"
+                  class="text-lowercase"
+                ></span>
               </h6>
             </div>
           </div>
