@@ -27,15 +27,15 @@ public class SurveyController {
         return "survey/index";
     }
 
-    @GetMapping("/create")
-    public String createForm(Survey survey, Model model) {
+    @GetMapping("/send")
+    public String sendForm(Survey survey, Model model) {
         model.addAttribute("isActive", "send");
-        return "survey/create";
+        return "survey/send";
     }
 
     @PostMapping
-    public String create(Survey survey) {
-        surveyService.create(survey);
+    public String send(Survey survey) {
+        surveyService.send(survey);
         return "redirect:/survey";
     }
 
