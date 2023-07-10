@@ -33,13 +33,9 @@ public class SurveyController {
         return "survey/index";
     }
 
-    @GetMapping("/send")
-    public String sendForm(Survey survey, Model model) {
-        model.addAttribute("surveys", surveyService.getAll());
-        model.addAttribute("employees", employeeService.getAll());
-        model.addAttribute("clients", clientService.getAll());
-        model.addAttribute("isActive", "send");
-        return "survey/send";
+    @GetMapping("/create")
+    public String createForm(Survey survey, Model model) {
+        return "survey/create";
     }
 
     @PostMapping
