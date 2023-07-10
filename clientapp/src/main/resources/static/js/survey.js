@@ -64,20 +64,16 @@ $(document).ready(function () {
 });
 
 function defaults() {
-  $("#crt-survey-name").removeClass("is-invalid");
   $("#crt-survey-employee").removeClass("is-invalid");
   $("#crt-survey-client").removeClass("is-invalid");
-  $("#crt-survey-expired").removeClass("is-invalid");
 
-  $("#crt-survey-name").val("");
-  $("#crt-survey-employee").val("");
-  $("#crt-survey-client").val("");
-  $("#crt-survey-expired").val("");
+  $("#crt-survey-employee").select2().val("");
+  $("#crt-survey-client").select2().val("");
 }
 
 function create() {
-  let employee = $("#crt-survey-employee").val().trim();
-  let client = $("#crt-survey-client").val().trim();
+  let employee = $("#crt-survey-employee").val();
+  let client = $("#crt-survey-client").val();
 
   var errors = 0;
 
@@ -122,75 +118,11 @@ function create() {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "survey has been created",
+        title: "Survey has been sent",
         showConfirmButton: false,
         timer: 1500,
         width: 600,
       });
     },
-  });
-}
-
-function beforeUpdate(id) {
-  $.ajax({
-    url: "/api/survey/" + id,
-    method: "GET",
-    dataType: "JSON",
-    success: (result) => {
-      $("#upd-survey-id").val(`${result.id}`);
-      $("#upd-survey-name").val(`${result.name}`);
-    },
-  });
-}
-
-function update() {
-  let id = $("#upd-survey-id").val();
-  let name = $("#upd-survey-name").val().trim();
-
-  var errors = 0;
-  if (name === "") {
-    $("#upd-survey-name").addClass("is-invalid");
-
-    errors += 1;
-  }
-
-  if (errors > 0) {
-    return;
-  }
-
-  Swal.fire({
-    title: "Are you sure?",
-    text: "Do you want to be update this survey!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, update it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        url: "/api/survey/" + id,
-        method: "PUT",
-        dataType: "JSON",
-        contentType: "application/json",
-        beforeSend: addCsrfToken(),
-        data: JSON.stringify({
-          name: name,
-        }),
-        success: (result) => {
-          $("#updateSurvey").modal("hide");
-          $(".modal-backdrop").remove();
-          $("#table-survey").DataTable().ajax.reload();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "survey has been updated",
-            showConfirmButton: false,
-            timer: 1500,
-            width: 600,
-          });
-        },
-      });
-    }
   });
 }
