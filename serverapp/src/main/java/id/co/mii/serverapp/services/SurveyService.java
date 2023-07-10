@@ -1,6 +1,5 @@
 package id.co.mii.serverapp.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SurveyService {
     private SurveyRepository surveyRepository;
-    private EmailService emailservice;
 
     public List<Survey> getAll() {
         return surveyRepository.findAll();
