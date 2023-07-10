@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import id.co.mii.serverapp.models.Question;
+import id.co.mii.serverapp.models.Section;
 import id.co.mii.serverapp.services.QuestionService;
 import lombok.AllArgsConstructor;
 
@@ -52,4 +53,10 @@ public class QuestionController {
         return questionService.delete(id);
     }
 
+    @GetMapping("/section/{sectionId}")
+    public List<Question> getQuestionsBySection(@PathVariable Long sectionId) {
+        Section section = new Section();
+        section.setId(sectionId);
+        return questionService.getQuestionsBySection(section);
+    }
 }

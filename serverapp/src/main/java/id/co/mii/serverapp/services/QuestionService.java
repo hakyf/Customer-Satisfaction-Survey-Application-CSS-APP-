@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import id.co.mii.serverapp.models.Question;
-
+import id.co.mii.serverapp.models.Section;
 import id.co.mii.serverapp.repository.QuestionRepository;
 import lombok.AllArgsConstructor;
 
@@ -41,5 +41,7 @@ public class QuestionService {
         questionRepository.delete(question);
         return question;
     }
-    
+    public List<Question> getQuestionsBySection(Section section) {
+        return questionRepository.findBySection(section);
+    }
 }
