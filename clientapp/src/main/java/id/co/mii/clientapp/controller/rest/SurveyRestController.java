@@ -1,7 +1,9 @@
 package id.co.mii.clientapp.controller.rest;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,6 +47,16 @@ public class SurveyRestController {
     @DeleteMapping("/{id}")
     public Survey delete(@PathVariable Long id) {
         return surveyService.delete(id);
+    }
+    //  // menambahkan get maping code
+    //    @GetMapping("/{code}")
+    // public Survey formByCode(@PathVariable UUID code) {
+    //     return surveyService.formByCode(code);
+    // }
+ @GetMapping("/{code}")
+    public Survey formByCode(@PathVariable UUID code) {
+    
+        return surveyService.formByCode(code);
     }
 
 }

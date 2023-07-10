@@ -16,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @RequestMapping("/survey")
 public class SurveyController {
-    private final SurveyService surveyService;   
+    private final SurveyService surveyService;
 
     @GetMapping
     public List<Survey> getAll() {
@@ -30,9 +30,9 @@ public class SurveyController {
 
     @PostMapping
     public Survey create(@RequestBody Survey survey) {
-    // Generate UUID for the survey's code property
-    UUID code = UUID.randomUUID();
-    survey.setCode(code);    
+        // Generate UUID for the survey's code property
+        // UUID code = UUID.randomUUID();
+        // survey.setCode(code);
         return surveyService.create(survey);
     }
 
@@ -45,4 +45,11 @@ public class SurveyController {
     public Survey delete(@PathVariable Long id) {
         return surveyService.delete(id);
     }
+
+    // menambahkan get maping code
+    @GetMapping("/{code}")
+    public Survey formByCode(@PathVariable UUID code) {
+        return surveyService.formByCode(code);
+    }
+
 }
