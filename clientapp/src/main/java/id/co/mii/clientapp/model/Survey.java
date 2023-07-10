@@ -18,5 +18,18 @@ public class Survey {
     private UUID code;
     private LocalDate expired;
     private Status status;
+    private Client client;
+    private Employee employee;
 
+    public String getName() {
+        return name;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public Client getClient() {
+        return client;
+    }
 }
