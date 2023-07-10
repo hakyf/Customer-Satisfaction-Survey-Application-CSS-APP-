@@ -116,17 +116,6 @@
           <li
             class="sidebar-item"
             sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
-            th:classappend="${isActive} == send ? 'active': ''"
-          >
-            <a th:href="@{/survey/send}" class="sidebar-link">
-              <i class="bi bi-send-fill"></i>
-              <span>Send Survey</span>
-            </a>
-          </li>
-
-          <li
-            class="sidebar-item"
-            sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
             th:classappend="${isActive} == survey ? 'active': ''"
           >
             <a th:href="@{/survey}" class="sidebar-link">
