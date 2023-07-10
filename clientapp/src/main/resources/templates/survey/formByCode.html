@@ -13,6 +13,12 @@
     margin: 1cm 1cm; /* Mengatur margin horizontal agar div berada di tengah */
     padding: 2cm 2cm; /* Mengatur padding kiri dan kanan */
   }
+  
+  #code-text {
+    font-size: small; /* Mengatur ukuran teks menjadi kecil */
+    color: gray; /* Mengatur warna teks menjadi abu-abu */
+  }
+
 </style>
 
     </style>
@@ -36,7 +42,13 @@
           <div class="page-title">
             <div class="row">
               <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Fill Survey Page</h3>
+                <h3>Survey Metrodata
+                <div>
+                  <span id="code-text" readonly th:text="|No : ${code}|"></span>
+                </div>
+              </h3>
+                <form th:action="@{/survey/{code}(code=${code})}" th:method="POST">
+                  <input type="hidden" id="code-input" name="code" th:value="${code}" />
               </div>
               <div class="col-12 col-md-2 order-md-2 order-first">
                 <nav
@@ -53,10 +65,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h4 class="card-title">Fill Survey 
-                        <text th:action="@{/survey/{code}(code=${code})}" th:method="POST">
-                          <input type="text" id="code-input" name="code" th:value="${code}" readonly />
-                      </h4>
+              
                     </div>
                     <div class="card-content">
                       <div class="card-body">
@@ -71,8 +80,9 @@
                                   type="text"
                                   id="first-name-column"
                                   class="form-control"
-                                  placeholder="First Name"
+                                  placeholder="Client Name"
                                   name="fname-column"
+                                 
                                 />
                               </div>
                             </div>
