@@ -76,17 +76,10 @@ function defaults() {
 }
 
 function create() {
-  let name = $("#crt-survey-name").val().trim();
   let employee = $("#crt-survey-employee").val().trim();
   let client = $("#crt-survey-client").val().trim();
-  let expired = $("#crt-survey-expired").val().trim();
 
   var errors = 0;
-  if (name === "") {
-    $("#crt-survey-name").addClass("is-invalid");
-
-    errors += 1;
-  }
 
   if (employee === "") {
     $("#crt-survey-employee").addClass("is-invalid");
@@ -96,12 +89,6 @@ function create() {
 
   if (client === "") {
     $("#crt-survey-client").addClass("is-invalid");
-
-    errors += 1;
-  }
-
-  if (expired === "") {
-    $("#crt-survey-expired").addClass("is-invalid");
 
     errors += 1;
   }
@@ -117,14 +104,12 @@ function create() {
     contentType: "application/json",
     beforeSend: addCsrfToken(),
     data: JSON.stringify({
-      name: name,
       employee: {
         id: employee,
       },
       client: {
         id: client,
       },
-      expired: expired,
       status: {
         id: 1,
       },
