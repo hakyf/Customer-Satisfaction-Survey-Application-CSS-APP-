@@ -1,7 +1,6 @@
 package id.co.mii.serverapp.models;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -17,8 +16,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.type.UUIDBinaryType;
-import org.hibernate.type.UUIDCharType;
 import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;

@@ -1,5 +1,7 @@
 package id.co.mii.clientapp.controller;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +21,7 @@ import lombok.AllArgsConstructor;
 public class SurveyController {
 
     private SurveyService surveyService;
+
 
     @GetMapping
     public String index(Model model) {
@@ -57,10 +60,32 @@ public class SurveyController {
         return "redirect:/survey";
     }
 
-    @GetMapping("/{id}")
-    public String detail(@PathVariable Long id, Model model) {
-        model.addAttribute("survey", surveyService.getById(id));
-        return "survey/detail";
+    @GetMapping("/{code}")
+    public String formByCode( @PathVariable UUID code) {
+        return "survey/formByCode";
     }
+
+    // @GetMapping("/{id}")
+    // public String detail(@PathVariable Long id, Model model) {
+    // model.addAttribute("survey", surveyService.getById(id));
+    // return "survey/detail";
+    // }
+    // @GetMapping("/{code}")
+    // public String formByCode(Model model, @PathVariable UUID code) {
+    // model.addAttribute("code", surveyService.formByCode(code));
+    // return "survey/formByCode";
+    // }
+
+    // @PostMapping
+    // public String formByCode(Survey survey, UUID code) {
+    // surveyService.formByCode(code);
+    // return "redirect:/survey";
+    // }
+    // @GetMapping("/{code}")
+    // public String formByCode(Model model,@PathVariable("code") Survey survey) {
+    // model.addAttribute("code", surveyService.formByCode(survey.getCode()));
+
+    // return "survey/formByCode";
+    //
 
 }

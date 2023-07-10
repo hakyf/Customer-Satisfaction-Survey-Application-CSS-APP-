@@ -27,12 +27,12 @@ public class SurveyController {
     public Survey getById(@PathVariable Long id) {
         return surveyService.getById(id);
     }
-
+   
     @PostMapping
     public Survey create(@RequestBody Survey survey) {
     // Generate UUID for the survey's code property
-    UUID code = UUID.randomUUID();
-    survey.setCode(code);    
+    // UUID code = UUID.randomUUID();
+    // survey.setCode(code);    
         return surveyService.create(survey);
     }
 
@@ -45,4 +45,10 @@ public class SurveyController {
     public Survey delete(@PathVariable Long id) {
         return surveyService.delete(id);
     }
+     // menambahkan get maping code
+       @GetMapping("/{code}")
+    public Survey formByCode(@PathVariable UUID code) {
+        return surveyService.formByCode(code);
+    }
+
 }

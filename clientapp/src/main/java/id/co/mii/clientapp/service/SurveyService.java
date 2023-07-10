@@ -1,6 +1,7 @@
 package id.co.mii.clientapp.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -74,4 +75,22 @@ public class SurveyService {
                 new ParameterizedTypeReference<Survey>() {
                 }).getBody();
     }
+    //   public Survey getByCode(UUID code) {
+    //     return restTemplate.exchange(
+    //             url + "/" + code,
+    //             HttpMethod.GET,
+    //             null,
+    //             new ParameterizedTypeReference<Survey>() {
+    //             }).getBody();}
+
+        public Survey formByCode(UUID code) {
+        return restTemplate.exchange(
+                url + "/" + code,
+                HttpMethod.GET,
+                 null,             
+                new ParameterizedTypeReference<Survey>() {
+                }).getBody();
+    }
 }
+
+
