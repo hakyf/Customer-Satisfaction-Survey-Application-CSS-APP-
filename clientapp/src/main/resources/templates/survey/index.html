@@ -105,56 +105,121 @@
           <div class="col-12 col-lg-3">
             <div class="card">
               <div class="card-header">
-                <h4>Recent Messages</h4>
+                <button
+                  type="button"
+                  class="btn btn-primary float-end"
+                  data-bs-toggle="modal"
+                  data-bs-target="#createSurvey"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </button>
               </div>
-              <div class="card-content pb-4">
-                <div class="recent-message d-flex px-4 py-3">
-                  <div class="avatar avatar-lg">
-                    <img src="assets/images/faces/4.jpg" />
+              <div class="card-body">
+                <table class="table" id="table-survey">
+                  <thead>
+                    <tr>
+                      <th class="col-1">Id</th>
+                      <th class="col-3">Name</th>
+                      <th class="col-2">Employee</th>
+                      <th class="col-2">Client</th>
+                      <th class="col-2">Expired</th>
+                      <th class="col-2">Current Status</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </section>
+          <!-- Basic Tables end -->
+
+          <!-- Modal Create Survey -->
+          <div
+            class="modal fade"
+            id="createSurvey"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                    Create Survey
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <i data-feather="x"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="hidden" id="upd-survey-code" />
+                  <div class="mb-3">
+                    <label for="crt-survey-employee" class="form-label"
+                      >Select Employee Name:</label
+                    >
+                    <select
+                      class="form-select dropdown-employee"
+                      id="crt-survey-employee"
+                      style="width: 100%"
+                      required
+                    >
+                      <option value="" selected>Select Employee Name</option>
+                    </select>
+                    <span class="invalid-feedback"
+                      >Employee Name is required.</span
+                    >
                   </div>
-                  <div class="name ms-4">
-                    <h5 class="mb-1">Hank Schrader</h5>
-                    <h6 class="text-muted mb-0">@johnducky</h6>
+                  <div class="mb-3">
+                    <label for="crt-survey-client" class="form-label"
+                      >Select Client Name:</label
+                    >
+                    <select
+                      class="form-select dropdown-client"
+                      id="crt-survey-client"
+                      style="width: 100%"
+                      required
+                    >
+                      <option value="" selected>Select Client Name</option>
+                    </select>
+                    <span class="invalid-feedback"
+                      >Client Name is required.</span
+                    >
                   </div>
                 </div>
-                <div class="recent-message d-flex px-4 py-3">
-                  <div class="avatar avatar-lg">
-                    <img src="assets/images/faces/5.jpg" />
-                  </div>
-                  <div class="name ms-4">
-                    <h5 class="mb-1">Dean Winchester</h5>
-                    <h6 class="text-muted mb-0">@imdean</h6>
-                  </div>
-                </div>
-                <div class="recent-message d-flex px-4 py-3">
-                  <div class="avatar avatar-lg">
-                    <img src="assets/images/faces/1.jpg" />
-                  </div>
-                  <div class="name ms-4">
-                    <h5 class="mb-1">John Dodol</h5>
-                    <h6 class="text-muted mb-0">@dodoljohn</h6>
-                  </div>
-                </div>
-                <div class="px-4">
-                  <button class="btn btn-block btn-xl btn-outline-primary font-bold mt-3">
-                    Start Conversation
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    <i class="fa-solid fa-xmark"></i> Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="create()"
+                  >
+                    <i class="fa-solid fa-plus"></i> Submit
                   </button>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header">
-                <h4>Visitors Profile</h4>
-              </div>
-              <div class="card-body">
-                <div id="chart-visitors-profile"></div>
-              </div>
-            </div>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   </div>
 </body>
 
+    <!-- Survey JS -->
+    <div layout:fragment="script">
+      <script th:src="@{/js/survey.js}"></script>
+    </div>
+  </body>
 </html>

@@ -51,8 +51,10 @@
                 <span sec:authentication="name" class="text-capitalize"></span>
               </h5>
               <h6 class="text-muted mb-0">
-                <span th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}"
-                  class="text-lowercase"></span>
+                <span
+                  th:text="${#strings.replace(#authentication.getAuthorities()[0].getAuthority(), 'ROLE_', '')}"
+                  class="text-lowercase"
+                ></span>
               </h6>
             </div>
           </div>
@@ -76,8 +78,11 @@
             </a>
           </li>
 
-          <li class="sidebar-item" sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
-            th:classappend="${isActive} == survey ? 'active': ''">
+          <li
+            class="sidebar-item"
+            sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
+            th:classappend="${isActive} == survey ? 'active': ''"
+          >
             <a th:href="@{/survey}" class="sidebar-link">
               <i class="bi bi-clipboard-fill"></i>
               <span>Survey</span>
