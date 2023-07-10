@@ -18,9 +18,6 @@ $(document).ready(function () {
         data: "name",
       },
       {
-        data: "code",
-      },
-      {
         data: "employee.name",
       },
       {
