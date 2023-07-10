@@ -22,9 +22,4 @@ public class EmailRequest {
     private LocalDate expired;
     private Employee employee;
 
-    public EmailRequest(Survey survey) {
-        this.name = survey.getClient().getName();
-        this.code = survey.getCode();
-        this.email = survey.getClient().getEmail();
-    }
 }
