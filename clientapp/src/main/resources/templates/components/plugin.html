@@ -19,6 +19,11 @@
 
   <link rel="stylesheet" th:href="@{/assets/css/pages/fontawesome.css}" />
   <link rel="stylesheet" th:href="@{/assets/css/shared/iconly.css}" />
+
+  <link
+    rel="stylesheet"
+    th:href="@{/assets/extensions/rater-js/lib/style.css}"
+  />
 </div>
 
 <div th:fragment="js">
@@ -59,4 +64,7 @@
   <script th:src="@{/assets/js/pages/datatables.js}"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+  <script th:src="@{/assets/extensions/rater-js/index.js?v=2}"></script>
+  <script th:src="@{/assets/js/pages/rater-js.js}"></script>
 </div>
