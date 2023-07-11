@@ -39,21 +39,6 @@ public class UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found !"));
     }
 
-    // public User create(UserRequest userRequest) {
-    // Employee employee = modelMapper.map(userRequest, Employee.class);
-    // User user = modelMapper.map(userRequest, User.class);
-
-    // List<Role> roles = new ArrayList<>();
-
-    // roles.add(roleService.getById(null));
-    // user.setRoles(roles);
-
-    // user.setEmployee(employee);
-    // employee.setUser(user);
-
-    // return userRepository.save(user);
-    // }
-
     public User update(Long id, User user) {
         getById(id);
         user.setId(id);

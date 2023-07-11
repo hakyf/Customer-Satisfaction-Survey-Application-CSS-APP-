@@ -15,38 +15,41 @@ import id.co.mii.serverapp.models.Parameter;
 import id.co.mii.serverapp.services.ParameterService;
 import lombok.AllArgsConstructor;
 
-
 @RestController
 @AllArgsConstructor
 @RequestMapping("/parameter")
 // @PreAuthorize("hasAnyRole('ADMIN')")
 public class ParameterController {
-    
+
     private ParameterService ParameterService;
-//  @PreAuthorize("hasAnyAuthority('READ_USER', 'READ_ADMIN')")
+
+    // @PreAuthorize("hasAnyAuthority('READ_USER', 'READ_ADMIN')")
     @GetMapping
-    public List<Parameter> getAll(){
+    public List<Parameter> getAll() {
         return ParameterService.getAll();
     }
-// @PreAuthorize("hasAuthority('READ_USER')")
+
+    // @PreAuthorize("hasAuthority('READ_USER')")
     @GetMapping("/{id}")
-    public Parameter getById(@PathVariable Long id){
+    public Parameter getById(@PathVariable Long id) {
         return ParameterService.getById(id);
     }
-// @PreAuthorize("hasAuthority('CREATE_ADMIN','CREATE_USER')")
+
+    // @PreAuthorize("hasAuthority('CREATE_ADMIN','CREATE_USER')")
     @PostMapping
-    public Parameter create(@RequestBody Parameter parameter){
+    public Parameter create(@RequestBody Parameter parameter) {
         return ParameterService.create(parameter);
     }
-    
-//   @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+
+    // @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
     @PutMapping("/{id}")
-    public Parameter update(@PathVariable Long id,@RequestBody Parameter parameter){
+    public Parameter update(@PathVariable Long id, @RequestBody Parameter parameter) {
         return ParameterService.update(id, parameter);
     }
-//  @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+
+    // @PreAuthorize("hasAuthority('DELETE_ADMIN')")
     @DeleteMapping("/{id}")
-    public Parameter delete(@PathVariable Long id){
+    public Parameter delete(@PathVariable Long id) {
         return ParameterService.delete(id);
     }
 }

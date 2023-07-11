@@ -4,9 +4,6 @@ import id.co.mii.serverapp.models.Survey;
 import id.co.mii.serverapp.services.SurveyService;
 import lombok.AllArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,9 +27,6 @@ public class SurveyController {
 
     @PostMapping
     public Survey create(@RequestBody Survey survey) {
-        // Generate UUID for the survey's code property
-        // UUID code = UUID.randomUUID();
-        // survey.setCode(code);
         return surveyService.create(survey);
     }
 
