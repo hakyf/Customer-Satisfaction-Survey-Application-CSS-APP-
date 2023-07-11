@@ -3,9 +3,7 @@ package id.co.mii.serverapp.models.dto.request;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import id.co.mii.serverapp.models.Client;
 import id.co.mii.serverapp.models.Employee;
-import id.co.mii.serverapp.models.Survey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
