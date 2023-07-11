@@ -16,19 +16,6 @@ public class EmailController {
 
     private EmailService emailService;
 
-    // @PostMapping("/simple")
-    // public EmailRequest sendSimpleMessaget(
-    // @RequestBody EmailRequest emailRequest
-    // ) {
-    // return emailService.sendSimpleMessage(emailRequest);
-    // }
-
-    // @PostMapping("/attach")
-    // public EmailRequest sendMessageWitchAttachment(@RequestBody EmailRequest
-    // emailRequest){
-    // return emailService.sendMessageWithAttachment(emailRequest);
-    // }
-
     @PostMapping("/send")
     public EmailRequest sendSurvey(@RequestBody EmailRequest emailRequest) {
         return emailService.sendSurvey(emailRequest);

@@ -2,10 +2,6 @@ package id.co.mii.serverapp.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,13 +31,4 @@ public class AuthController {
     return authService.login(loginRequest);
   }
 
-  // @GetMapping("/verify")
-  // public ResponseEntity verifyUser(@Param("token") String token) {
-  // if (authService.verify(token)) {
-  // return new ResponseEntity<>("Verifikasi Email Telah Berhasil",
-  // HttpStatus.OK);
-  // } else {
-  // return new ResponseEntity(HttpStatus.NOT_FOUND);
-  // }
-  // }
 }

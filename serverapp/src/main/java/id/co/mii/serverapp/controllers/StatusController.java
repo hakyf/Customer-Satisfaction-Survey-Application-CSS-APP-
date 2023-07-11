@@ -15,38 +15,41 @@ import id.co.mii.serverapp.models.Status;
 import id.co.mii.serverapp.services.StatusService;
 import lombok.AllArgsConstructor;
 
-
 @RestController
 @AllArgsConstructor
 @RequestMapping("/status")
 // @PreAuthorize("hasAnyRole('ADMIN')")
 public class StatusController {
-    
+
     private StatusService StatusService;
-//  @PreAuthorize("hasAnyAuthority('READ_USER', 'READ_ADMIN')")
+
+    // @PreAuthorize("hasAnyAuthority('READ_USER', 'READ_ADMIN')")
     @GetMapping
-    public List<Status> getAll(){
+    public List<Status> getAll() {
         return StatusService.getAll();
     }
-// @PreAuthorize("hasAuthority('READ_USER')")
+
+    // @PreAuthorize("hasAuthority('READ_USER')")
     @GetMapping("/{id}")
-    public Status getById(@PathVariable Long id){
+    public Status getById(@PathVariable Long id) {
         return StatusService.getById(id);
     }
-// @PreAuthorize("hasAuthority('CREATE_ADMIN','CREATE_USER')")
+
+    // @PreAuthorize("hasAuthority('CREATE_ADMIN','CREATE_USER')")
     @PostMapping
-    public Status create(@RequestBody Status status){
+    public Status create(@RequestBody Status status) {
         return StatusService.create(status);
     }
-    
-//   @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+
+    // @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
     @PutMapping("/{id}")
-    public Status update(@PathVariable Long id,@RequestBody Status status){
+    public Status update(@PathVariable Long id, @RequestBody Status status) {
         return StatusService.update(id, status);
     }
-//  @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+
+    // @PreAuthorize("hasAuthority('DELETE_ADMIN')")
     @DeleteMapping("/{id}")
-    public Status delete(@PathVariable Long id){
+    public Status delete(@PathVariable Long id) {
         return StatusService.delete(id);
     }
 }
