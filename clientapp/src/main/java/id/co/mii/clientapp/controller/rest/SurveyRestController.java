@@ -48,14 +48,15 @@ public class SurveyRestController {
     public Survey delete(@PathVariable Long id) {
         return surveyService.delete(id);
     }
-    //  // menambahkan get maping code
-    //    @GetMapping("/{code}")
+
+    // // menambahkan get maping code
+    // @GetMapping("/{code}")
     // public Survey formByCode(@PathVariable UUID code) {
-    //     return surveyService.formByCode(code);
+    // return surveyService.formByCode(code);
     // }
- @GetMapping("/{code}")
+    @GetMapping("/{code}")
     public Survey formByCode(@PathVariable UUID code) {
-    
+
         return surveyService.formByCode(code);
     }
 

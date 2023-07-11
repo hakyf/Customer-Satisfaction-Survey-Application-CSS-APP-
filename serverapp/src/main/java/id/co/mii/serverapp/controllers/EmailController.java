@@ -13,23 +13,24 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RequestMapping("/email")
 public class EmailController {
-    
+
     private EmailService emailService;
- 
+
     // @PostMapping("/simple")
     // public EmailRequest sendSimpleMessaget(
-    //     @RequestBody EmailRequest emailRequest
+    // @RequestBody EmailRequest emailRequest
     // ) {
-    //     return emailService.sendSimpleMessage(emailRequest);
+    // return emailService.sendSimpleMessage(emailRequest);
     // }
 
     // @PostMapping("/attach")
-    // public EmailRequest sendMessageWitchAttachment(@RequestBody EmailRequest emailRequest){
-    //     return emailService.sendMessageWithAttachment(emailRequest);
+    // public EmailRequest sendMessageWitchAttachment(@RequestBody EmailRequest
+    // emailRequest){
+    // return emailService.sendMessageWithAttachment(emailRequest);
     // }
 
     @PostMapping("/send")
-    public EmailRequest sendSurvey(@RequestBody EmailRequest emailRequest){    
+    public EmailRequest sendSurvey(@RequestBody EmailRequest emailRequest) {
         return emailService.sendSurvey(emailRequest);
     }
 }
