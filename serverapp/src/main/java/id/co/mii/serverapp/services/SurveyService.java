@@ -78,7 +78,7 @@ public class SurveyService {
 
     public Survey formByCode(UUID code) {
         return surveyRepository
-                .getByCode(code)
+                .findByCode(code)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
     }
 }

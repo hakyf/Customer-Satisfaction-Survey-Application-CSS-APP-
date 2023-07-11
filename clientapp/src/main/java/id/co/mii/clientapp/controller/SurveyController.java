@@ -29,8 +29,6 @@ public class SurveyController {
     private SurveyService surveyService;
     private SectionService sectionService;
     private QuestionService questionService;
-    private EmployeeService employeeService;
-    private ClientService clientService;
 
     @GetMapping
     public String index(Model model) {
