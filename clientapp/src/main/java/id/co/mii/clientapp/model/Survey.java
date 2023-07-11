@@ -21,4 +21,15 @@ public class Survey {
     private Client client;
     private Employee employee;
 
+    public String getName() {
+        return name;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public Client getClient() {
+        return client;
+    }
 }

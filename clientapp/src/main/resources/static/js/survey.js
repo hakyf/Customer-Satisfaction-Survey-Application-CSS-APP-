@@ -106,6 +106,9 @@ function create() {
       client: {
         id: client,
       },
+      status: {
+        id: 1,
+      },
     }),
     success: (result) => {
       $("#createSurvey").modal("hide");

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+import org.aspectj.apache.bcel.generic.InstructionConstants.Clinit;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.stereotype.Service;
@@ -12,7 +13,6 @@ import org.springframework.web.server.ResponseStatusException;
 import id.co.mii.serverapp.models.Client;
 import id.co.mii.serverapp.models.Employee;
 import id.co.mii.serverapp.models.Survey;
-import id.co.mii.serverapp.models.Status;
 import id.co.mii.serverapp.models.dto.request.EmailRequest;
 import id.co.mii.serverapp.repository.SurveyRepository;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,6 @@ public class SurveyService {
     private EmployeeService employeeService;
     private EmailService emailService;
     private ClientService clientService;
-    private StatusService statusService;
 
     public List<Survey> getAll() {
         return surveyRepository.findAll();
@@ -37,15 +36,11 @@ public class SurveyService {
     }
 
     public Survey create(Survey survey) {
-        survey.setName("Customer Satisfaction Survey - Metrodata Electronics");
+        survey.setName("Employee Performance Survey - Metrodata Electronics");
         UUID code = UUID.randomUUID();
         survey.setCode(code);
         LocalDate expired = LocalDate.now().plusDays(7);
         survey.setExpired(expired);
-
-        // Set ID status menjadi 1
-        Status status = statusService.getById(1L);
-        survey.setStatus(status);
 
         // Simpan survey ke database
         final Survey createdSurvey = surveyRepository.save(survey);
