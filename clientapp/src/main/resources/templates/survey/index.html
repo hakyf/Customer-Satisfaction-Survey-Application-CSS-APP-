@@ -2,7 +2,7 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
 
 <head>
-  <title>Dashboard</title>
+  <title>Survey</title>
 </head>
 
 <body>
@@ -13,201 +13,92 @@
           <i class="bi bi-justify fs-3"></i>
         </a>
       </header>
+
       <div class="page-heading">
-        <h3>Profile Statistics</h3>
-      </div>
-      <div class="page-content">
-        <section class="row">
-          <div class="col-12 col-lg-9">
-            <div class="row">
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                        <div class="stats-icon green mb-2">
-                          <i class="iconly-boldShow"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Visitors</h6>
-                        <h6 class="font-extrabold mb-0">11.000</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                        <div class="stats-icon purple mb-2">
-                          <i class="iconly-boldUser"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Employee</h6>
-                        <h6 class="font-extrabold mb-0">112.000</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                        <div class="stats-icon blue mb-2">
-                          <i class="iconly-boldProfile"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Client</h6>
-                        <h6 class="font-extrabold mb-0">183.000</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                        <div class="stats-icon red mb-2">
-                          <i class="iconly-boldDocument"></i>
-                        </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Survey</h6>
-                        <h6 class="font-extrabold mb-0">112</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3>Survey Page</h3>
             </div>
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Profile Visit</h4>
-                  </div>
-                  <div class="card-body">
-                    <div id="chart-profile-visit"></div>
-                  </div>
-                </div>
-              </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+              <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Survey
+                  </li>
+                </ol>
+              </nav>
             </div>
           </div>
-          <div class="col-12 col-lg-3">
-            <div class="card">
-              <div class="card-header">
-                <button
-                  type="button"
-                  class="btn btn-primary float-end"
-                  data-bs-toggle="modal"
-                  data-bs-target="#createSurvey"
-                >
-                  <i class="fa-solid fa-plus"></i>
+        </div>
+
+        <!-- Basic Tables start -->
+        <section class="section">
+          <div class="card">
+            <div class="card-header">
+              <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
+                data-bs-target="#createSurvey">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+            <div class="card-body">
+              <table class="table" id="table-survey">
+                <thead>
+                  <tr>
+                    <th class="col-1">Id</th>
+                    <th class="col-3">Name</th>
+                    <th class="col-2">Employee</th>
+                    <th class="col-2">Client</th>
+                    <th class="col-2">Expired</th>
+                    <th class="col-2">Current Status</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </section>
+        <!-- Basic Tables end -->
+
+        <!-- Modal Create Survey -->
+        <div class="modal fade" id="createSurvey" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                  Create Survey
+                </h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <i data-feather="x"></i>
                 </button>
               </div>
-              <div class="card-body">
-                <table class="table" id="table-survey">
-                  <thead>
-                    <tr>
-                      <th class="col-1">Id</th>
-                      <th class="col-3">Name</th>
-                      <th class="col-2">Employee</th>
-                      <th class="col-2">Client</th>
-                      <th class="col-2">Expired</th>
-                      <th class="col-2">Current Status</th>
-                    </tr>
-                  </thead>
-                </table>
+              <div class="modal-body">
+                <input type="hidden" id="upd-survey-code" />
+                <div class="mb-3">
+                  <label for="crt-survey-employee" class="form-label">Select Employee Name:</label>
+                  <select class="form-select dropdown-employee" id="crt-survey-employee" style="width: 100%" required>
+                    <option value="" selected>Select Employee Name</option>
+                  </select>
+                  <span class="invalid-feedback">Employee Name is required.</span>
+                </div>
+                <div class="mb-3">
+                  <label for="crt-survey-client" class="form-label">Select Client Name:</label>
+                  <select class="form-select dropdown-client" id="crt-survey-client" style="width: 100%" required>
+                    <option value="" selected>Select Client Name</option>
+                  </select>
+                  <span class="invalid-feedback">Client Name is required.</span>
+                </div>
               </div>
-            </div>
-          </section>
-          <!-- Basic Tables end -->
-
-          <!-- Modal Create Survey -->
-          <div
-            class="modal fade"
-            id="createSurvey"
-            data-bs-backdrop="static"
-            data-bs-keyboard="false"
-            tabindex="-1"
-            aria-labelledby="staticBackdropLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                    Create Survey
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <i data-feather="x"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <input type="hidden" id="upd-survey-code" />
-                  <div class="mb-3">
-                    <label for="crt-survey-employee" class="form-label"
-                      >Select Employee Name:</label
-                    >
-                    <select
-                      class="form-select dropdown-employee"
-                      id="crt-survey-employee"
-                      style="width: 100%"
-                      required
-                    >
-                      <option value="" selected>Select Employee Name</option>
-                    </select>
-                    <span class="invalid-feedback"
-                      >Employee Name is required.</span
-                    >
-                  </div>
-                  <div class="mb-3">
-                    <label for="crt-survey-client" class="form-label"
-                      >Select Client Name:</label
-                    >
-                    <select
-                      class="form-select dropdown-client"
-                      id="crt-survey-client"
-                      style="width: 100%"
-                      required
-                    >
-                      <option value="" selected>Select Client Name</option>
-                    </select>
-                    <span class="invalid-feedback"
-                      >Client Name is required.</span
-                    >
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    <i class="fa-solid fa-xmark"></i> Close
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    onclick="create()"
-                  >
-                    <i class="fa-solid fa-plus"></i> Submit
-                  </button>
-                </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  <i class="fa-solid fa-xmark"></i> Close
+                </button>
+                <button type="button" class="btn btn-primary" onclick="create()">
+                  <i class="fa-solid fa-plus"></i> Submit
+                </button>
               </div>
             </div>
           </div>
@@ -215,11 +106,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Survey JS -->
+  <div layout:fragment="script">
+    <script th:src="@{/js/survey.js}"></script>
+  </div>
 </body>
 
-    <!-- Survey JS -->
-    <div layout:fragment="script">
-      <script th:src="@{/js/survey.js}"></script>
-    </div>
-  </body>
 </html>
