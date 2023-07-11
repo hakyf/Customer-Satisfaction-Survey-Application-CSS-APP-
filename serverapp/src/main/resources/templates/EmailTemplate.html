@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Email Survey</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #000000;
+      }
+
+      .im {
+        color: #000000;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        background-color: #45799b;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .content {
+        background-image: url("https://img.freepik.com/free-vector/simple-blue-gradient-background-vector-business_53876-166894.jpg?w=826&t=st=1688997958~exp=1688998558~hmac=495fa1ae28f1ec54cea1f749b8b7d7233610a25f484cbce136baf96933dd4dbb");
+        text-align: justify;
+        background-color: #ffffff;
+        padding: 40px;
+      }
+
+      .content .btn-container {
+        text-align: center;
+      }
+
+      .content .button {
+        display: inline-block;
+        background-color: #6b9bbb;
+        color: #ffffff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .footer {
+        background-color: #45799b;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>
+          Employee Performance Survey <br />
+          Metrodata Electronics
+        </h1>
+      </div>
+      <div class="content">
+        <h4>Dear <span th:text="${name}" class="text-capitalize"></span>,</h4>
+        <p>
+          We hope this email finds you well. We, at PT. Metrodata Electronics
+          Tbk, would like to gather your valuable feedback on the performance of
+          our employee,
+          <span
+            th:text="${employee}"
+            class="text-capitalize"
+            style="font-weight: bold"
+          ></span
+          >, during their tenure at our company.
+        </p>
+        <p>
+          Your input is highly valued and will assist us in further improving
+          our services. We kindly request your participation in the survey
+          provided below:
+        </p>
+        <div class="btn-container">
+          <a
+            class="button"
+            target="_blank"
+            th:href="@{'http://localhost:8088/survey/' + ${code}}"
+          >
+            Survey Link</a
+          >
+        </div>
+        <p>
+          Please take a few moments to complete the survey, as your honest
+          assessment of
+          <span th:text="${employee}" class="text-capitalize"></span>'s
+          performance will greatly contribute to our continuous growth and
+          development. We sincerely appreciate your time and effort.
+        </p>
+        <p>The survey will remain active until:</p>
+        <h4>Expiration Date: <span th:text="${expired}"></span></h4>
+        <p>
+          Thank you in advance for your cooperation. If you have any questions
+          or require further assistance, please feel free to reach out to us. We
+          look forward to receiving your feedback.
+        </p>
+        <p>Best regards,</p>
+        <p>
+          <br />
+          Devid Erliando <br />
+          PT. Metrodata Electronics Tbk
+        </p>
+        <img
+          src="https://rec-data.kalibrr.com/www.kalibrr.id/logos/9NPV97S5WSDBSEKB48SP63YNKWGAFFVTJ52QGYKZ-5eabd8d4.png"
+          alt="Metrodata"
+          style="width: 178px; background: transparent"
+        />
+      </div>
+      <div class="footer">
+        <p>Kelompok 2 <sup>&copy;</sup></p>
+      </div>
+    </div>
+  </body>
+</html>

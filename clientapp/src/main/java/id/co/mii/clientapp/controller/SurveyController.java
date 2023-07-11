@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import id.co.mii.clientapp.model.Survey;
-import id.co.mii.clientapp.service.ClientService;
-import id.co.mii.clientapp.service.EmployeeService;
 import id.co.mii.clientapp.service.SurveyService;
 import lombok.AllArgsConstructor;
 
@@ -23,9 +21,6 @@ import lombok.AllArgsConstructor;
 public class SurveyController {
 
     private SurveyService surveyService;
-    private EmployeeService employeeService;
-    private ClientService clientService;
-
 
     @GetMapping
     public String index(Model model) {
@@ -34,18 +29,14 @@ public class SurveyController {
         return "survey/index";
     }
 
-    @GetMapping("/send")
-    public String sendForm(Survey survey, Model model) {
-        model.addAttribute("surveys", surveyService.getAll());
-        model.addAttribute("employees", employeeService.getAll());
-        model.addAttribute("clients", clientService.getAll());
-        model.addAttribute("isActive", "send");
-        return "survey/send";
+    @GetMapping("/create")
+    public String createForm(Survey survey, Model model) {
+        return "survey/create";
     }
 
     @PostMapping
-    public String send(Survey survey) {
-        surveyService.send(survey);
+    public String create(Survey survey) {
+        surveyService.create(survey);
         return "redirect:/survey";
     }
 
@@ -68,7 +59,7 @@ public class SurveyController {
     }
 
     @GetMapping("/{code}")
-    public String formByCode( @PathVariable UUID code) {
+    public String formByCode(@PathVariable UUID code) {
         return "survey/formByCode";
     }
 
