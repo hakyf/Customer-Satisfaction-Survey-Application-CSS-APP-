@@ -24,8 +24,8 @@ import lombok.AllArgsConstructor;
 public class SurveyController {
 
     private SurveyService surveyService;
-    private EmployeeService employeeService;
-    private ClientService clientService;
+    private SectionService sectionService;
+    private QuestionService questionService;
 
     @GetMapping
     public String index(Model model) {
