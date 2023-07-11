@@ -41,20 +41,73 @@
             </section>
             <section class="section">
               <div class="row">
-                <div class="col-12" th:each="section : ${sections}">
+                <div
+                  class="col-12"
+                  th:each="section, sectionStatus : ${sections}"
+                >
                   <div class="card">
                     <div class="card-header">
-                      <h4 class="card-title" th:text="${section.name}"></h4>
+                      <h4 class="card-title">
+                        <span th:text="${sectionStatus.index + 1}"></span>.
+                        <span th:text="${section.name}"></span>
+                      </h4>
                     </div>
                     <div class="card-body">
                       <div class="row">
                         <div class="col-12" th:each="question : ${questions}">
-                          <div class="form-group">
+                          <div
+                            th:if="${question.section.id} == ${section.id}"
+                            class="form-group"
+                          >
                             <label
                               th:for="${'question-' + question.id}"
                               th:text="${question.body}"
                             ></label>
-                            <div id="basic"></div>
+                            <div th:if="${section.id == 1 || section.id == 2}">
+                              <!-- <div id="basic" class="star-rating"></div> -->
+                              <div class="rating">
+                                <input
+                                  type="radio"
+                                  id="star1"
+                                  th:name="${'question['+question.id+']'}"
+                                  value="1"
+                                />
+                                <label for="star1" title="1 star">1</label>
+                                <input
+                                  type="radio"
+                                  id="star2"
+                                  th:name="${'question['+question.id+']'}"
+                                  value="2"
+                                />
+                                <label for="star2" title="2 stars">2</label>
+                                <input
+                                  type="radio"
+                                  id="star3"
+                                  th:name="${'question['+question.id+']'}"
+                                  value="3"
+                                />
+                                <label for="star3" title="3 stars">3</label>
+                                <input
+                                  type="radio"
+                                  id="star4"
+                                  th:name="${'question['+question.id+']'}"
+                                  value="4"
+                                />
+                                <label for="star4" title="4 stars">4</label>
+                                <input
+                                  type="radio"
+                                  id="star5"
+                                  th:name="${'question['+question.id+']'}"
+                                  value="5"
+                                />
+                                <label for="star5" title="5 stars">5</label>
+                              </div>
+                            </div>
+                            <textarea
+                              th:if="${section.id == 3}"
+                              class="form-control"
+                              rows="3"
+                            ></textarea>
                           </div>
                         </div>
                       </div>
