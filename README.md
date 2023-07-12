@@ -67,7 +67,7 @@
     - Update Sidebar
     - Update Dashboard
     - Update Form Survey
-12. /07
+12. 13/07
     - Membuat Dokumentasi / User Manual Book
     - Membuat Persentasi
     - Update SurveyController
