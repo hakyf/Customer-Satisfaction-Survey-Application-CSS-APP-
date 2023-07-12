@@ -51,6 +51,7 @@ public class SurveyRestController {
 
     @GetMapping("/{code}")
     public Survey formByCode(@PathVariable UUID code) {
+
         return surveyService.formByCode(code);
     }
 

@@ -41,20 +41,53 @@
             </section>
             <section class="section">
               <div class="row">
-                <div class="col-12" th:each="section : ${sections}">
+                <div
+                  class="col-12"
+                  th:each="section, sectionStatus : ${sections}"
+                >
                   <div class="card">
                     <div class="card-header">
-                      <h4 class="card-title" th:text="${section.name}"></h4>
+                      <h4 class="card-title">
+                        <span th:text="${sectionStatus.index + 1}"></span>.
+                        <span th:text="${section.name}"></span>
+                      </h4>
                     </div>
                     <div class="card-body">
                       <div class="row">
                         <div class="col-12" th:each="question : ${questions}">
-                          <div class="form-group">
+                          <div
+                            th:if="${question.section.id} == ${section.id}"
+                            class="form-group"
+                          >
                             <label
                               th:for="${'question-' + question.id}"
                               th:text="${question.body}"
                             ></label>
-                            <div id="basic"></div>
+                            <div th:if="${section.id == 1 || section.id == 2}">
+                              <div class="rating">
+                                <div
+                                  class="form-check"
+                                  th:each="parameter : ${parameters}"
+                                >
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    th:name="${'flexRadioDefault-' + question.id}"
+                                    th:id="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    th:for="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
+                                    th:text="${parameter.notes}"
+                                  ></label>
+                                </div>
+                              </div>
+                            </div>
+                            <textarea
+                              th:if="${section.id == 3}"
+                              class="form-control"
+                              rows="3"
+                            ></textarea>
                           </div>
                         </div>
                       </div>

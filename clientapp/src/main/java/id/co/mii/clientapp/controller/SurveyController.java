@@ -1,6 +1,5 @@
 package id.co.mii.clientapp.controller;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
@@ -12,10 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import id.co.mii.clientapp.model.Section;
 import id.co.mii.clientapp.model.Survey;
-import id.co.mii.clientapp.service.ClientService;
-import id.co.mii.clientapp.service.EmployeeService;
+import id.co.mii.clientapp.service.ParameterService;
 import id.co.mii.clientapp.service.QuestionService;
 import id.co.mii.clientapp.service.SectionService;
 import id.co.mii.clientapp.service.SurveyService;
@@ -29,8 +26,7 @@ public class SurveyController {
     private SurveyService surveyService;
     private SectionService sectionService;
     private QuestionService questionService;
-    private EmployeeService employeeService;
-    private ClientService clientService;
+    private ParameterService parameterService;
 
     @GetMapping
     public String index(Model model) {
@@ -72,6 +68,7 @@ public class SurveyController {
     public String formByCode(@PathVariable UUID code, Model model) {
         model.addAttribute("sections", sectionService.getAll());
         model.addAttribute("questions", questionService.getAll());
+        model.addAttribute("parameters", parameterService.getAll());
         return "survey/formByCode";
     }
 
