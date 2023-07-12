@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import id.co.mii.clientapp.model.Survey;
+import id.co.mii.clientapp.service.AnswerQuestionRequest;
+import id.co.mii.clientapp.service.ClientService;
+import id.co.mii.clientapp.service.EmployeeService;
 import id.co.mii.clientapp.service.ParameterService;
 import id.co.mii.clientapp.service.QuestionService;
 import id.co.mii.clientapp.service.SectionService;
@@ -27,6 +30,8 @@ public class SurveyController {
     private SectionService sectionService;
     private QuestionService questionService;
     private ParameterService parameterService;
+    private EmployeeService employeeService;
+    private ClientService clientService;
 
     @GetMapping
     public String index(Model model) {
@@ -66,10 +71,17 @@ public class SurveyController {
 
     @GetMapping("/{code}")
     public String formByCode(@PathVariable UUID code, Model model) {
+        model.addAttribute("surveys", surveyService.getAll());
         model.addAttribute("sections", sectionService.getAll());
         model.addAttribute("questions", questionService.getAll());
         model.addAttribute("parameters", parameterService.getAll());
         return "survey/formByCode";
+    }
+
+    @PostMapping("/saveAnswer/{surveyId}")
+    public String saveAnswer(@PathVariable Long surveyId, AnswerQuestionRequest answerRequest) {
+        surveyService.saveAnswer(surveyId, answerRequest);
+        return "redirect:/survey";
     }
 
 }

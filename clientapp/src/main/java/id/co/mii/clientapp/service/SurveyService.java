@@ -84,4 +84,10 @@ public class SurveyService {
                 new ParameterizedTypeReference<Survey>() {
                 }).getBody();
     }
+
+    public void saveAnswer(Long surveyId, AnswerQuestionRequest answerRequest) {
+        String saveAnswerUrl = url + "/saveAnswer/" + surveyId;
+        restTemplate.postForObject(saveAnswerUrl, answerRequest, Void.class);
+    }
+
 }
