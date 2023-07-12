@@ -17,7 +17,10 @@
               </div>
             </div>
           </div>
-          <form th:action="@{/survey/{code}(code=${code})}" th:method="POST">
+          <form
+            th:action="@{/survey/saveAnswer/{surveyId}(surveyId=${surveyId})}"
+            th:method="POST"
+          >
             <section id="multiple-column-form">
               <div class="row match-height">
                 <div class="col-12">
@@ -25,7 +28,10 @@
                     <div class="card-body">
                       <h4 class="card-title">
                         Client Name:
-                        <span th:text="${name}" class="text-capitalize"></span>
+                        <span
+                          th:text="${client}"
+                          class="text-capitalize"
+                        ></span>
                       </h4>
                       <h4 class="card-title">
                         Employee Name:

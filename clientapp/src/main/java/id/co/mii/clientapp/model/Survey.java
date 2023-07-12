@@ -20,5 +20,6 @@ public class Survey {
     private Status status;
     private Client client;
     private Employee employee;
+    private Answer answer;
 
 }

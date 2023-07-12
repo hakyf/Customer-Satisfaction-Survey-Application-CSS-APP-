@@ -1,6 +1,8 @@
 package id.co.mii.serverapp.services;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,11 +11,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import id.co.mii.serverapp.models.Answer;
 import id.co.mii.serverapp.models.Client;
 import id.co.mii.serverapp.models.Employee;
+import id.co.mii.serverapp.models.Question;
 import id.co.mii.serverapp.models.Survey;
 import id.co.mii.serverapp.models.Status;
+import id.co.mii.serverapp.models.dto.request.AnswerQuestionRequest;
 import id.co.mii.serverapp.models.dto.request.EmailRequest;
+import id.co.mii.serverapp.repository.AnswerRepository;
 import id.co.mii.serverapp.repository.SurveyRepository;
 import lombok.AllArgsConstructor;
 
@@ -25,6 +31,8 @@ public class SurveyService {
     private EmailService emailService;
     private ClientService clientService;
     private StatusService statusService;
+    private AnswerService answerService;
+    private AnswerRepository answerRepository;
 
     public List<Survey> getAll() {
         return surveyRepository.findAll();
@@ -77,8 +85,34 @@ public class SurveyService {
     }
 
     public Survey formByCode(UUID code) {
-        return surveyRepository
+        Survey survey = surveyRepository
                 .findByCode(code)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
+
+        // Lakukan logika untuk mengirimkan email dan menyimpan jawaban
+
+        return survey;
     }
+
+    public void saveAnswer(Survey survey, AnswerQuestionRequest answerRequest) {
+        // Ambil nilai-nilai dari AnswerQuestionRequest
+        Long surveyId = answerRequest.getId();
+        String[] answerRatings = answerRequest.getAnswerRating();
+        Question question = answerRequest.getQuestion();
+
+        // Konversi array menjadi list
+        List<String> ratings = Arrays.asList(answerRatings);
+
+        // Buat objek Answer
+        Answer answer = new Answer();
+        answer.setId(surveyId);
+        for (String rating : ratings) {
+            answer.setRating(rating);
+        }
+        answer.setQuestion(question);
+
+        // Simpan jawaban ke dalam database
+        answerRepository.save(answer);
+    }
+
 }
