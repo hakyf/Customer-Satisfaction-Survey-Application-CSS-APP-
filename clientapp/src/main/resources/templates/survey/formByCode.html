@@ -65,41 +65,22 @@
                             ></label>
                             <div th:if="${section.id == 1 || section.id == 2}">
                               <div class="rating">
-                                <input
-                                  type="radio"
-                                  id="star1"
-                                  th:name="${'question['+question.id+']'}"
-                                  value="1"
-                                />
-                                <label for="star1" title="1 star">1</label>
-                                <input
-                                  type="radio"
-                                  id="star2"
-                                  th:name="${'question['+question.id+']'}"
-                                  value="2"
-                                />
-                                <label for="star2" title="2 stars">2</label>
-                                <input
-                                  type="radio"
-                                  id="star3"
-                                  th:name="${'question['+question.id+']'}"
-                                  value="3"
-                                />
-                                <label for="star3" title="3 stars">3</label>
-                                <input
-                                  type="radio"
-                                  id="star4"
-                                  th:name="${'question['+question.id+']'}"
-                                  value="4"
-                                />
-                                <label for="star4" title="4 stars">4</label>
-                                <input
-                                  type="radio"
-                                  id="star5"
-                                  th:name="${'question['+question.id+']'}"
-                                  value="5"
-                                />
-                                <label for="star5" title="5 stars">5</label>
+                                <div
+                                  class="form-check"
+                                  th:each="parameter : ${parameters}"
+                                >
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    th:name="${'flexRadioDefault-' + question.id}"
+                                    th:id="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    th:for="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
+                                    th:text="${parameter.notes}"
+                                  ></label>
+                                </div>
                               </div>
                             </div>
                             <textarea
