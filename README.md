@@ -23,6 +23,8 @@
 - Entity Relational Diagram : [Link](https://drive.google.com/file/d/1X94O6mTQVWFhbWXJA1D2281dAGN6U6ht/view?usp=sharing)
 - Data Dummy : [Link](https://docs.google.com/spreadsheets/d/10gDpG6SatiQW8xmxUQlRNW3e7XbkgA5qFfhq4r42nl4/edit?usp=sharing)
 - Postman : [Link](https://documenter.getpostman.com/view/27540842/2s93zCZLfV)
+- User Manual Book : [Link](https://drive.google.com/file/d/1osrlxfEnzoCqVr-oktPbCV8bG3yLbAIV/view?usp=sharing)
+- Persentation : [Link](https://drive.google.com/file/d/1kZy92d3-NEvAaEp1CA1s8wGh0soMX-m5/view?usp=sharing)
 
 ## **`Project Task`**
 
@@ -49,6 +51,28 @@
    - Add service, controller, restcontroller, js, html survey
    - Add service, controller, restcontroller, js, html answer
    - Add service, controller, restcontroller, js, html client
+7. 06/07
+   - Update Navbar
+   - Update Login Page
+   - Custom Email Template
+   - Add service, controller, restcontroller, js, html Result
+8. 07/07
+   - Add Template Email
+9. 10/07
+   - Update Survey Reppository
+10. 11/07
+   - Edit Logo
+   - Update Login Page
+11. 12/07
+   - Update index Survey
+   - Update Sidebar
+   - Update Dashboard
+   - Update Form Survey
+12. 13/07
+   - Membuat Dokumentasi / User Manual Book
+   - Membuat Persentasi
+   - Update SurveyController
+   - Update Form Survey
 
 - **Habibullah Dzaky Musthafa**
 
