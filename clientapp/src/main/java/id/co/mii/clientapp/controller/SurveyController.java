@@ -1,6 +1,5 @@
 package id.co.mii.clientapp.controller;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;

@@ -1,111 +1,85 @@
 <!DOCTYPE html>
-<html
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layout/survey}"
->
-  <head>
-    <title>Survey Form</title>
-  </head>
-  <body>
-    <div layout:fragment="content">
-      <div id="main" style="margin-right: 300px">
-        <div class="page-heading">
-          <div class="page-title">
-            <div class="row">
-              <div class="col-12">
-                <h3>Customer Satisfaction Survey - Metrodata Electronics</h3>
-              </div>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/survey}">
+
+<head>
+  <title>Survey Form</title>
+</head>
+
+<body>
+  <div layout:fragment="content">
+    <div id="main" style="margin-right: 300px">
+      <div class="page-heading">
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12">
+              <h3>Customer Satisfaction Survey - Metrodata Electronics</h3>
             </div>
           </div>
-          <form th:action="@{/survey/{code}(code=${code})}" th:method="POST">
-            <section id="multiple-column-form">
-              <div class="row match-height">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">
-                        Client Name:
-                        <span th:text="${name}" class="text-capitalize"></span>
-                      </h4>
-                      <h4 class="card-title">
-                        Employee Name:
-                        <span
-                          th:text="${employee}"
-                          class="text-capitalize"
-                        ></span>
-                      </h4>
-                    </div>
+        </div>
+        <form th:action="@{/survey/{code}(code=${code})}" th:method="POST">
+          <section id="multiple-column-form">
+            <div class="row match-height">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Client Name:
+                      <span th:text="${name}" class="text-capitalize"></span>
+                    </h4>
+                    <h4 class="card-title">
+                      Employee Name:
+                      <span th:text="${employee}" class="text-capitalize"></span>
+                    </h4>
                   </div>
                 </div>
               </div>
-            </section>
-            <section class="section">
-              <div class="row">
-                <div
-                  class="col-12"
-                  th:each="section, sectionStatus : ${sections}"
-                >
-                  <div class="card">
-                    <div class="card-header">
-                      <h4 class="card-title">
-                        <span th:text="${sectionStatus.index + 1}"></span>.
-                        <span th:text="${section.name}"></span>
-                      </h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-12" th:each="question : ${questions}">
-                          <div
-                            th:if="${question.section.id} == ${section.id}"
-                            class="form-group"
-                          >
-                            <label
-                              th:for="${'question-' + question.id}"
-                              th:text="${question.body}"
-                            ></label>
-                            <div th:if="${section.id == 1 || section.id == 2}">
-                              <div class="rating">
-                                <div
-                                  class="form-check"
-                                  th:each="parameter : ${parameters}"
-                                >
-                                  <input
-                                    class="form-check-input"
-                                    type="radio"
-                                    th:name="${'flexRadioDefault-' + question.id}"
-                                    th:id="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
-                                  />
-                                  <label
-                                    class="form-check-label"
-                                    th:for="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
-                                    th:text="${parameter.notes}"
-                                  ></label>
-                                </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="row">
+              <div class="col-12" th:each="section, sectionStatus : ${sections}">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title">
+                      <span th:text="${sectionStatus.index + 1}"></span>.
+                      <span th:text="${section.name}"></span>
+                    </h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12" th:each="question : ${questions}">
+                        <div th:if="${question.section.id} == ${section.id}" class="form-group">
+                          <label th:for="${'question-' + question.id}" th:text="${question.body}"></label>
+                          <div th:if="${section.id == 1 || section.id == 2}">
+                            <div class="rating">
+                              <div class="form-check" th:each="parameter : ${parameters}">
+                                <input class="form-check-input" type="radio"
+                                  th:name="${'flexRadioDefault-' + question.id}"
+                                  th:id="${'flexRadioDefault-' + question.id + '-' + parameter.id}" />
+                                <label class="form-check-label"
+                                  th:for="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
+                                  th:text="${parameter.notes}"></label>
                               </div>
                             </div>
-                            <textarea
-                              th:if="${section.id == 3}"
-                              class="form-control"
-                              rows="3"
-                            ></textarea>
                           </div>
+                          <textarea th:if="${section.id == 3}" class="form-control" rows="3"></textarea>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
-            <div class="col-12 d-flex justify-content-end">
-              <button type="submit" class="btn btn-primary me-1 mb-1">
-                Submit
-              </button>
-              <button type="reset" class="btn btn-light-secondary me-1 mb-1">
-                Reset
-              </button>
             </div>
-          </form>
-        </div>
+          </section>
+          <div class="col-12 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary me-1 mb-1">
+              Submit
+            </button>
+            <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+              Reset
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
