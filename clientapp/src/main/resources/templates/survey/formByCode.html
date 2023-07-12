@@ -69,7 +69,9 @@
                               th:for="${'question-' + question.id}"
                               th:text="${question.body}"
                             ></label>
-                            <div th:if="${section.id == 1 || section.id == 2}">
+                            <div
+                              th:if="${section.id == 1 || section.id == 2 || section.id >= 4}"
+                            >
                               <div class="rating">
                                 <div
                                   class="form-check"
