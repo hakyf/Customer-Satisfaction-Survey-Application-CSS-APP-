@@ -75,13 +75,6 @@ public class SurveyService {
                 new ParameterizedTypeReference<Survey>() {
                 }).getBody();
     }
-    // public Survey getByCode(UUID code) {
-    // return restTemplate.exchange(
-    // url + "/" + code,
-    // HttpMethod.GET,
-    // null,
-    // new ParameterizedTypeReference<Survey>() {
-    // }).getBody();}
 
     public Survey formByCode(UUID code) {
         return restTemplate.exchange(

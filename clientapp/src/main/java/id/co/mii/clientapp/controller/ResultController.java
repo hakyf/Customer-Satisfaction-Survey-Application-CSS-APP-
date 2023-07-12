@@ -57,10 +57,11 @@ public class ResultController {
         return "redirect:/result";
     }
 
-    @GetMapping("/{id}")
+     @GetMapping("/{id}")
     public String detail(@PathVariable Long id, Model model) {
-        model.addAttribute("result", resultService.getById(id));
-        return "result/detail";
+        Result result = resultService.getById(id);
+        model.addAttribute("result", result);
+        return "result/employeeresult";
     }
 
 }
