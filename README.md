@@ -34,8 +34,9 @@
 
 - **Riki Setiyawan**
 
-1. 28/06 Konfigurasi JPA pada serverapp
-2. 02/07
+1. 28/06
+   - Konfigurasi JPA pada serverapp
+3. 02/07
    - Initial clientapp
    - Add service, controller, restcontroller, js, html employee
    - Fix js, html question
@@ -49,6 +50,28 @@
    - Add service, controller, restcontroller, js, html survey
    - Add service, controller, restcontroller, js, html answer
    - Add service, controller, restcontroller, js, html client
+7. 06/07
+   - Update Navbar
+   - Update Login Page
+   - Custom Email Template
+   - Add service, controller, restcontroller, js, html Result
+8. 07/07
+   - Add Template Email
+9. 10/07
+    - Update Survey Reppository
+10. 11/07
+    - Edit Logo
+    - Update Login Page
+11. 12/07
+    - Update index Survey
+    - Update Sidebar
+    - Update Dashboard
+    - Update Form Survey
+12. /07
+    - Membuat Dokumentasi / User Manual Book
+    - Membuat Persentasi
+    - Update SurveyController
+    - Update Form Survey
 
 - **Habibullah Dzaky Musthafa**
 
