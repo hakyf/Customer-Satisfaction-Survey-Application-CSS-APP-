@@ -1,6 +1,7 @@
 package id.co.mii.serverapp.controllers;
 
 import id.co.mii.serverapp.models.Survey;
+import id.co.mii.serverapp.models.dto.request.AnswerQuestionRequest;
 import id.co.mii.serverapp.services.SurveyService;
 import lombok.AllArgsConstructor;
 
@@ -44,6 +45,12 @@ public class SurveyController {
     @GetMapping("/{code}")
     public Survey formByCode(@PathVariable UUID code) {
         return surveyService.formByCode(code);
+    }
+
+    @PostMapping("/saveAnswer/{surveyId}")
+    public void saveAnswer(@PathVariable Long surveyId, @RequestBody AnswerQuestionRequest answerRequest) {
+        Survey survey = surveyService.getById(surveyId);
+        surveyService.saveAnswer(survey, answerRequest);
     }
 
 }
