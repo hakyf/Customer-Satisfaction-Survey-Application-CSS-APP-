@@ -104,7 +104,18 @@
    - Create Status Controller in serverapp & Service,Controller,restController for parameter and status.
 5. 04/07
    - Create Js & html for parameter & status
- 
+6. 05/07
+   - Add EmailService
+8. 06/07
+   - Add Send Email Survet with Random UUID
+9. 07/07
+    - fix email survey
+10. 08/07
+    - Create directlink email to formbycode
+11. 09/07
+    - fix minor formbycode
+12. 10/07-12/07
+    - add DTO AnswerQuestReq,modif answer service but still error
 ## **`Ketentuan Implementasi Repository`**
 
 - Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
