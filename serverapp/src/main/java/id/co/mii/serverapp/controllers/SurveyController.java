@@ -42,8 +42,8 @@ public class SurveyController {
     }
 
     // menambahkan get maping code
-    @GetMapping("/{code}")
-    public Survey formByCode(@PathVariable UUID code) {
+    @GetMapping("/c/{code}")
+    public Survey formByCode(@PathVariable String code) {
         return surveyService.formByCode(code);
     }
 
