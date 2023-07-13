@@ -41,38 +41,43 @@
    - Initial clientapp
    - Add service, controller, restcontroller, js, html employee
    - Fix js, html question
-4. 03/07
+3. 03/07
    - Add service, controller, restcontroller, js, html section
-5. 04/07
+4. 04/07
    - Add service, controller, restcontroller, js, html user
    - Add service, controller, restcontroller, js, html role
-6. 05/07
+5. 05/07
    - Fix UserController
    - Add service, controller, restcontroller, js, html survey
    - Add service, controller, restcontroller, js, html answer
    - Add service, controller, restcontroller, js, html client
-7. 06/07
+6. 06/07
    - Update Navbar
    - Update Login Page
    - Custom Email Template
    - Add service, controller, restcontroller, js, html Result
-8. 07/07
+7. 07/07
    - Add Template Email
-9. 10/07
+8. 10/07
    - Update Survey Reppository
-10. 11/07
-   - Edit Logo
-   - Update Login Page
+9. 11/07
+
+- Edit Logo
+- Update Login Page
+
 11. 12/07
-   - Update index Survey
-   - Update Sidebar
-   - Update Dashboard
-   - Update Form Survey
+
+- Update index Survey
+- Update Sidebar
+- Update Dashboard
+- Update Form Survey
+
 12. 13/07
-   - Membuat Dokumentasi / User Manual Book
-   - Membuat Persentasi
-   - Update SurveyController
-   - Update Form Survey
+
+- Membuat Dokumentasi / User Manual Book
+- Membuat Persentasi
+- Update SurveyController
+- Update Form Survey
 
 - **Habibullah Dzaky Musthafa**
 
@@ -87,6 +92,45 @@
    - Fix bug service serverapp
    - Fix controller & model question
    - Fix html, js & cs
+4. 04/07
+   - Fix bug service clientapp
+   - Fix html, css, js clientapp
+   - Fix controller & model question clientapp
+5. 05/07
+   - Revamp template
+   - Fix js and layout
+6. 06/07
+   - Add send survey in controller
+   - Edit create html, js
+   - Edit status and result clientapp
+   - Fix layout
+7. 07/07
+   - Fix survey clientapp
+   - Add service & controller result serverapp
+   - Add history service & controller serverapp
+   - Fix client clientapp
+8. 08/07
+   - Add survey form page, and send email
+   - Hide code all page
+   - Fix survey serverapp
+   - Add send email surver form
+9. 09/07
+   - Edit email template
+10. 10/07
+
+- Edit survey form
+
+11. 11/07
+
+- Edit survey form
+- Fix survey form
+- Fix All conflict
+
+12. 12/07
+
+- Fix survey form
+- Add logic save answer
+- Edit section and question js
 
 - **Yoga Sadewa**
 
@@ -100,22 +144,23 @@
 4. 02/07
    - Configure Postman by creating a workspace for the team, which will allow the team to work together as editor in a single workspace.
    - Create HTTP Method request and perfom json testing for Survey, create new Fork for Testing and pull request in original collection.
-4. 03/07
+5. 03/07
    - Create Status Controller in serverapp & Service,Controller,restController for parameter and status.
-5. 04/07
+6. 04/07
    - Create Js & html for parameter & status
-6. 05/07
+7. 05/07
    - Add EmailService
 8. 06/07
    - Add Send Email Survet with Random UUID
 9. 07/07
-    - fix email survey
+   - fix email survey
 10. 08/07
     - Create directlink email to formbycode
 11. 09/07
     - fix minor formbycode
 12. 10/07-12/07
     - add DTO AnswerQuestReq,modif answer service but still error
+
 ## **`Ketentuan Implementasi Repository`**
 
 - Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
