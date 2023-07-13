@@ -69,12 +69,15 @@ public class SurveyController {
         return "redirect:/survey";
     }
 
-    @GetMapping("/{code}")
-    public String formByCode(@PathVariable UUID code, Model model) {
-        model.addAttribute("surveys", surveyService.getAll());
+    @GetMapping("/c/{code}")
+    public String formByCode(@PathVariable String code, Model model) {
+        Survey survey = surveyService.formByCode(code);
+        model.addAttribute("survey", survey);
         model.addAttribute("sections", sectionService.getAll());
         model.addAttribute("questions", questionService.getAll());
         model.addAttribute("parameters", parameterService.getAll());
+        model.addAttribute("client", survey.getClient().getName());
+        model.addAttribute("employee", survey.getEmployee().getName());
         return "survey/formByCode";
     }
 

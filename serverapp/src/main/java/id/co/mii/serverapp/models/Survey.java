@@ -42,9 +42,9 @@ public class Survey {
     private String name;
 
     @Column(nullable = false, unique = true)
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID code;
+    // @GeneratedValue(generator = "UUID")
+    // @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private String code;
 
     @Column(nullable = false)
     private LocalDate expired;

@@ -76,9 +76,9 @@ public class SurveyService {
                 }).getBody();
     }
 
-    public Survey formByCode(UUID code) {
+    public Survey formByCode(String code) {
         return restTemplate.exchange(
-                url + "/" + code,
+                url + "/c/" + code,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<Survey>() {

@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class SurveyService {
+
+    // @Autowired
     private SurveyRepository surveyRepository;
     private EmployeeService employeeService;
     private EmailService emailService;
@@ -46,7 +49,7 @@ public class SurveyService {
 
     public Survey create(Survey survey) {
         survey.setName("Customer Satisfaction Survey - Metrodata Electronics");
-        UUID code = UUID.randomUUID();
+        String code = UUID.randomUUID().toString();
         survey.setCode(code);
         LocalDate expired = LocalDate.now().plusDays(7);
         survey.setExpired(expired);
@@ -57,6 +60,9 @@ public class SurveyService {
 
         // Simpan survey ke database
         final Survey createdSurvey = surveyRepository.save(survey);
+        System.out.println(createdSurvey.getCode());
+        System.out.println(code);
+        System.out.println(code.toString());
         Client client = clientService.getById(survey.getClient().getId());
         Employee employee = employeeService.getById(survey.getEmployee().getId());
         String to = client.getEmail();
@@ -84,7 +90,7 @@ public class SurveyService {
         return survey;
     }
 
-    public Survey formByCode(UUID code) {
+    public Survey formByCode(String code) {
         Survey survey = surveyRepository
                 .findByCode(code)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
