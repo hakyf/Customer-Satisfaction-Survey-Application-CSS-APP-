@@ -8,16 +8,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import id.co.mii.serverapp.models.Answer;
 import id.co.mii.serverapp.repository.AnswerRepository;
-import id.co.mii.serverapp.repository.QuestionRepository;
-import id.co.mii.serverapp.repository.SurveyRepository;
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
 public class AnswerService {
     private AnswerRepository answerRepository;
-    private SurveyRepository surveyRepository;
-    private QuestionRepository questionRepository;
 
     public List<Answer> getAll() {
         return answerRepository.findAll();
