@@ -1,7 +1,5 @@
 package id.co.mii.clientapp.controller;
 
-import java.util.UUID;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import id.co.mii.clientapp.model.Survey;
-import id.co.mii.clientapp.service.AnswerQuestionRequest;
 import id.co.mii.clientapp.service.ClientService;
 import id.co.mii.clientapp.service.EmployeeService;
 import id.co.mii.clientapp.service.ParameterService;
@@ -28,7 +25,6 @@ public class SurveyController {
 
     private SurveyService surveyService;
     private SectionService sectionService;
-    private QuestionService questionService;
     private ParameterService parameterService;
     private EmployeeService employeeService;
     private ClientService clientService;
@@ -74,17 +70,11 @@ public class SurveyController {
         Survey survey = surveyService.formByCode(code);
         model.addAttribute("survey", survey);
         model.addAttribute("sections", sectionService.getAll());
-        model.addAttribute("questions", questionService.getAll());
         model.addAttribute("parameters", parameterService.getAll());
         model.addAttribute("client", survey.getClient().getName());
         model.addAttribute("employee", survey.getEmployee().getName());
+        model.addAttribute("position", survey.getEmployee().getJobPosition());
         return "survey/formByCode";
-    }
-
-    @PostMapping("/saveAnswer/{surveyId}")
-    public String saveAnswer(@PathVariable Long surveyId, AnswerQuestionRequest answerRequest) {
-        surveyService.saveAnswer(surveyId, answerRequest);
-        return "redirect:/survey";
     }
 
 }

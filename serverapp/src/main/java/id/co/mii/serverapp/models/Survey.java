@@ -42,15 +42,13 @@ public class Survey {
     private String name;
 
     @Column(nullable = false, unique = true)
-    // @GeneratedValue(generator = "UUID")
-    // @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String code;
 
     @Column(nullable = false)
     private LocalDate expired;
 
     @ManyToOne
-    @JoinColumn(name = "current_status", nullable = false)
+    @JoinColumn(name = "current_status")
     private Status status;
 
     @ManyToOne
@@ -66,7 +64,6 @@ public class Survey {
     private Result result;
 
     @OneToMany(mappedBy = "survey")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Answer> answers;
 
 }

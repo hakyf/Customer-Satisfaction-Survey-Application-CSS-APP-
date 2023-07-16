@@ -2,11 +2,9 @@ package id.co.mii.serverapp.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.stereotype.Service;
@@ -18,9 +16,8 @@ import id.co.mii.serverapp.models.Employee;
 import id.co.mii.serverapp.models.Question;
 import id.co.mii.serverapp.models.Survey;
 import id.co.mii.serverapp.models.Status;
-import id.co.mii.serverapp.models.dto.request.AnswerQuestionRequest;
 import id.co.mii.serverapp.models.dto.request.EmailRequest;
-import id.co.mii.serverapp.repository.AnswerRepository;
+import id.co.mii.serverapp.models.dto.request.QuestionAnswerRequest;
 import id.co.mii.serverapp.repository.SurveyRepository;
 import lombok.AllArgsConstructor;
 
@@ -35,7 +32,7 @@ public class SurveyService {
     private ClientService clientService;
     private StatusService statusService;
     private AnswerService answerService;
-    private AnswerRepository answerRepository;
+    private QuestionService questionService;
 
     public List<Survey> getAll() {
         return surveyRepository.findAll();
@@ -60,9 +57,6 @@ public class SurveyService {
 
         // Simpan survey ke database
         final Survey createdSurvey = surveyRepository.save(survey);
-        System.out.println(createdSurvey.getCode());
-        System.out.println(code);
-        System.out.println(code.toString());
         Client client = clientService.getById(survey.getClient().getId());
         Employee employee = employeeService.getById(survey.getEmployee().getId());
         String to = client.getEmail();
@@ -91,34 +85,33 @@ public class SurveyService {
     }
 
     public Survey formByCode(String code) {
-        Survey survey = surveyRepository
+        return surveyRepository
                 .findByCode(code)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
-
-        // Lakukan logika untuk mengirimkan email dan menyimpan jawaban
-
-        return survey;
     }
 
-    public void saveAnswer(Survey survey, AnswerQuestionRequest answerRequest) {
-        // Ambil nilai-nilai dari AnswerQuestionRequest
-        Long surveyId = answerRequest.getId();
-        String[] answerRatings = answerRequest.getAnswerRating();
-        Question question = answerRequest.getQuestion();
+    public Survey sendSurveyAnswer(String code, List<QuestionAnswerRequest> qar) {
+        Survey survey = surveyRepository.findByCode(code)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
+        Status status = statusService.getById(1L);
+        survey.setStatus(status);
 
-        // Konversi array menjadi list
-        List<String> ratings = Arrays.asList(answerRatings);
+        List<Answer> answers = new ArrayList<Answer>();
+        System.out.println(qar);
+        for (QuestionAnswerRequest qa : qar) {
+            Answer answer = new Answer();
+            Question question = questionService.getById(qa.getQuestionId());
+            answer.setQuestion(question);
+            answer.setRating(qa.getAnswer());
+            answer.setSurvey(survey);
+            // question.setAnswers(answers);
 
-        // Buat objek Answer
-        Answer answer = new Answer();
-        answer.setId(surveyId);
-        for (String rating : ratings) {
-            answer.setRating(rating);
+            answer = answerService.create(answer);
+            answers.add(answer);
         }
-        answer.setQuestion(question);
+        survey.setAnswers(answers);
 
-        // Simpan jawaban ke dalam database
-        answerRepository.save(answer);
+        return surveyRepository.save(survey);
     }
 
 }
