@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import id.co.mii.clientapp.model.Survey;
+import id.co.mii.clientapp.model.dto.request.QuestionAnswerRequest;
 
 @Service
 public class SurveyService {
@@ -76,18 +77,22 @@ public class SurveyService {
                 }).getBody();
     }
 
-    public Survey formByCode(UUID code) {
+    public Survey formByCode(String code) {
         return restTemplate.exchange(
-                url + "/" + code,
+                url + "/c/" + code,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<Survey>() {
                 }).getBody();
     }
 
-    public void saveAnswer(Long surveyId, AnswerQuestionRequest answerRequest) {
-        String saveAnswerUrl = url + "/saveAnswer/" + surveyId;
-        restTemplate.postForObject(saveAnswerUrl, answerRequest, Void.class);
+    public Survey sendSurveyAnswer(String code, List<QuestionAnswerRequest> qar) {
+        return restTemplate.exchange(
+                url + "/answer/" + code,
+                HttpMethod.POST,
+                new HttpEntity(qar),
+                new ParameterizedTypeReference<Survey>() {
+                }).getBody();
     }
 
 }

@@ -1,8 +1,8 @@
 package id.co.mii.serverapp.services;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,25 +14,29 @@ import org.springframework.web.server.ResponseStatusException;
 import id.co.mii.serverapp.models.Answer;
 import id.co.mii.serverapp.models.Client;
 import id.co.mii.serverapp.models.Employee;
+import id.co.mii.serverapp.models.Parameter;
 import id.co.mii.serverapp.models.Question;
+import id.co.mii.serverapp.models.Result;
 import id.co.mii.serverapp.models.Survey;
 import id.co.mii.serverapp.models.Status;
-import id.co.mii.serverapp.models.dto.request.AnswerQuestionRequest;
 import id.co.mii.serverapp.models.dto.request.EmailRequest;
-import id.co.mii.serverapp.repository.AnswerRepository;
+import id.co.mii.serverapp.models.dto.request.QuestionAnswerRequest;
 import id.co.mii.serverapp.repository.SurveyRepository;
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
 public class SurveyService {
+
+    // @Autowired
     private SurveyRepository surveyRepository;
     private EmployeeService employeeService;
     private EmailService emailService;
     private ClientService clientService;
     private StatusService statusService;
     private AnswerService answerService;
-    private AnswerRepository answerRepository;
+    private QuestionService questionService;
+    private ParameterService parameterService;
 
     public List<Survey> getAll() {
         return surveyRepository.findAll();
@@ -46,7 +50,7 @@ public class SurveyService {
 
     public Survey create(Survey survey) {
         survey.setName("Customer Satisfaction Survey - Metrodata Electronics");
-        UUID code = UUID.randomUUID();
+        String code = UUID.randomUUID().toString();
         survey.setCode(code);
         LocalDate expired = LocalDate.now().plusDays(7);
         survey.setExpired(expired);
@@ -84,35 +88,56 @@ public class SurveyService {
         return survey;
     }
 
-    public Survey formByCode(UUID code) {
-        Survey survey = surveyRepository
+    public Survey formByCode(String code) {
+        return surveyRepository
                 .findByCode(code)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
-
-        // Lakukan logika untuk mengirimkan email dan menyimpan jawaban
-
-        return survey;
     }
 
-    public void saveAnswer(Survey survey, AnswerQuestionRequest answerRequest) {
-        // Ambil nilai-nilai dari AnswerQuestionRequest
-        Long surveyId = answerRequest.getId();
-        String[] answerRatings = answerRequest.getAnswerRating();
-        Question question = answerRequest.getQuestion();
+    public Survey sendSurveyAnswer(String code, List<QuestionAnswerRequest> qar) {
+        Survey survey = surveyRepository.findByCode(code)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
+        Status status = statusService.getById(2L);
+        survey.setStatus(status);
 
-        // Konversi array menjadi list
-        List<String> ratings = Arrays.asList(answerRatings);
+        List<Answer> answers = new ArrayList<Answer>();
+        double totalScore = 0;
+        int questionCount = 0;
+        for (QuestionAnswerRequest qa : qar) {
+            Answer answer = new Answer();
+            Question question = questionService.getById(qa.getQuestionId());
+            answer.setQuestion(question);
+            String ans = qa.getAnswer().toString();
+            Parameter param = parameterService.getByNotes(ans);
+            if (param != null) {
+                double ansVal = Double.valueOf(param.getValue());
+                totalScore += ansVal;
+                questionCount++;
+            }
+            answer.setRating(qa.getAnswer());
+            answer.setSurvey(survey);
 
-        // Buat objek Answer
-        Answer answer = new Answer();
-        answer.setId(surveyId);
-        for (String rating : ratings) {
-            answer.setRating(rating);
+            answer = answerService.create(answer);
+            answers.add(answer);
         }
-        answer.setQuestion(question);
+        double meanScore = 0.0;
+        if (questionCount > 0) {
+            meanScore = totalScore / questionCount;
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formattedMeanScore = df.format(meanScore);
 
-        // Simpan jawaban ke dalam database
-        answerRepository.save(answer);
+        LocalDate date = LocalDate.now();
+
+        Result result = new Result();
+        result.setMean(formattedMeanScore);
+        result.setScore(String.valueOf(totalScore));
+        result.setSurvey(survey);
+        result.setDate(date);
+        survey.setResult(result);
+        survey.setAnswers(answers);
+
+        return surveyRepository.save(survey);
     }
 
 }

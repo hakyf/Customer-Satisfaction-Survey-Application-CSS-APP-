@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 // @EnableWebSecurity
 @AllArgsConstructor
-// @EnableGlobalMethodSecurity(prePostEnabled =false)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private AppUserDetailService appUserDetailService;
@@ -40,6 +40,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/register")
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/login")
+                .permitAll()
+                .antMatchers("/survey**")
                 .permitAll()
                 .anyRequest()
                 .permitAll()

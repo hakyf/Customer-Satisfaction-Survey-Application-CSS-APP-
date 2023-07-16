@@ -16,7 +16,7 @@ public class EmailRequest {
     private String to;
     private String name;
     private String subject;
-    private UUID code;
+    private String code;
     private LocalDate expired;
     private Employee employee;
 

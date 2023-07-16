@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SurveyRepository extends JpaRepository<Survey, Long> {
 
-   public Optional<Survey> findByCode(UUID code);
+   public Optional<Survey> findByCode(String code);
 
 }
