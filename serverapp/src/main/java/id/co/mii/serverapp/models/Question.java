@@ -34,6 +34,7 @@ public class Question {
 
     @ManyToOne
     @JoinColumn(name = "section", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Section section;
 
     @OneToMany(mappedBy = "question")

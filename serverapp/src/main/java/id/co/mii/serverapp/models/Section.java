@@ -31,7 +31,7 @@ public class Section {
     private String name;
 
     @OneToMany(mappedBy = "section")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Question> questions;
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.co.mii.clientapp.model.Survey;
+import id.co.mii.clientapp.model.dto.request.QuestionAnswerRequest;
 import id.co.mii.clientapp.service.SurveyService;
 import lombok.AllArgsConstructor;
 
@@ -49,9 +50,14 @@ public class SurveyRestController {
         return surveyService.delete(id);
     }
 
-    @GetMapping("/{code}")
+    @GetMapping("/c/{code}")
     public Survey formByCode(@PathVariable String code) {
         return surveyService.formByCode(code);
+    }
+
+    @PostMapping("/answer/{code}")
+    public Survey sendAnswerSurvey(@PathVariable String code, @RequestBody List<QuestionAnswerRequest> qar) {
+        return surveyService.sendSurveyAnswer(code, qar);
     }
 
 }

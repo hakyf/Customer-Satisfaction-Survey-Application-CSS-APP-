@@ -1,10 +1,11 @@
 package id.co.mii.serverapp.controllers;
 
 import id.co.mii.serverapp.models.Survey;
-import id.co.mii.serverapp.models.dto.request.AnswerQuestionRequest;
+import id.co.mii.serverapp.models.dto.request.QuestionAnswerRequest;
 import id.co.mii.serverapp.services.SurveyService;
 import lombok.AllArgsConstructor;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,16 +42,16 @@ public class SurveyController {
         return surveyService.delete(id);
     }
 
-    // menambahkan get maping code
     @GetMapping("/c/{code}")
     public Survey formByCode(@PathVariable String code) {
         return surveyService.formByCode(code);
     }
 
-    @PostMapping("/saveAnswer/{surveyId}")
-    public void saveAnswer(@PathVariable Long surveyId, @RequestBody AnswerQuestionRequest answerRequest) {
-        Survey survey = surveyService.getById(surveyId);
-        surveyService.saveAnswer(survey, answerRequest);
+    @PostMapping("/answer/{code}")
+    public ResponseEntity<Survey> sendSurveyAnswer(@PathVariable String code,
+            @RequestBody List<QuestionAnswerRequest> qar) {
+        Survey survey = surveyService.sendSurveyAnswer(code, qar);
+        return ResponseEntity.ok(survey);
     }
 
 }
