@@ -13,11 +13,9 @@ import id.co.mii.clientapp.model.Survey;
 import id.co.mii.clientapp.service.ClientService;
 import id.co.mii.clientapp.service.EmployeeService;
 import id.co.mii.clientapp.service.ParameterService;
-import id.co.mii.clientapp.service.QuestionService;
 import id.co.mii.clientapp.service.SectionService;
 import id.co.mii.clientapp.service.SurveyService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/survey")
