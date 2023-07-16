@@ -29,7 +29,7 @@
 
 ## **`Project Task`**
 
-- **Riki Setiyawan**
+1. **Riki Setiyawan**
 
 - 28/06
   - Konfigurasi JPA pada serverapp
@@ -71,7 +71,7 @@
   - Update SurveyController
   - Update Form Survey
 
-- **Habibullah Dzaky Musthafa**
+2. **Habibullah Dzaky Musthafa**
 
 - 28/06
   - Add all models
@@ -130,7 +130,7 @@
   - Add detail result & status reviewed
   - Add auth util, change result
 
-- **Yoga Sadewa**
+3. **Yoga Sadewa**
 
 - 28/06
   - Add data dummy to database
