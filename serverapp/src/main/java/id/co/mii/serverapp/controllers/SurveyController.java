@@ -54,4 +54,9 @@ public class SurveyController {
         return ResponseEntity.ok(survey);
     }
 
+    @PostMapping("/c/{code}/review")
+    public Survey reviewSurvey(@PathVariable String code) {
+        return surveyService.reviewSurvey(code);
+    }
+
 }

@@ -12,9 +12,6 @@ $(document).ready(function () {
         data: "body",
       },
       {
-        data: "section.name",
-      },
-      {
         data: null,
         render: function (data, type, row, meta) {
           return `  
@@ -22,7 +19,6 @@ $(document).ready(function () {
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateQuestion" onclick = beforeUpdate(${row.id})>
                   <i class="fa-sharp fa-solid fa-edit"></i>
                 </button>
-                <button type="button" class="btn btn-danger" onclick="deleteSection(${row.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
               </div>`;
         },
       },
@@ -168,38 +164,6 @@ function update() {
             position: "center",
             icon: "success",
             title: "Question has been updated",
-            showConfirmButton: false,
-            timer: 1500,
-            width: 600,
-          });
-        },
-      });
-    }
-  });
-}
-
-function deleteQuestion(id) {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "Do you want to be delete this Question!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        url: "/api/question/" + id,
-        method: "DELETE",
-        dataType: "JSON",
-        beforSend: addCsrfToken(),
-        success: (result) => {
-          $("#table-question").DataTable().ajax.reload();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Question has been deleted",
             showConfirmButton: false,
             timer: 1500,
             width: 600,
