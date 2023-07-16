@@ -1,5 +1,6 @@
 package id.co.mii.serverapp.services;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,9 @@ import org.springframework.web.server.ResponseStatusException;
 import id.co.mii.serverapp.models.Answer;
 import id.co.mii.serverapp.models.Client;
 import id.co.mii.serverapp.models.Employee;
+import id.co.mii.serverapp.models.Parameter;
 import id.co.mii.serverapp.models.Question;
+import id.co.mii.serverapp.models.Result;
 import id.co.mii.serverapp.models.Survey;
 import id.co.mii.serverapp.models.Status;
 import id.co.mii.serverapp.models.dto.request.EmailRequest;
@@ -33,6 +36,7 @@ public class SurveyService {
     private StatusService statusService;
     private AnswerService answerService;
     private QuestionService questionService;
+    private ParameterService parameterService;
 
     public List<Survey> getAll() {
         return surveyRepository.findAll();
@@ -93,22 +97,44 @@ public class SurveyService {
     public Survey sendSurveyAnswer(String code, List<QuestionAnswerRequest> qar) {
         Survey survey = surveyRepository.findByCode(code)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
-        Status status = statusService.getById(1L);
+        Status status = statusService.getById(2L);
         survey.setStatus(status);
 
         List<Answer> answers = new ArrayList<Answer>();
-        System.out.println(qar);
+        double totalScore = 0;
+        int questionCount = 0;
         for (QuestionAnswerRequest qa : qar) {
             Answer answer = new Answer();
             Question question = questionService.getById(qa.getQuestionId());
             answer.setQuestion(question);
+            String ans = qa.getAnswer().toString();
+            Parameter param = parameterService.getByNotes(ans);
+            if (param != null) {
+                double ansVal = Double.valueOf(param.getValue());
+                totalScore += ansVal;
+                questionCount++;
+            }
             answer.setRating(qa.getAnswer());
             answer.setSurvey(survey);
-            // question.setAnswers(answers);
 
             answer = answerService.create(answer);
             answers.add(answer);
         }
+        double meanScore = 0.0;
+        if (questionCount > 0) {
+            meanScore = totalScore / questionCount;
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formattedMeanScore = df.format(meanScore);
+
+        LocalDate date = LocalDate.now();
+
+        Result result = new Result();
+        result.setMean(formattedMeanScore);
+        result.setScore(String.valueOf(totalScore));
+        result.setSurvey(survey);
+        result.setDate(date);
+        survey.setResult(result);
         survey.setAnswers(answers);
 
         return surveyRepository.save(survey);

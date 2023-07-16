@@ -17,6 +17,7 @@ import id.co.mii.clientapp.service.QuestionService;
 import id.co.mii.clientapp.service.SectionService;
 import id.co.mii.clientapp.service.SurveyService;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/survey")
@@ -68,6 +69,9 @@ public class SurveyController {
     @GetMapping("/c/{code}")
     public String formByCode(@PathVariable String code, Model model) {
         Survey survey = surveyService.formByCode(code);
+        if (survey.getStatus().getId() == 2) {
+            return "redirect:/survey/error";
+        }
         model.addAttribute("survey", survey);
         model.addAttribute("sections", sectionService.getAll());
         model.addAttribute("parameters", parameterService.getAll());
@@ -77,4 +81,13 @@ public class SurveyController {
         return "survey/formByCode";
     }
 
+    @GetMapping("/c/{code}/success")
+    public String successForm(@PathVariable String code) {
+        return "survey/successForm";
+    }
+
+    @GetMapping("/error")
+    public String errorForm() {
+        return "survey/errorForm";
+    }
 }
