@@ -29,8 +29,7 @@ function submit() {
     contentType: "application/json",
     beforeSend: addCsrfToken(),
     success: function (response) {
-      // Berhasil mengirim data survei
-      console.log("Data survei berhasil dikirim");
+      window.location.href = `http://localhost:8088/survey/c/${code}/success`;
     },
     error: function (xhr, status, error) {
       // Terjadi kesalahan dalam pengiriman data survei

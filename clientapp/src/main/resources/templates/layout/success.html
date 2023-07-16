@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <link rel="icon" th:href="@{/img/favicon.ico}" type="image/x-icon" />
+    <!-- CSS -->
+    <div th:replace="components/plugin :: css"></div>
+
+    <title>Success</title>
+  </head>
+  <body>
+    <div id="api">
+      <!-- Content -->
+      <section layout:fragment="content"></section>
+    </div>
+
+    <!-- JS -->
+    <div th:replace="components/plugin :: js"></div>
+
+    <!-- Local Js -->
+    <div layout:fragment="script"></div>
+  </body>
+</html>
