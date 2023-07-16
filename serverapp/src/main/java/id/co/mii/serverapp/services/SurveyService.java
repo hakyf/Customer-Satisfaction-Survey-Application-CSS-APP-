@@ -140,4 +140,13 @@ public class SurveyService {
         return surveyRepository.save(survey);
     }
 
+    public Survey reviewSurvey(String code) {
+        Survey survey = surveyRepository.findByCode(code)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey not found !"));
+        Status status = statusService.getById(3L);
+        survey.setStatus(status);
+
+        return surveyRepository.save(survey);
+    }
+
 }

@@ -95,4 +95,13 @@ public class SurveyService {
                 }).getBody();
     }
 
+    public Survey reviewSurvey(String code) {
+        return restTemplate.exchange(
+                url + "/c/" + code + "/review",
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<Survey>() {
+                }).getBody();
+    }
+
 }
