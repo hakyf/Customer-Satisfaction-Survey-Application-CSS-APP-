@@ -27,7 +27,6 @@ public class ResultController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("result", resultService.getAll());
         model.addAttribute("isActive", "result");
         return "result/index";
     }

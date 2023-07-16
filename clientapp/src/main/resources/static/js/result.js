@@ -9,13 +9,13 @@ $(document).ready(function () {
         data: "id",
       },
       {
-        data: "date",
+        data: "result.date",
       },
       {
-        data: "score",
+        data: "result.score",
       },
       {
-        data: "mean",
+        data: "result.mean",
       },
       {
         data: null,
