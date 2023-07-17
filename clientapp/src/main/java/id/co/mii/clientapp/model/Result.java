@@ -15,5 +15,6 @@ public class Result {
     private String score;
     private LocalDate date;
     private String mean;
+    private Survey survey;
 
 }

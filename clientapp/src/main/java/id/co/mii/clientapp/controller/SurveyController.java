@@ -10,14 +10,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import id.co.mii.clientapp.model.Survey;
-import id.co.mii.clientapp.service.ClientService;
-import id.co.mii.clientapp.service.EmployeeService;
 import id.co.mii.clientapp.service.ParameterService;
-import id.co.mii.clientapp.service.QuestionService;
 import id.co.mii.clientapp.service.SectionService;
 import id.co.mii.clientapp.service.SurveyService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/survey")
@@ -27,8 +23,6 @@ public class SurveyController {
     private SurveyService surveyService;
     private SectionService sectionService;
     private ParameterService parameterService;
-    private EmployeeService employeeService;
-    private ClientService clientService;
 
     @GetMapping
     public String index(Model model) {
@@ -89,5 +83,11 @@ public class SurveyController {
     @GetMapping("/error")
     public String errorForm() {
         return "survey/errorForm";
+    }
+
+    @PostMapping("/c/{code}/review")
+    public String reviewSurvey(@PathVariable String code) {
+        surveyService.reviewSurvey(code);
+        return "redirect:/result";
     }
 }

@@ -1,6 +1,7 @@
 package id.co.mii.clientapp.controller.rest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.co.mii.clientapp.model.Result;
+import id.co.mii.clientapp.model.Survey;
 import id.co.mii.clientapp.service.ResultService;
+import id.co.mii.clientapp.service.SurveyService;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -21,10 +24,13 @@ import lombok.AllArgsConstructor;
 public class ResultRestController {
 
     private ResultService resultService;
+    private SurveyService surveyService;
 
     @GetMapping
-    public List<Result> getAll() {
-        return resultService.getAll();
+    public List<Survey> getAll() {
+        List<Survey> surveys = surveyService.getAll().stream().filter(S -> S.getResult() != null)
+                .collect(Collectors.toList());
+        return surveys;
     }
 
     @GetMapping("/{id}")

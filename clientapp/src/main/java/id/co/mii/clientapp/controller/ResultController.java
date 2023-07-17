@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import id.co.mii.clientapp.model.Result;
+import id.co.mii.clientapp.model.Survey;
+import id.co.mii.clientapp.service.ParameterService;
 import id.co.mii.clientapp.service.ResultService;
+import id.co.mii.clientapp.service.SurveyService;
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -19,10 +22,11 @@ import lombok.AllArgsConstructor;
 public class ResultController {
 
     private ResultService resultService;
+    private SurveyService surveyService;
+    private ParameterService parameterService;
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("result", resultService.getAll());
         model.addAttribute("isActive", "result");
         return "result/index";
     }
@@ -57,11 +61,12 @@ public class ResultController {
         return "redirect:/result";
     }
 
-     @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public String detail(@PathVariable Long id, Model model) {
-        Result result = resultService.getById(id);
-        model.addAttribute("result", result);
-        return "result/employeeresult";
+        Survey survey = surveyService.getById(id);
+        model.addAttribute("survey", survey);
+        model.addAttribute("isActive", "result");
+        model.addAttribute("parameterSize", parameterService.getAll().size());
+        return "result/detail";
     }
-
 }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}"
+>
+  <head>
+    <title>Result Detail</title>
+  </head>
+
+  <body>
+    <div layout:fragment="content">
+      <div id="main">
+        <header class="mb-3">
+          <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+          </a>
+        </header>
+
+        <div class="page-heading">
+          <div class="page-title">
+            <div class="row">
+              <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Result Page</h3>
+              </div>
+              <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav
+                  aria-label="breadcrumb"
+                  class="breadcrumb-header float-start float-lg-end"
+                >
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="/">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Result
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Detail
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <!-- Basic Tables start -->
+          <section class="section">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">
+                  Client:
+                  <span
+                    th:text="${survey.client.name}"
+                    class="text-capitalize"
+                  ></span>
+                </h4>
+                <h4 class="card-title">
+                  Employee Name:
+                  <span
+                    th:text="${survey.employee.name}"
+                    class="text-capitalize"
+                  ></span>
+                </h4>
+                <h4 class="card-title">
+                  Job Position:
+                  <span
+                    th:text="${survey.employee.jobPosition}"
+                    class="text-capitalize"
+                  ></span>
+                </h4>
+              </div>
+              <div class="card-body">
+                <table class="table" id="table-result">
+                  <thead>
+                    <tr>
+                      <th class="col-8">Question</th>
+                      <th class="col-4">Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="answer : ${survey.answers}">
+                      <td th:text="${answer.question.body}"></td>
+                      <td th:text="${answer.rating}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h4 class="card-title">
+                  Score:
+                  <span
+                    th:text="${survey.result.score}"
+                    class="text-capitalize"
+                  ></span>
+                </h4>
+                <h4 class="card-title">
+                  Mean:
+                  <span
+                    th:text="${survey.result.mean}"
+                    class="text-capitalize"
+                  ></span
+                  >/<span th:text="${parameterSize}"></span>
+                </h4>
+                <form
+                  th:action="@{/survey/c/{code}/review(code=${survey.code})}"
+                  method="POST"
+                  class="col-12 d-flex justify-content-end"
+                >
+                  <input type="hidden" name="_method" value="POST" />
+                  <button
+                    type="submit"
+                    class="btn btn-primary me-1 mb-1"
+                    sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
+                  >
+                    Finish Review
+                  </button>
+                  <a
+                    th:href="@{/result}"
+                    class="btn btn-light-secondary me-1 mb-1"
+                    >Close</a
+                  >
+                </form>
+              </div>
+            </div>
+          </section>
+          <!-- Basic Tables end -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

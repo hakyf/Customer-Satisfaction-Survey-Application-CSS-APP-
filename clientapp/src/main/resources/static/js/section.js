@@ -19,7 +19,6 @@ $(document).ready(function () {
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateSection" onclick = beforeUpdate(${row.id})>
                   <i class="fa-sharp fa-solid fa-edit"></i>
                 </button>
-                <button type="button" class="btn btn-danger" onclick="deleteSection(${row.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
               </div>`;
         },
       },
@@ -127,38 +126,6 @@ function update() {
             position: "center",
             icon: "success",
             title: "Section has been updated",
-            showConfirmButton: false,
-            timer: 1500,
-            width: 600,
-          });
-        },
-      });
-    }
-  });
-}
-
-function deleteSection(id) {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "Do you want to be delete this Section!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        url: "/api/section/" + id,
-        method: "DELETE",
-        dataType: "JSON",
-        beforSend: addCsrfToken(),
-        success: (result) => {
-          $("#table-section").DataTable().ajax.reload();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Section has been deleted",
             showConfirmButton: false,
             timer: 1500,
             width: 600,
