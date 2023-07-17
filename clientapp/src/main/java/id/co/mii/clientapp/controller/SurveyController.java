@@ -63,7 +63,7 @@ public class SurveyController {
     @GetMapping("/c/{code}")
     public String formByCode(@PathVariable String code, Model model) {
         Survey survey = surveyService.formByCode(code);
-        if (survey.getStatus().getId() == 2) {
+        if (survey.getStatus().getId() != 1) {
             return "redirect:/survey/error";
         }
         model.addAttribute("survey", survey);
