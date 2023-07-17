@@ -28,6 +28,24 @@ $(document).ready(function () {
       },
       {
         data: "status.name",
+        render: function (data, type, row) {
+          let badgeClass = "";
+          switch (data) {
+            case "Sent":
+              badgeClass = "badge bg-primary";
+              break;
+            case "Answered":
+              badgeClass = "badge bg-warning";
+              break;
+            case "Reviewed":
+              badgeClass = "badge bg-success";
+              break;
+            default:
+              badgeClass = "badge bg-secondary";
+              break;
+          }
+          return '<span class="' + badgeClass + '">' + data + "</span>";
+        },
       },
     ],
   });
