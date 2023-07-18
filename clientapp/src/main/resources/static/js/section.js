@@ -6,7 +6,11 @@ $(document).ready(function () {
     },
     columns: [
       {
-        data: "id",
+        data: null,
+        render: function (data, type, row, meta) {
+          var index = meta.row + 1;
+          return index;
+        },
       },
       {
         data: "name",
