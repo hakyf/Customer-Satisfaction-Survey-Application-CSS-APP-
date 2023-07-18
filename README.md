@@ -24,7 +24,7 @@
 - Entity Relational Diagram : [Link](https://drive.google.com/file/d/1X94O6mTQVWFhbWXJA1D2281dAGN6U6ht/view?usp=sharing)
 - Data Dummy : [Link](https://docs.google.com/spreadsheets/d/10gDpG6SatiQW8xmxUQlRNW3e7XbkgA5qFfhq4r42nl4/edit?usp=sharing)
 - Postman : [Link](https://documenter.getpostman.com/view/27540842/2s93zCZLfV)
-- User Manual Book : [Link](https://drive.google.com/file/d/1osrlxfEnzoCqVr-oktPbCV8bG3yLbAIV/view?usp=sharing)
+- User Manual Book : [Link](https://drive.google.com/file/d/1sD9yi-bGX8RXohl2X7eOFxQT6rlVlRZa/view?usp=sharing)
 - Persentation : [Link](https://drive.google.com/file/d/1kZy92d3-NEvAaEp1CA1s8wGh0soMX-m5/view?usp=sharing)
 
 ## **`Project Task`**
