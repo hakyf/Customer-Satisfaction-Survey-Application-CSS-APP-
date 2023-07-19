@@ -71,7 +71,44 @@
   - Update SurveyController
   - Update Form Survey
 
-2. **Habibullah Dzaky Musthafa**
+1. 28/06
+   - Konfigurasi JPA pada serverapp
+2. 02/07
+   - Initial clientapp
+   - Add service, controller, restcontroller, js, html employee
+   - Fix js, html question
+3. 03/07
+   - Add service, controller, restcontroller, js, html section
+4. 04/07
+   - Add service, controller, restcontroller, js, html user
+   - Add service, controller, restcontroller, js, html role
+5. 05/07
+   - Fix UserController
+   - Add service, controller, restcontroller, js, html survey
+   - Add service, controller, restcontroller, js, html answer
+   - Add service, controller, restcontroller, js, html client
+6. 06/07
+   - Update Navbar
+   - Update Login Page
+   - Custom Email Template
+   - Add service, controller, restcontroller, js, html Result
+7. 07/07
+   - Add Template Email
+8. 10/07
+   - Update Survey Reppository
+9. 11/07
+   - Edit Logo
+   - Update Login Page
+10. 12/07
+    - Update index Survey
+    - Update Sidebar
+    - Update Dashboard
+    - Update Form Survey
+11. 13/07
+    - Membuat Dokumentasi / User Manual Book
+    - Membuat Persentasi
+    - Update SurveyController
+    - Update Form Survey
 
 - 28/06
   - Add all models

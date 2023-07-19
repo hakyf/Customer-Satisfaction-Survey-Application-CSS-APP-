@@ -115,6 +115,12 @@ function create() {
     return;
   }
 
+  $.LoadingOverlay("show", {
+    image: "/img/loading.gif",
+    imageAnimation: "rotate",
+    imageAutoResize: true,
+  });
+
   $.ajax({
     url: "/api/survey",
     method: "POST",
@@ -130,6 +136,9 @@ function create() {
       },
     }),
     success: (result) => {
+
+      $.LoadingOverlay("hide");
+
       $("#createSurvey").modal("hide");
       $(".modal-backdrop").remove();
       $("#table-survey").DataTable().ajax.reload();
