@@ -1,104 +1,143 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/survey}">
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/survey}"
+>
+  <head>
+    <title>Survey Form</title>
+  </head>
 
-<head>
-  <title>Survey Form</title>
-</head>
-
-<body>
-  <div layout:fragment="content">
-    <div id="main" style="margin-right: 300px">
-      <div class="page-heading">
-        <div class="page-title">
-          <div class="row">
-            <div class="col-12">
-              <h3>Customer Satisfaction Survey - Metrodata Electronics</h3>
-            </div>
-          </div>
-        </div>
-        <input type="hidden" class="survey-code" th:value="${survey.code}" />
-        <section id="multiple-column-form">
-          <div class="row match-height">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    Client:
-                    <span th:text="${client}" class="text-capitalize"></span>
-                  </h4>
-                  <h4 class="card-title">
-                    Employee Name:
-                    <span th:text="${employee}" class="text-capitalize"></span>
-                  </h4>
-                  <h4 class="card-title">
-                    Job Position:
-                    <span th:text="${position}" class="text-capitalize"></span>
-                  </h4>
-                </div>
+  <body>
+    <div layout:fragment="content">
+      <div id="main" style="margin-right: 300px">
+        <div class="page-heading">
+          <div class="page-title">
+            <div class="row">
+              <div class="col-12">
+                <h3>Customer Satisfaction Survey - Metrodata Electronics</h3>
               </div>
             </div>
           </div>
-        </section>
-        <section class="section">
-          <div class="row">
-            <div class="col">
-              <table id="survey-form">
-                <tr th:each="section, sectionStatus : ${sections}" class="survey-tr">
-                  <td>
-                    <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title">
-                          <span th:text="${sectionStatus.index + 1}"></span>.
-                          <span th:text="${section.name}"></span>
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <table class="table my-1 bg-white question-tbl">
-                          <tr th:each="question : ${section.questions}" class="question-tr">
-                            <td th:text="${question.body}" style="width: 60%"></td>
-                            <td>
-                              <input type="hidden" class="section-id" th:value="${section.id}" />
-                              <input type="hidden" class="question-id" th:value="${question.id}" />
-                              <div th:if="${section.id == 1 || section.id == 2 || section.id >= 4}">
-                                <div class="rating">
-                                  <div class="form-check" th:each="parameter : ${parameters}">
-                                    <input class="form-check-input radio-answer" type="radio"
-                                      th:value="${parameter.notes}" th:name="${'flexRadioDefault-' + question.id}"
-                                      th:id="${'flexRadioDefault-' + question.id + '-' + parameter.id}" />
-                                    <label class="form-check-label"
-                                      th:for="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
-                                      th:text="${parameter.notes}"></label>
+          <input type="hidden" class="survey-code" th:value="${survey.code}" />
+          <section id="multiple-column-form">
+            <div class="row match-height">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Client:
+                      <span th:text="${client}" class="text-capitalize"></span>
+                    </h4>
+                    <h4 class="card-title">
+                      Employee Name:
+                      <span
+                        th:text="${employee}"
+                        class="text-capitalize"
+                      ></span>
+                    </h4>
+                    <h4 class="card-title">
+                      Job Position:
+                      <span
+                        th:text="${position}"
+                        class="text-capitalize"
+                      ></span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section">
+            <div class="row">
+              <div class="col">
+                <table id="survey-form">
+                  <tr
+                    th:each="section, sectionStatus : ${sections}"
+                    class="survey-tr"
+                  >
+                    <td>
+                      <div class="card">
+                        <div class="card-header">
+                          <h4 class="card-title">
+                            <span th:text="${sectionStatus.index + 1}"></span>.
+                            <span th:text="${section.name}"></span>
+                          </h4>
+                        </div>
+                        <div class="card-body">
+                          <table class="table my-1 bg-white question-tbl">
+                            <tr
+                              th:each="question : ${section.questions}"
+                              class="question-tr"
+                            >
+                              <td style="border-bottom: none">
+                                <label th:text="${question.body}"></label>
+                                <input
+                                  type="hidden"
+                                  class="section-id"
+                                  th:value="${section.id}"
+                                />
+                                <input
+                                  type="hidden"
+                                  class="question-id"
+                                  th:value="${question.id}"
+                                />
+                                <div
+                                  th:if="${section.id == 1 || section.id == 2 || section.id >= 4}"
+                                >
+                                  <div class="rating">
+                                    <div
+                                      class="form-check"
+                                      th:each="parameter : ${parameters}"
+                                    >
+                                      <input
+                                        class="form-check-input radio-answer"
+                                        type="radio"
+                                        th:value="${parameter.notes}"
+                                        th:name="${'flexRadioDefault-' + question.id}"
+                                        th:id="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
+                                      />
+                                      <label
+                                        class="form-check-label"
+                                        th:for="${'flexRadioDefault-' + question.id + '-' + parameter.id}"
+                                        th:text="${parameter.notes}"
+                                      ></label>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <textarea th:if="${section.id == 3}" class="form-control textarea-answer"
-                                rows="3"></textarea>
-                            </td>
-                          </tr>
-                        </table>
+                                <textarea
+                                  th:if="${section.id == 3}"
+                                  class="form-control textarea-answer"
+                                  rows="3"
+                                ></textarea>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
             </div>
+          </section>
+          <div class="col-12 d-flex justify-content-end">
+            <button
+              type="button"
+              onclick="submit()"
+              class="btn btn-primary me-1 mb-1"
+            >
+              Submit
+            </button>
+            <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+              Reset
+            </button>
           </div>
-        </section>
-        <div class="col-12 d-flex justify-content-end">
-          <button type="button" onclick="submit()" class="btn btn-primary me-1 mb-1">
-            Submit
-          </button>
-          <button type="reset" class="btn btn-light-secondary me-1 mb-1">
-            Reset
-          </button>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Survey JS -->
-  <div layout:fragment="script">
-    <script th:src="@{/js/surveyForm.js}"></script>
-  </div>
-</body>
-
+    <!-- Survey JS -->
+    <div layout:fragment="script">
+      <script th:src="@{/js/surveyForm.js}"></script>
+    </div>
+  </body>
 </html>

@@ -96,8 +96,8 @@
                   <span
                     th:text="${survey.result.mean}"
                     class="text-capitalize"
-                  ></span
-                  >/<span th:text="${parameterSize}"></span>
+                  ></span>
+                  / <span th:text="${parameterSize}"></span>
                 </h4>
                 <form
                   th:action="@{/survey/c/{code}/review(code=${survey.code})}"
