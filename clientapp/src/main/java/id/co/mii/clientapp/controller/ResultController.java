@@ -67,6 +67,7 @@ public class ResultController {
         model.addAttribute("survey", survey);
         model.addAttribute("isActive", "result");
         model.addAttribute("parameterSize", parameterService.getAll().size());
+        model.addAttribute("status", survey.getStatus());
         return "result/detail";
     }
 }
