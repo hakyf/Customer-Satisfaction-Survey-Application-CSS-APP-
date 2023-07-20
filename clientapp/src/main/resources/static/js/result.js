@@ -33,12 +33,21 @@ $(document).ready(function () {
       {
         data: null,
         render: function (data, type, row, meta) {
+          let statusName = row.status ? row.status.name : "";
+          let isReviewed = statusName === "Reviewed";
+
+          let iconClass = isReviewed
+            ? "fa-sharp fa-solid fa-check-circle"
+            : "fa-sharp fa-solid fa-info-circle";
+
+          let btnClass = isReviewed ? "btn btn-success" : "btn btn-primary";
+
           return `  
-              <div class="d-flex align-items-center justify-content-center gap-3">
-                <a href="/result/${row.id}" type="button" class="btn btn-success">
-                  <i class="fa-sharp fa-solid fa-info-circle"></i>
-                </a>
-              </div>`;
+            <div class="d-flex align-items-center justify-content-center gap-3">
+              <a href="/result/${row.id}" type="button" class="${btnClass}">
+                <i class="${iconClass}"></i>
+              </a>
+            </div>`;
         },
       },
     ],

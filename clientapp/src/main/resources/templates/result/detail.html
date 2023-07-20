@@ -108,7 +108,8 @@
                   <button
                     type="submit"
                     class="btn btn-primary me-1 mb-1"
-                    sec:authorize="hasAnyRole('ADMIN', 'ADD2')"
+                    sec:authorize="hasAnyRole('ADD2')"
+                    th:if="${status.id != 3}"
                   >
                     Finish Review
                   </button>

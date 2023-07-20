@@ -92,13 +92,6 @@
       </div>
       <div class="sidebar-menu">
         <ul class="menu mt-0">
-          <li class="sidebar-item" method="post">
-            <a th:href="@{/logout}" class="sidebar-link">
-              <i class="bi bi-x-circle-fill"></i>
-              <span>Logout</span>
-            </a>
-          </li>
-
           <li class="sidebar-title">Menu</li>
 
           <li
@@ -204,6 +197,13 @@
             <a th:href="@{/status}" class="sidebar-link">
               <i class="bi bi-stickies-fill"></i>
               <span>Status</span>
+            </a>
+          </li>
+          <hr />
+          <li class="sidebar-item" method="POST">
+            <a th:href="@{/logout}" class="sidebar-link logout">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log out</span>
             </a>
           </li>
         </ul>
