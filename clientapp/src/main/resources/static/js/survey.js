@@ -136,7 +136,6 @@ function create() {
       },
     }),
     success: (result) => {
-
       $.LoadingOverlay("hide");
 
       $("#createSurvey").modal("hide");
