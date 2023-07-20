@@ -1,88 +1,104 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main}">
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/main}"
+>
+  <head>
+    <title>Dashboard</title>
+  </head>
 
-<head>
-  <title>Dashboard</title>
-</head>
-
-<body>
-  <div layout:fragment="content">
-    <div id="main">
-      <header class="mb-3">
-        <a href="#" class="burger-btn d-block d-xl-none">
-          <i class="bi bi-justify fs-3"></i>
-        </a>
-      </header>
-      <div class="page-heading">
-        <h3>Dashboard</h3>
-      </div>
-      <div class="page-content">
-        <section class="row">
-          <div class="col-12 col-lg-9">
-            <div class="row">
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                        <div class="stats-icon purple mb-2">
-                          <i class="iconly-boldUser"></i>
+  <body>
+    <div layout:fragment="content">
+      <div id="main">
+        <header class="mb-3">
+          <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+          </a>
+        </header>
+        <div class="page-heading">
+          <h3>Dashboard</h3>
+        </div>
+        <div class="page-content">
+          <section class="row">
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                      <div class="row">
+                        <div
+                          class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start"
+                        >
+                          <div class="stats-icon purple mb-2">
+                            <i class="iconly-boldUser"></i>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Employee</h6>
-                        <h6 class="font-extrabold mb-0" id="employee-count"></h6>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                          <h6 class="text-muted font-semibold">Employee</h6>
+                          <h6
+                            class="font-extrabold mb-0"
+                            id="employee-count"
+                          ></h6>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                        <div class="stats-icon blue mb-2">
-                          <i class="iconly-boldProfile"></i>
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                      <div class="row">
+                        <div
+                          class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start"
+                        >
+                          <div class="stats-icon blue mb-2">
+                            <i class="iconly-boldProfile"></i>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Client</h6>
-                        <h6 class="font-extrabold mb-0" id="client-count"></h6>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                          <h6 class="text-muted font-semibold">Client</h6>
+                          <h6
+                            class="font-extrabold mb-0"
+                            id="client-count"
+                          ></h6>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                  <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                        <div class="stats-icon red mb-2">
-                          <i class="iconly-boldDocument"></i>
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                      <div class="row">
+                        <div
+                          class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start"
+                        >
+                          <div class="stats-icon red mb-2">
+                            <i class="iconly-boldDocument"></i>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Survey</h6>
-                        <h6 class="font-extrabold mb-0" id="survey-count"></h6>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                          <h6 class="text-muted font-semibold">Survey</h6>
+                          <h6
+                            class="font-extrabold mb-0"
+                            id="survey-count"
+                          ></h6>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Dashboard JS -->
-  <div layout:fragment="script">
-    <script th:src="@{/js/dashboard.js}"></script>
-  </div>
-</body>
-
+    <!-- Dashboard JS -->
+    <div layout:fragment="script">
+      <script th:src="@{/js/dashboard.js}"></script>
+    </div>
+  </body>
 </html>

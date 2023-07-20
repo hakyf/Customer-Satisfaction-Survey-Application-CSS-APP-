@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/success}"
+>
+  <head>
+    <title>Expired</title>
+  </head>
+
+  <body>
+    <div layout:fragment="content">
+      <div id="error">
+        <div class="error-page container">
+          <div class="col-md-8 col-12 offset-md-2">
+            <div class="text-center">
+              <img
+                class="img-error"
+                th:src="@{/assets/images/samples/success.png}"
+                alt="Success"
+              />
+              <h4 class="error-title">
+                Maaf Waktu Pengisian Survey Kadaluarsa
+              </h4>
+              <p class="fs-5 text-gray-600">
+                Silahkan menutup halaman survey ini.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,7 @@
 package id.co.mii.clientapp.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -63,9 +65,16 @@ public class SurveyController {
     @GetMapping("/c/{code}")
     public String formByCode(@PathVariable String code, Model model) {
         Survey survey = surveyService.formByCode(code);
+
         if (survey.getStatus().getId() != 1) {
-            return "redirect:/survey/error";
+            return "redirect:/survey/sorry";
         }
+
+        LocalDate currentDate = LocalDate.now();
+        if (currentDate.isAfter(survey.getExpired())) {
+            return "redirect:/survey/expired";
+        }
+
         model.addAttribute("survey", survey);
         model.addAttribute("sections", sectionService.getAll());
         model.addAttribute("parameters", parameterService.getAll());
@@ -80,9 +89,14 @@ public class SurveyController {
         return "survey/successForm";
     }
 
-    @GetMapping("/error")
+    @GetMapping("/sorry")
     public String errorForm() {
-        return "survey/errorForm";
+        return "survey/sorryForm";
+    }
+
+    @GetMapping("/expired")
+    public String expiredForm() {
+        return "survey/expiredForm";
     }
 
     @PostMapping("/c/{code}/review")
