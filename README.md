@@ -132,6 +132,15 @@
 - 17/07
   - Add detail result & status reviewed
   - Add auth util, change result
+- 18/07
+  - Change id to number
+- 20/07
+  - Change success and sorry form
+  - Fix result interface
+  - Change survey form
+  - Add expired form
+- 21/07
+  - Change dashboard
 
 3. **Yoga Sadewa**
 
