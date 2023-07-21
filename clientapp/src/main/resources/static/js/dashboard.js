@@ -25,4 +25,13 @@ $(document).ready(function () {
       $("#survey-count").text(`${data.length}`);
     },
   });
+
+  $.ajax({
+    url: "/api/result",
+    method: "GET",
+    dataType: "JSON",
+    success: function (data) {
+      $("#result-count").text(`${data.length}`);
+    },
+  });
 });
