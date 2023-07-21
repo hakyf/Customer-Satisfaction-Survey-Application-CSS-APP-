@@ -51,7 +51,7 @@
   - Update Navbar
   - Update Login Page
   - Custom Email Template
-  - Add service, controller, restcontroller, js, html Result
+  - Add service, controller, restcontroller, js, html result
 - 07/07
   - Add Template Email
 - 10/07
@@ -69,6 +69,11 @@
   - Membuat Persentasi
   - Update SurveyController
   - Update Form Survey
+- 18/07
+  - Update logo error & success survey
+  - Add loading overlay
+- 20/07
+  - Add logo expired survey
 
 2. **Habibullah Dzaky Musthafa**
 
