@@ -1,226 +1,176 @@
-# Information for the Final Project Repository
+## **_`Customer Satisfaction Survey Application (CSS APP)`_**
 
-## **_`Judul: Customer Satisfaction Survey Application (CSS APP)`_**
+### **`Project Team`**
 
-### **`Kelompok 02`**
-
-- **Riki Setiyawan**
 - **Habibullah Dzaky Musthafa**
+- **Riki Setiyawan**
 - **Yoga Sadewa**
-
----
-
-### **`Draft Design & Documentation`**
-
-- [BPMN](https://drive.google.com/file/d/1FOQ5H6A1Q47xzhpKvuQHsagoDPihBm-8/view?usp=sharing)
-- [Use Case Diagram](https://drive.google.com/file/d/10AuxibxFDquCuNYFV5Ty2f1Mw1vJyIjr/view?usp=sharing)
-- [Entity Relational Diagram](https://drive.google.com/file/d/1X94O6mTQVWFhbWXJA1D2281dAGN6U6ht/view?usp=sharing)
-- [Data Dummy](https://docs.google.com/spreadsheets/d/10gDpG6SatiQW8xmxUQlRNW3e7XbkgA5qFfhq4r42nl4/edit?usp=sharing)
-- [Postman](https://documenter.getpostman.com/view/27540842/2s93zCZLfV)
-- [User Manual Book](https://drive.google.com/file/d/1sD9yi-bGX8RXohl2X7eOFxQT6rlVlRZa/view?usp=sharing)
-- [Persentation](https://drive.google.com/file/d/1kZy92d3-NEvAaEp1CA1s8wGh0soMX-m5/view?usp=sharing)
 
 ---
 
 ### **`Project Priority`**
 
-- Modul Section, Question, Parameter
-- Modul Survey
-- Modul Send Form Survey
-- Modul Answer
-- Modul Result
-- Modul Client
-- Modul ADD2, Employee
-- Modul History, Status
+- Module Section, Question, Parameter
+- Module Survey
+- Module Send Form Survey
+- Module Answer
+- Module Result
+- Module Client
+- Module Manager, Employee
+- Module History, Status
 
 ---
 
 ### **`Project Task`**
 
-1. **`Riki Setiyawan:`**
+1. **`Habibullah Dzaky Musthafa:`**
 
     - 28/06
-      - Konfigurasi JPA pada serverapp
+        - Add all models
     - 02/07
-      - Initial clientapp
-      - Add service, controller, restcontroller, js, html employee
-      - Fix js, html question
+        - Fix controller, service, & repository server app
+        - Add model, service, controller, rest controller client app
+        - Add security, rest template interceptor, layout dialect
+        - Add controller & service login
+        - Add html, js question & login
     - 03/07
-      - Add service, controller, restcontroller, js, html section
+        - Fix bug service server app
+        - Fix controller & model question
+        - Fix html, js & cs
     - 04/07
-      - Add service, controller, restcontroller, js, html user
-      - Add service, controller, restcontroller, js, html role
+        - Fix bug service client app
+        - Fix html, css, js client app
+        - Fix controller & model question client app
     - 05/07
-      - Fix UserController
-      - Add service, controller, restcontroller, js, html survey
-      - Add service, controller, restcontroller, js, html answer
-      - Add service, controller, restcontroller, js, html client
+        - Revamp template
+        - Fix js and layout
     - 06/07
-      - Update Navbar
-      - Update Login Page
-      - Custom Email Template
-      - Add service, controller, restcontroller, js, html result
+        - Add send survey in controller
+        - Edit create html, js
+        - Edit status and result client app
+        - Fix layout
     - 07/07
-      - Add Template Email
-    - 10/07
-      - Update Survey Reppository
-    - 11/07
-      - Edit Logo
-      - Update Login Page
-    - 12/07
-      - Update index Survey
-      - Update Sidebar
-      - Update Dashboard
-      - Update Form Survey
-    - 13/07
-      - Membuat Dokumentasi / User Manual Book
-      - Membuat Persentasi
-      - Update SurveyController
-      - Update Form Survey
-    - 18/07
-      - Update logo error & success survey
-      - Add loading overlay
-    - 20/07
-      - Add logo expired survey
-
-2. **`Habibullah Dzaky Musthafa:`**
-   
-    - 28/06
-      - Add all models
-    - 02/07
-      - Fix controller, service, & repository serverapp
-      - Add model, service, controller, restcontroller clientapp
-      - Add security, rest template interceptor, layout dialect
-      - Add controller & service login
-      - Add html, js question & login
-    - 03/07
-      - Fix bug service serverapp
-      - Fix controller & model question
-      - Fix html, js & cs
-    - 04/07
-      - Fix bug service clientapp
-      - Fix html, css, js clientapp
-      - Fix controller & model question clientapp
-    - 05/07
-      - Revamp template
-      - Fix js and layout
-    - 06/07
-      - Add send survey in controller
-      - Edit create html, js
-      - Edit status and result clientapp
-      - Fix layout
-    - 07/07
-      - Fix survey clientapp
-      - Add service & controller result serverapp
-      - Add history service & controller serverapp
-      - Fix client clientapp
+        - Fix survey client app
+        - Add service & controller result server app
+        - Add history service & controller server app
+        - Fix client in client app
     - 08/07
-      - Add survey form page, and send email
-      - Hide code all page
-      - Fix survey serverapp
-      - Add send email surver form
+        - Add survey form page, and send email
+        - Hide code all page
+        - Fix survey server app
+        - Add send email survey form
     - 09/07
-      - Edit email template
+        - Edit email template
     - 10/07
-      - Edit survey form
+        - Edit survey form
     - 11/07
-      - Edit survey form
-      - Fix survey form
-      - Fix All conflict
+        - Edit survey form
+        - Fix survey form
+        - Fix All conflict
     - 12/07
-      - Fix survey form
-      - Add logic save answer
-      - Edit section and question js
+        - Fix survey form
+        - Add logic save answer
+        - Edit section and question js
     - 13/07
-      - Fix answer
-      - Change data type uuid to string code, and fix method findByCode
+        - Fix answer
+        - Change data type uuid to string code, and fix method findByCode
     - 16/07
-      - Add js survey form, logic save answer, all about service and controller survey
-      - Add logic result score and mean
+        - Add js survey form, logic save answer, all about service and controller survey
+        - Add logic result score and mean
     - 17/07
-      - Add detail result & status reviewed
-      - Add auth util, change result
+        - Add detail result & status reviewed
+        - Add auth util, change result
     - 18/07
-      - Change id to number
+        - Change id to number
     - 20/07
-      - Change success and sorry form
-      - Fix result interface
-      - Change survey form
-      - Add expired form
+        - Change success and sorry form
+        - Fix result interface
+        - Change survey form
+        - Add expired form
     - 21/07
-      - Change dashboard
+        - Change dashboard
 
-4. **`Yoga Sadewa:`**
+2. **`Riki Setiyawan:`**
 
     - 28/06
-      - Add data dummy to database
-    - 30/06
-      - Add controller, service & repository for Survey needs (Section,Question,Answer,Result,Client) in serverapp
-    - 01/07
-      - Add controller, service & repository for Security needs (User,Role,Privilege,etc) in serverapp
-      - Create a postman workspace and collection, and perform json testing to test HTTP request Method in Section,Question,Answer
+        - Configuration JPA in server app
     - 02/07
-      - Configure Postman by creating a workspace for the team, which will allow the team to work together as editor in a single workspace.
-      - Create HTTP Method request and perfom json testing for Survey, create new Fork for Testing and pull request in original collection.
+        - Initial client app
+        - Add service, controller, rest controller, js, html employee
+        - Fix js, html question
     - 03/07
-      - Create Status Controller in serverapp & Service,Controller,restController for parameter and status.
+        - Add service, controller, rest controller, js, html section
     - 04/07
-      - Create Js & html for parameter & status
+        - Add service, controller, rest controller, js, html user
+        - Add service, controller, rest controller, js, html role
     - 05/07
-      - Add EmailService
+        - Fix UserController
+        - Add service, controller, rest controller, js, html survey
+        - Add service, controller, rest controller, js, html answer
+        - Add service, controller, rest controller, js, html client
     - 06/07
-      - Add Send Email Survet with Random UUID
+        - Update Navbar
+        - Update Login Page
+        - Custom Email Template
+        - Add service, controller, rest controller, js, html result
     - 07/07
-      - fix email survey
-    - 08/07
-      - Create directlink email to formbycode
-    - 09/07
-      - fix minor formbycode
-    - 10/07-12/07
-      - add DTO AnswerQuestReq,modif answer service but still error
+        - Add Template Email
+    - 10/07
+        - Update Survey Repository
+    - 11/07
+        - Edit Logo
+        - Update Login Page
+    - 12/07
+        - Update index Survey
+        - Update Sidebar
+        - Update Dashboard
+        - Update Form Survey
     - 13/07
-      - Try to Modification Method Saved Answer, but
-    can only save different answer id and rating but cannot save with different question id.
-      - Learn Error Debuging using Breakpoint in VSCode, testing code/line  
+        - Create Documentation / User Manual Book
+        - Create Presentation
+        - Update SurveyController
+        - Update Form Survey
+    - 18/07
+        - Update logo error & success survey
+        - Add loading overlay
+    - 20/07
+        - Add logo expired survey
+
+3. **`Yoga Sadewa:`**
+
+    - 28/06
+        - Add data dummy to database
+    - 30/06
+        - Add controller, service & repository for Survey needs (Section,Question,Answer,Result,Client) in server app
+    - 01/07
+        - Add controller, service & repository for Security needs (User,Role,Privilege,etc.) in server app
+        - Create a postman workspace and collection, and perform json testing to test HTTP request Method in Section,
+          Question, Answer
+    - 02/07
+        - Configure Postman by creating a workspace for the team, which will allow the team to work together as editor
+          in a single workspace
+        - Create HTTP Method request and perform json testing for Survey, create new Fork for Testing and pull request
+          in original collection
+    - 03/07
+        - Create Status Controller in server app & Service,Controller,restController for parameter and status
+    - 04/07
+        - Create Js & html for parameter & status
+    - 05/07
+        - Add EmailService
+    - 06/07
+        - Add Send Email Survey with Random UUID
+    - 07/07
+        - Fix email survey
+    - 08/07
+        - Create direct link email to form by code
+    - 09/07
+        - Fix minor form by code
+    - 10/07-12/07
+        - Add DTO AnswerQuestReq, modify answer service but still error
+    - 13/07
+        - Try to Modification Method Saved Answer, but
+          can only save different answer id and rating but cannot save with different question id
+        - Learn Error Debugging using Breakpoint in VSCode, testing code/line
     - 16/07-20/07
-      - trying to fix some features
-      - fix BPMN, Usecase
-    
----
-
-### **`Ketentuan Repository`**
-- ❌ Dilarang mengakses atau menyalahgunakan repositori kelompok lain.
-- 💻 Fokus pada pengerjaan kelompok masing-masing.
-- 🤓 Untuk kelompok lain bisa sharing, melihat proses, serta memicu semangat untuk memberikan hasil yang terbaik pada projectnya masing-masing. 💪💪💪
-
----
-
-### **`Ketentuan Implementasi Repository`**
-
-- Silahkan clone repository yang sudah disediakan untuk setiap kelompoknya masing-masing.
-- Setalah clone, silahkan masukkan folder project `backend` & `frontend` yang nanti teman-teman buat.
-
-**`NOTE:` di bawah ini merupakan contoh struktur dari folder project.**
-
-```
-|-- .gitignore
-|-- README.md
-|-- serverapp
-    |-- .mvn
-    |-- src
-        |-- main
-        |-- test/java/id/co/mii/serverapp
-    |-- .gitignore
-    |-- mvnw
-    |-- mvwn.cmd
-    |-- pom.xml
-|-- clientapp
-    |-- .mvn
-    |-- src
-        |-- main
-        |-- test/java/id/co/mii/clientapp
-    |-- .gitignore
-    |-- mvnw
-    |-- mvwn.cmd
-    |-- pom.xml
-```
+        - Trying to fix some features
+        - Fix BPMN, Use case
